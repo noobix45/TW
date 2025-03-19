@@ -10,6 +10,9 @@
 
     --header-heigth: 79.875px;
 
+    --sus-large: 60px;
+    --sus-medium: 40px;
+
     /* grid gap pentru main - grid-ul principal */
     --gap-large-main:20px; 
     --gap-medium-main:15px;
@@ -33,322 +36,11 @@ body{
     grid-template-rows: auto 1fr auto;
 }
 
-/***************************header*****************************/
-header{
-    grid-column: 1 / -1;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    height: auto;
-    color: whitesmoke;
-    border-bottom: solid black 1px;
-    background-color: #1F5673;
-}
 
-.main_title{
-    text-align: center;
-    transition: opacity 0.3s ease;
-    margin:10px 0;
-}
-
-.meniu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    padding-right: var(--padding-large);
-    padding-left: var(--padding-large);
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    transition: all 0.3s ease;
-    z-index: 10;
-    background-color: #05a9c4;
-    border-top: solid black 1px;
-    color: #FAFAFA;
-}
-
-.meniu.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1F5673;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.meniu ul{
-    list-style: none;
-}
-
-.meniu ul li a{
-    text-decoration: none;
-    color: black;
-}
-
-.left_menu{
-    padding-left: var(--gap-large);
-}
-
-.right_menu{
-    padding-right: var(--gap-large);
-}
-
-.left_menu, .right_menu
-{
-    display: flex;
-    gap: 15px;
-}
-
-.dropdown_menu{
-    display: none;
-    position: absolute;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown_menu{
-    display: block;
-}
-/************************end header***************************/
-
-
-/*******************************main*************************/
-main{
-    grid-column: 2;
-    grid-row: 2;
-    margin-top: var(--header-height);
-    display: grid;
-    grid-template-areas: 
-    'reclama reclama reclama'
-    'categorii categorii categorii'
-    'acasa acasa acasa'
-    'despre despre despre'
-    'inainte inainte inainte'
-    'extra extra extra';
-    grid-column-gap: var(--gap-large-main); /* momentat gap ul pentru coloane nu afecteazaz cu nimic*/
-    grid-row-gap: var(--gap-large-main);
-}
-
-.container_reclama{
-    grid-area: reclama;
-}
-
-#acasa{
-    grid-area: acasa;
-}
-
-#despre{
-    grid-area: despre;
-}
-
-#inainte_sa_cumperi{
-    grid-area: inainte;
-}
-
-#extra{
-    grid-area: extra;
-}
-
-/***************sectiune reclama produse****************/
-.container_reclama{
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr 0.8fr 1fr;
-    justify-items: center;
-    align-items: center;
-    margin: 20px 20px;
-}
-
-.reclama_titlu{
-    grid-row:1;
-    grid-column: 1/-1;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px;
-}
-
-.container_reclama img{ /* nu mai e nevoie de procente pentru ca pozele sunt in grid*/
-    height: 600px;
-    width: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    border: 3px solid black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.container_reclama img:first-of-type{
-    grid-row: 2;
-    grid-column: 1;
-    justify-self:end;
-}
-
-.container_reclama img:nth-of-type(2){
-    grid-row: 2;
-    grid-column:2;
-}
-
-.container_reclama img:nth-of-type(3){
-    grid-row:2;
-    grid-column:3;
-    justify-self:start;
-}
-/***********************end reclama************************/
-
-figure{
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-/*****************secctiune categorii produse****************/
-.categorii{
-    grid-area: categorii;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: auto auto auto;
-}
-
-.titlu_categorii{
-    grid-row: 1;
-    grid-column: 1/-1;
-    text-align: center;
-}
-
-.categorii a{
-    text-align: center;
-}
-
-.categorii img{
-    max-width: 30%;
-    min-width: 25%;
-    width:25%;
-    height: auto;
-}
-
-.guitar_pict{
-    grid-row: 2;
-    grid-column: 1;
-}
-
-.amp_pict{
-    grid-row: 2;
-    grid-column: 2;
-}
-
-.acc_pict{
-    grid-row: 2;
-    grid-column:3
-}
-
-.categorii ul{
-    grid-row:3;
-    grid-column: 1/-1;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    padding:0;
-}
-
-.categorii ul li a{
-    text-decoration: none;
-    color: black;
-}
-/**************************end categorii***********************/
-
-.section_content{
-    background-color: white;
-    color: #000000;
-    border: solid 3px black;
-    border-radius: 10px;
-    padding: var(--text-padding-large); /* design rudimentar d */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/*********************sectiune extra*************************/
-.ifr-video
-{
-    border: none;
-}
-
-figure img{ /* rudimentar e*/
-    max-width: 100%;
-    height: auto;
-}
-
-/***************************end main*******************************/
-
-/**************************footer********************************/
-footer{
-    grid-column: 1 / -1;
-    grid-row: 3;
-    background-color: #1F5673;
-    color: whitesmoke;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: auto auto auto;
-}
-
-footer section{
-    grid-row: 1;
-    grid-column: 1;
-    margin: 0 auto;
-}
-
-footer section h2{
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-footer address{
-    text-align: left;
-    font-size: large;
-}
-
-footer .locatie{
-    grid-row: 1;
-    grid-column: 2;
-    text-align: center;
-}
-
-footer .locatie h2{
-    text-align: center;
-}
-
-footer .link_date{
-    grid-row: 2;
-    grid-column: 1/-1;
-}
-
-footer small p{
-    text-align: center;
-    font-size: large;
-    color: black;
-}
-
-footer .link_sus {
-    display: block;
-    width: max-content;
-    margin: 20px auto 0;
-    padding: 30px 15px;
-    text-align: center;
-}
-
-.link_sus{
-    font-size: larger;
-}
-
-footer a{
-    color: salmon;
-}
-
-/*************************end footer*************************/
 
 /* diferite variabile in functie de media query */
 @media screen and (max-width: 1024px) {
-    /* body { culoare de test
+    /* body {
         background-color: lightblue ;
     } */
     .grid_container {
@@ -357,19 +49,42 @@ footer a{
     main {
         grid-column-gap: var(--gap-medium-main);
         grid-row-gap: var(--gap-medium-main);
-    }
-    .left_menu{
-        padding-left: var(--gap-medium);
-    }
-    .right_menu{
-        padding-right: var(--gap-medium);
+        grid-template-areas: 
+        'z1 z1'
+        'z5 z7'
+        'z6 z6'
+        'z2 z2'
+        'z3 z3'
+        'z4 z4'
+        'z8 z8';
     }
     .section_content{
         padding: var(--text-padding-medium);
     }
     .meniu{
-        padding-right: var(--padding-medium);
-        padding-left: var(--padding-medium);
+        padding-right: var(--padding-medium) !important;
+        padding-left: var(--padding-medium) !important;
+    }
+    footer {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(3,auto) !important;
+        padding-left: var(--padding-medium) !important;
+        padding-right: var(--padding-medium) !important;
+    }
+    footer section{
+        grid-row:1 !important;
+        grid-column: 1/-1!important;
+    }
+    footer .locatie{
+        grid-row: 2 !important;
+        grid-column: 1/-1 !important;
+    }
+    footer .link_date{
+        grid-row:3 !important;
+        grid-column: 1/-1 !important;
+    }
+    .link_sus{
+        max-width: var(--sus-medium);
     }
 }
 
@@ -384,17 +99,32 @@ footer a{
         grid-column-gap: var(--gap-small-main);
         grid-row-gap: var(--gap-small-main);
     }
-    .left_menu{
-        padding-left: var(--gap-small);
-    }
-    .right_menu{
-        padding-right: var(--gap-small);
-    }
     .meniu{
-        padding-right: var(--padding-small);
-        padding-left: var(--padding-small);
+        padding-right: var(--padding-small) !important;
+        padding-left: var(--padding-small) !important;
     }
     .section_content{
         padding: var(--text-padding-small);
+    }
+    footer {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(3,auto) !important;
+        padding-left: var(--padding-small) !important;
+        padding-right: var(--padding-small) !important;
+    }
+    footer section{
+        grid-row:1 !important;
+        grid-column: 1/-1!important;
+    }
+    footer .locatie{
+        grid-row: 2 !important;
+        grid-column: 1/-1 !important;
+    }
+    footer .link_date{
+        grid-row:3 !important;
+        grid-column: 1/-1 !important;
+    }
+    .link_sus{
+        display: none;
     }
 }

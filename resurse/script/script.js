@@ -36,21 +36,3 @@ document.addEventListener("DOMContentLoaded", function () {
         setInterval(nextSlide, 8000);
     }, 2000); // Delay for first transition
 });
-
-
-function logPadding() {
-    const section = document.querySelector(".section_content");
-    if (section) {
-        const computedStyle = window.getComputedStyle(section);
-        console.log("Padding of .section_content:", computedStyle.padding);
-    } else {
-        console.warn("Element .section_content not found");
-    }
-}
-
-// Log padding on load
-logPadding();
-
-// Log padding on window resize
-window.addEventListener("resize", logPadding);
-
