@@ -1,5 +1,8 @@
 :root {
     /* rudimentar a spatiere */
+
+/*#00365D*/
+
     --padding-large: 210px; 
     --padding-medium: 105px;
     --padding-small: 52.5px;
@@ -23,28 +26,485 @@
     --text-padding-small: 16px;
 }
 
+@font-face {
+    font-family: 'hh';
+    src: url('/resurse/fonts/hh.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body{
     padding: 0;
     margin: 0;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    /* background-color: #B0C5E0; */
+    background-color: #77CED7;
 }
 
-.grid_container {
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+  
+  .fa-spin {
+    animation: spin 1s linear infinite !important;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .fa-pulse {
+    animation: pulse 1s ease-in-out infinite !important;
+  }
+/* *{
+    max-width: 100%;
+} */
+
+header{
+    font-family: 'hh';
+}
+
+main{
+padding-left: var(--padding-large);
+padding-right: var(--padding-large);
+}
+/* * {
+    outline: 1px solid red;
+  } */
+
+/***************************header*****************************/
+/*
+header{
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    align-items: center;
+    height: auto;
+    color: whitesmoke;
+    border-bottom: solid black 1px;
+    background-color: #1F5673;
+}
+
+.main_title{
+    text-align: center;
+    transition: opacity 0.3s ease;
+    margin:10px 0;
+}
+
+.meniu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    padding-right: var(--padding-large);
+    padding-left: var(--padding-large);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 10;
+    background-color: #05a9c4;
+    border-top: solid black 1px;
+    color: #FAFAFA;
+}
+
+.meniu.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    background-color: #1F5673;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.meniu ul{
+    list-style: none;
+}
+
+.meniu ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.left_menu, .right_menu
+{
+    display: flex;
+    gap: 15px;
+    padding: 0;
+}
+
+.dropdown_menu{
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown_menu{
+    display: block;
+}
+    */
+/************************end header***************************/
+
+/*******************************main*************************/
+
+
+main{
+    max-width: 100vw;
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: var(--header-height);
     display: grid;
-     /* rudimentar a spatiere prin grid columns - 2 coloane din body rezervate pentru spatiu*/
-    grid-template-columns: var(--padding-large) 1fr var(--padding-large);
-    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+    'z1 z1 z1 z1'
+    'z5 z6 z6 z7'
+    'z3 z3 z2 z2'
+    'z4 z4 z2 z2'
+    'z8 z8 z8 z8';
+}
+
+.zona1{
+    grid-area: z1;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
 }
 
 
+.zona8{
+    grid-area: z8;
+    /* display: none; */
+}
+
+.zona5{
+    grid-area: z5;
+    /* display: none; */
+}
+
+.zona6{
+    grid-area: z6;
+    /* display: none; */
+}
+
+.zona7{
+    grid-area: z7;
+    /* display: none; */
+}
+
+.zona3{
+    grid-area: z3;
+    /* display: none; */
+}
+
+.zona4{
+    grid-area: z4;
+    /* display: none; */
+}
+
+.zona2{
+    grid-area: z2;   
+}
+
+/*************************tabel*************************/
+
+table{
+    caption-side: bottom;
+    border-collapse: collapse;
+    width: 100%;
+    border: 5px inset #7E65E0;
+    text-align: center;
+}
+
+table tr:nth-child(even) td {
+    border-bottom: 2px solid #1F5673;
+}
+
+table tr:nth-child(odd) td {
+    border-bottom: 2px solid #659BE0;
+}
+
+table td, table th {
+    border: 1px solid #7E65E0;
+    padding: 8px;
+}
+
+table tr {
+    transition: outline 0.5s ease;
+}
+
+table tr:hover {
+    outline: 5px solid #7E65E0B7;
+}
+
+/*******************************************************/
+
+/***************sectiune reclama produse****************/
+
+.reclama_scroll {
+    grid-row:1;
+    grid-column: 1/-1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+.container_reclama{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 0.8fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin: 20px 20px;
+    width: 100%;
+}
+
+.reclama_titlu{
+    grid-row:1;
+    grid-column: 1/-1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    width: 100%;
+}
+
+.container_reclama img{
+    height: 600px;
+    width: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container_reclama img:first-of-type{
+    grid-row: 2;
+    grid-column: 1;
+    justify-self:end;
+}
+
+.container_reclama img:nth-of-type(2){
+    grid-row: 2;
+    grid-column:2;
+}
+
+.container_reclama img:nth-of-type(3){
+    grid-row:2;
+    grid-column:3;
+    justify-self:start;
+}
+/***********************end reclama************************/
+
+figure{
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.pdf-preview{
+    width: 60%;
+    height: 70vh;
+    max-width: 50%;
+    max-height: 70vh;
+    min-width: 60%;
+    min-height: 50vh;
+    /* margin: 0 auto; */
+}
+
+.pdf-embed{
+    width: 100%;
+    height: 100%;
+}
+
+/*****************secctiune categorii produse****************/
+.categorii{
+    grid-row:2;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto auto auto;
+}
+
+.titlu_categorii{
+    grid-row: 1;
+    grid-column: 1/-1;
+    text-align: center;
+}
+
+.categorii img{
+    max-width: 30%;
+    min-width: 25%;
+    min-width:25%;
+    height: auto;
+}
+
+.categorii a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+
+.guitar_pict{
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.amp_pict{
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.acc_pict{
+    grid-row: 2;
+    grid-column:3
+}
+
+.categorii ul{
+    grid-row:3;
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding:0;
+}
+
+.categorii ul li a{
+    text-decoration: none;
+    color: black;
+}
+/**************************end categorii***********************/
+
+.section_content{
+    background-color: white;
+    color: #000000;
+    border: solid 3px black;
+    border-radius: 10px;
+    padding: var(--text-padding-large); /* design rudimentar d */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*********************sectiune extra*************************/
+
+.container-iframe{
+    max-width: 100%;
+}
+
+.ifr-video
+{
+    border: none;
+    max-width: 100%;
+    height: auto;
+    min-width: 50%;
+    aspect-ratio: 16/9;
+}
+
+figure img{ /* rudimentar e*/
+    max-width: 100%;
+    height: auto;
+}
+
+/***************************end main*******************************/
+
+/**************************footer********************************/
+footer{
+    grid-column: 1 / -1;
+    grid-row: 3;
+    background-color: #1F5673;
+    color: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding-left: var(--padding-large);
+    padding-right: var(--padding-large);
+}
+
+footer section{
+    grid-row: 1;
+    grid-column: 1;
+    margin: 0 auto;
+}
+
+footer section h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+footer address{
+    text-align: left;
+    font-size: large;
+}
+
+footer .locatie{
+    grid-row: 1;
+    grid-column: 2;
+    text-align: center;
+}
+
+footer .locatie h2{
+    text-align: center;
+}
+
+footer .locatie iframe{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+footer .link_date{
+    grid-row: 2;
+    grid-column: 1/-1;
+}
+
+footer small p{
+    text-align: center;
+    font-size: large;
+    color: black;
+}
+
+.link_sus{
+    max-width: var(--sus-large);
+    height: auto;
+    position: fixed;
+    bottom: 30px;
+    right: 35px;
+}
+
+
+.link_sus{
+    font-size: larger;
+}
+
+footer a{
+    color: salmon;
+}
+
+/*************************end footer*************************/
 
 /* diferite variabile in functie de media query */
 @media screen and (max-width: 1024px) {
     /* body {
         background-color: lightblue ;
     } */
-    .grid_container {
-        grid-template-columns: var(--padding-medium) 1fr var(--padding-medium);
+    main {
+        padding-left: var(--padding-medium);
+        padding-right: var(--padding-medium);
     }
     main {
         grid-column-gap: var(--gap-medium-main);
@@ -62,69 +522,100 @@ body{
         padding: var(--text-padding-medium);
     }
     .meniu{
-        padding-right: var(--padding-medium) !important;
-        padding-left: var(--padding-medium) !important;
+        padding-right: var(--padding-medium);
+        padding-left: var(--padding-medium);
     }
     footer {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: repeat(3,auto) !important;
-        padding-left: var(--padding-medium) !important;
-        padding-right: var(--padding-medium) !important;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3,auto);
+        padding-left: var(--padding-medium) ;
+        padding-right: var(--padding-medium);
     }
     footer section{
-        grid-row:1 !important;
-        grid-column: 1/-1!important;
+        grid-row:1 ;
+        grid-column: 1/-1;
     }
     footer .locatie{
-        grid-row: 2 !important;
-        grid-column: 1/-1 !important;
+        grid-row: 2 ;
+        grid-column: 1/-1 ;
     }
     footer .link_date{
-        grid-row:3 !important;
-        grid-column: 1/-1 !important;
+        grid-row:3 ;
+        grid-column: 1/-1 ;
     }
     .link_sus{
         max-width: var(--sus-medium);
     }
+    .zona2{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    table{
+        min-width: 600px;
+    }
+    .pdf-preview{
+        max-width: 90%;
+        max-height: 60vh;
+        min-width: 80%;
+    }
+    
 }
 
 @media screen and (max-width: 600px) {
     /* body{ culoare de test
         background-color: red;
     } */
-    .grid_container {
-        grid-template-columns: var(--padding-small) 1fr var(--padding-small);
+    main {
+        padding-left: var(--padding-small);
+        padding-right: var(--padding-small);
     }
     main {
         grid-column-gap: var(--gap-small-main);
         grid-row-gap: var(--gap-small-main);
+        grid-template-areas: 
+            'z1'
+            'z5'
+            'z6'
+            'z7'
+            'z2'
+            'z3'
+            'z4'
+            'z8';
     }
     .meniu{
-        padding-right: var(--padding-small) !important;
-        padding-left: var(--padding-small) !important;
+        padding-right: var(--padding-small);
+        padding-left: var(--padding-small);
     }
     .section_content{
         padding: var(--text-padding-small);
     }
     footer {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: repeat(3,auto) !important;
-        padding-left: var(--padding-small) !important;
-        padding-right: var(--padding-small) !important;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3,auto);
+        padding-left: var(--padding-small);
+        padding-right: var(--padding-small);
     }
     footer section{
-        grid-row:1 !important;
-        grid-column: 1/-1!important;
+        grid-row:1 ;
+        grid-column: 1/-1;
     }
     footer .locatie{
-        grid-row: 2 !important;
-        grid-column: 1/-1 !important;
+        grid-row: 2 ;
+        grid-column: 1/-1 ;
     }
     footer .link_date{
-        grid-row:3 !important;
-        grid-column: 1/-1 !important;
+        grid-row:3 ;
+        grid-column: 1/-1;
     }
     .link_sus{
         display: none;
     }
+    .zona2{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    table{
+        min-width: 500px;
+    }
 }
+
