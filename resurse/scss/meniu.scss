@@ -1,0 +1,164 @@
+    $padding-large: 210px; 
+    $padding-medium: 105px;
+    $padding-small: 52.5px;
+
+    $inaltime-meniu: 80px;
+
+    $gap-large: 30px; 
+    $gap-medium: 20px;
+    $gap-small: 10px;
+
+    $sus-large: 60px;
+    $sus-medium: 40px;
+    $sus-small: 20px;
+
+    $sus-font-large: 2.5rem;
+    $sus-font-medium: 2rem;
+    $sus-font-small: 1rem;
+
+    /* grid gap pentru main - grid-ul principal */
+    $gap-large-main:20px; 
+    $gap-medium-main:15px;
+    $gap-small-main:10px;
+
+    $text-padding-large: 20px; /* design rudimentar d*/
+    $text-padding-medium: 18px;
+    $text-padding-small: 16px;
+
+    $background-color: #0E5088;
+    $text-background: #EDE0C8;
+    $text-color: #262626;
+    $text-deschis: whitesmoke;
+    $hf-background-color: #1F5673;
+
+    $mov-inchis: #321B2C;
+    $mov: #53294B;
+    $mov-deschis: #5D3A6D;
+
+    $rosu-inchis: #461626;
+    $rosu: #82202D;
+    $rosu-deschis: #972F34;
+
+    $galben-inchis: #71281A;
+    $galben: #A44F0E;
+    $galben-deschis: #D3842F;
+
+    $albastru-inchis: #25385B;
+    $albastru: #3C728F;
+    $albastru-deschis: #60959F;
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: $inaltime-meniu;
+    background-color: $albastru-deschis;
+    border-bottom: solid 3px $rosu;
+
+    .main_title{
+        width: $padding-large;
+        height: $inaltime-meniu;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #551A8B;
+    }
+
+    nav.meniu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: $inaltime-meniu;
+        width: calc(100% - 2 * #{$padding-large});
+
+        .right_menu .fa-solid{
+            display: none;
+        }
+
+        .dropdown_menu{
+            display: none;
+        }
+
+        .left_menu{
+            display: flex;
+            list-style: none;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            gap: $gap-small;
+            height: $inaltime-meniu;
+            a{
+                text-decoration: none;
+                color: $rosu;
+            }
+            .dropdown {
+                position: relative;
+                .dropdown-btn {
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: $inaltime-meniu;
+                    font-size: 2rem;
+                    padding: 0px 20px;
+                }
+                
+                &:first-child .dropdown-btn::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 3px;
+                    background: linear-gradient(to right, $mov-inchis, $mov-deschis, $mov-inchis);
+                    opacity: 0;
+                    transition: transform 1s ease, opacity 0.3s ease;
+                }
+            
+                &:first-child .dropdown-btn:hover::after {
+                    transform: translateY(calc($inaltime-meniu - 3px));
+                    opacity: 1;
+                }
+            }
+        }
+        .right_menu{
+            display: flex;
+            list-style: none;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            gap: $gap-small;
+            height: $inaltime-meniu;
+            a{
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: $inaltime-meniu;
+                font-size: 2rem;
+                padding: 0px 20px;
+                position: relative;
+                color: $rosu;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 3px; /* Grosimea barei */
+                    background: linear-gradient(to right, $mov-inchis, $mov-deschis, $mov-inchis); /* Gradientul cu 3 culori */
+                    opacity: 0; /* Bara este complet transparentă inițial */
+                    transition: transform 1s ease, opacity 0.3s ease;
+                }
+            
+                &:hover::after {
+                    transform: translateY(calc($inaltime-meniu - 3px)); /* Bara se mișcă de la sus la jos */
+                    opacity: 1; /* Bara devine opacă */
+                }
+            }
+        }
+    }
+}

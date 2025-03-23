@@ -1,0 +1,109 @@
+@charset "UTF-8";
+/* grid gap pentru main - grid-ul principal */
+/* design rudimentar d*/
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+  background-color: #60959F;
+  border-bottom: solid 3px #82202D;
+}
+header .main_title {
+  width: 210px;
+  height: 80px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #551A8B;
+}
+header nav.meniu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: calc(100% - 2 * 210px);
+}
+header nav.meniu .right_menu .fa-solid {
+  display: none;
+}
+header nav.meniu .dropdown_menu {
+  display: none;
+}
+header nav.meniu .left_menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  height: 80px;
+}
+header nav.meniu .left_menu a {
+  text-decoration: none;
+  color: #82202D;
+}
+header nav.meniu .left_menu .dropdown {
+  position: relative;
+}
+header nav.meniu .left_menu .dropdown .dropdown-btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  font-size: 2rem;
+  padding: 0px 20px;
+}
+header nav.meniu .left_menu .dropdown:first-child .dropdown-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #321B2C, #5D3A6D, #321B2C);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.3s ease;
+}
+header nav.meniu .left_menu .dropdown:first-child .dropdown-btn:hover::after {
+  transform: translateY(77px);
+  opacity: 1;
+}
+header nav.meniu .right_menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+  height: 80px;
+}
+header nav.meniu .right_menu a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  font-size: 2rem;
+  padding: 0px 20px;
+  position: relative;
+  color: #82202D;
+}
+header nav.meniu .right_menu a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Grosimea barei */
+  background: linear-gradient(to right, #321B2C, #5D3A6D, #321B2C); /* Gradientul cu 3 culori */
+  opacity: 0; /* Bara este complet transparentă inițial */
+  transition: transform 1s ease, opacity 0.3s ease;
+}
+header nav.meniu .right_menu a:hover::after {
+  transform: translateY(77px); /* Bara se mișcă de la sus la jos */
+  opacity: 1; /* Bara devine opacă */
+}/*# sourceMappingURL=meniu.css.map */

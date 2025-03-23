@@ -18,29 +18,20 @@
     <link rel="manifest" href="./resurse/imagini/ico/site.webmanifest">
 
     <link rel = "stylesheet" type = "text/css" href = "./resurse/css/general.css">
+    <link rel="stylesheet" href="resurse/scss/meniu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     
 </head>
 
 <!-- <body style="background-image: url('./resurse/imagini/background/back_white.png'); background-size: 100% 100%; background-repeat: no-repeat; background-attachment: fixed;"> -->
-<body> <!-- header main si footer           1.4-->
-    <i class="fa-solid fa-circle-notch fa-spin"></i>
-    <i class="fa-solid fa-rotate fa-spin"></i>
-    <i class="fa-solid fa-gear fa-spin"></i>
-    <i class="fa-solid fa-spinner fa-pulse"></i>
-
-<i class="fa-solid fa-circle-notch fa-pulse"></i>
-
-<i class="fa-solid fa-rotate fa-pulse"></i>
-
-<i class="fa-solid fa-gear fa-pulse"></i>
+<body> <!-- header main si footer 1.4-->
         <header>
             <h1 class = "main_title">GuitarHeaven</h1>
                 <nav class = "meniu"> <!-- 1.6 sistem de navigare-->
                     <ul class = "left_menu">
                         <li class = "dropdown">
-                            <a href = "index.html" class="dropdown-btn">Acasa</a>
+                            <a href = "index.html" class="dropdown-btn"><i class="fa-solid fa-home"></i> Acasă</a>
                             <ul class = "dropdown_menu">
                                 <li><a href = "#reclama">Promotii</a></li>
                                 <li><a href = "#despre">Despre noi</a></li>
@@ -87,8 +78,8 @@
                         </li>
                     </ul>
                     <ul class = "right_menu">
-                        <li><a href = "#">Cont</a></li>
-                        <li><a href = "#">Cos</a></li>
+                        <li><a href = "#"><i class="fa-solid fa-user"></i> Cont</a></li>
+                        <li><a href = "#"><i class="fa-solid fa-cart-shopping"></i>Cos</a></li>
                     </ul>
                 </nav>
         </header>
@@ -96,9 +87,9 @@
         <main>
 
             <div class = "zona1">
+                <div class = "reclama_titlu"><h2>TOP MODELS</h2></div>
                 <div class = "reclama_scroll">
                     <div class = "container_reclama" id = "reclama">
-                        <div class = "reclama_titlu">TOP MODELS</div>
                         <img src = "./resurse/imagini/front_ad/standard_strat.jpg" alt = "Fender strat ad">
                         <img src = "./resurse/imagini/front_ad/gibson_es_335_satin_cherry.jpg" alt = "Gibson ad">
                         <img src = "./resurse/imagini/front_ad/prs_se_ce_24_standard_satin_ch.jpg" alt = "PRS ad">
@@ -205,7 +196,7 @@
 
             <div class = "zona8">
             <section id = "acasa">
-                <h2 class = "title">Acasa</h2>
+                <h2 class = "title">Acasă</h2>
                 <div class = "section_content">
                     <p><b>GuitarHeaven</b> este locul ideal pentru toți pasionații de <b>chitară</b>, fie că ești la început de drum sau un muzician experimentat. Magazinul nostru, atât online, cât și fizic, îți oferă o gamă variată de <b>chitare electrice</b>, <b>acustice</b> și <b>clasice</b>, alături de <b>amplificatoare</b> și <b>accesorii esențiale.</b></p>
                     <p>
@@ -313,13 +304,13 @@
                     <a href = "https://www.justinguitar.com/" target="_blank">JustinGuitar</a> <!--1.11 link extern-->
 
                     <div class="container-iframe"> <!--1.11 minim 2 linkuri intr-un iframe-->
-                        <div class="taburi-iframe">
-                            <a href="https://www.youtube.com/embed/OMItRvqE0_c" target="ifr-video"><i>Set-up your guitar!</i></a>
-                            <a href="https://www.youtube.com/embed/bVbFc7I_ACc" target="ifr-video" ><i>How to choose your guitar</i></a>
-                        </div>
-
-                        <iframe class="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/OMItRvqE0_c" 
+                        
+                        <iframe name = "video" class="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/OMItRvqE0_c" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="taburi-iframe">
+                            <a href="https://www.youtube.com/embed/OMItRvqE0_c" target="video"><i>Set-up your guitar!</i></a>
+                            <a href="https://www.youtube.com/embed/bVbFc7I_ACc" target="video"><i>How to choose your guitar</i></a>
+                        </div>
                     </div>
 
                     <section>
@@ -363,7 +354,7 @@
                         <p>Adresa: <a href = "https://www.google.com/maps/place/Faculty+of+Mathematics+and+Computer+Science/@44.4354285,26.100051,19.52z/data=!4m6!3m5!1s0x40b1ff472f47f047:0x493984726f0235f9!8m2!3d44.4355355!4d26.0995867!16s%2Fg%2F1td63tdh?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
                             target = "_blank">GuitarHeaven</a></p>
                         <p>Email: <a href="mailto:contact@guitarheaven.ro">contact@guitarheaven.ro</a></p>
-                        <p>Intrebari: <a href="https://api.whatsapp.com/send?phone=40712345678&text=Salut!" target="_blank">WhatsApp</a></p>
+                        <p>Intrebari: <a href="https://api.whatsapp.com/send?phone=40712345678&text=Salut!" target="_blank"><i class="fa-brands fa-whatsapp fa-pulse"></i> WhatsApp</a></p>
                     </address>
                 </section>
 
@@ -376,14 +367,13 @@
                 <div class = "link_date">
                     <hr>
                     
-                    <!--<a href = "#" class = "link_sus">Sus</a> <!--1.11 link catre inceputul paginii in footer-->
                     <br>
                     <small>
                         <time datetime="2024-03-04"><p>Martie 2024</p></time><p>&copy;Guitar Heaven. Toate drepturile rezervate.</p> <!--1.14 copyright si date time-->
                     </small>
                 </div>
                 
-                <a href = "#"><img class = "link_sus" src = "resurse/imagini/pictograms/arrow.png" alt = "Link sus"></a>
+                <a href="#" class="link_top">&#5123;</a>
             </footer>
     <!-- <script src="resurse/script/script.js"></script> -->
 </body>
