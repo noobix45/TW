@@ -73,7 +73,7 @@
     body{
         padding: 0;
         margin: 0;
-        background-color: var(--background-color);
+            background-color: var(--background-color);
     }
   
 @keyframes pulse {
@@ -99,7 +99,9 @@ header{
     font-family: 'hh';
 }
 
-
+nav{
+    font-family: 'hh';
+}
 
 /***************************header*****************************/
 /*
@@ -202,7 +204,7 @@ main{
 }
 
  .zona2, .zona3, .zona4, .zona5, .zona6, .zona7, .zona8{
-    border: solid var(--albastru-deschis);
+    border: solid var(--mov);
     border-collapse: collapse;
 }
 
@@ -262,7 +264,7 @@ table{
     caption-side: bottom;
     border-collapse: collapse;
     width: 100%;
-    border: 5px inset var(--albastru);
+    border: inset 5px var(--albastru);
     text-align: center;
     background-color: var(--text-background);
     color: var(--text-color);
@@ -286,7 +288,8 @@ table tr {
 }
 
 table tr:hover {
-    outline: 5px solid var(--rosu);
+    /* outline: 5px solid var(--rosu); */
+    outline: 5px solid color-mix(in srgb, var(--rosu) 70%, transparent);
 }
 
 table caption{
@@ -328,10 +331,11 @@ table caption{
     font-weight: bold;
     padding: 20px;
     width: 100%;
+    color: var(--text-color);
 }
 
 .reclama_titlu h2{
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 .container_reclama img{
@@ -441,7 +445,7 @@ figure{
 /**************************end categorii***********************/
 
 .section_content{
-    background-color: var(--text-background); 
+    background-color: var(--albastru-deschis); 
     color: var(--text-color);
     /* border: solid 3px var(--galben); */
     /* border-radius: 5px; */
@@ -450,23 +454,33 @@ figure{
 }
 
 .title{
-    background-color: var(--albastru);
+    background-color: var(--mov-inchis);
     margin: 0;
     padding: 10px;
+    color: var(--albastru)
 }
 
 /*********************sectiune extra*************************/
 
+.formula{
+    background: linear-gradient(90deg, var(--galben), var(--albastru), var(--mov));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 .container-iframe{
     max-width: 100%;
+    width: 45vw;
 }
 
 .ifr-video
 {
     border: solid 5px var(--rosu-inchis);
-    /* box-shadow: 0px 4px 10px rgba(0,0,0,0.3); */
-
     max-width: 100%;
+    width: 100%;
     height: auto;
     min-width: 50%;
     aspect-ratio: 16/9;
@@ -476,12 +490,14 @@ figure{
 /********** stilizare taburi****************/
 .taburi-iframe{
     display: flex;
+    justify-content: flex-end;
 }
 
 .taburi-iframe a {
+    max-width: 10vw;
     text-decoration: none;
-    border: solid 5px var(--primary-color);
-    border-top: solid 5px var(--primary-color);
+    border: solid 5px var(--text-background);
+    border-top: solid 5px var(--rosu-inchis);
     background: radial-gradient(ellipse at center, var(--rosu) 30%, var(--rosu-inchis) 100%);
     color: var(--galben-deschis);
     border-radius: 0px 0px 10px 10px;
@@ -489,6 +505,7 @@ figure{
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    font-size: 1rem;
 }
 
 .taburi-iframe a:hover {
@@ -560,23 +577,25 @@ footer small p{
     color: black;
 }
 
-.link_top{
+
+.link_top_div{
     position: fixed;
     bottom: 30px;
     right: 30px;
+}
+
+.link_top{
     width: var(--sus-large);
     height: var(--sus-large);
     background-color: var(--mov-deschis);
-    color: whitesmoke;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: whitesmoke;
+    box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
     opacity: 0.6;
     transition: background-color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    font-size: var(--sus-font-large);
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: var(--sus-font-large);
-    line-height: 50px;
 }
 
 .link_top:hover {
@@ -682,6 +701,9 @@ footer small p{
     .zona1 .categorii ul a{
         font-size: 1.3rem;
     }
+    .taburi-iframe a{
+        font-size: 1.5vw;
+    }
     
 }
 
@@ -758,5 +780,10 @@ footer small p{
     .link_top::after{
         content: none;
     }
+    .taburi-iframe a{
+        font-size: 1.7vw;
+    }
 }
+
+
 
