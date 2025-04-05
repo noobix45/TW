@@ -17,9 +17,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./resurse/imagini/ico/apple-touch-icon.png">
     <link rel="manifest" href="./resurse/imagini/ico/site.webmanifest">
 
-    <link rel = "stylesheet" type = "text/css" href = "./resurse/css/general.css">
+    <!-- <link rel = "stylesheet" type = "text/css" href = "./resurse/css/general.css">
     <link rel="stylesheet" href="resurse/scss/meniu.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
 
     
 </head>
@@ -30,6 +30,14 @@
     <h1 class = "main_title">GuitarHeaven</h1>
         </header>
         <nav class = "meniu"> <!-- 1.6 sistem de navigare-->
+
+            <input type="checkbox" id = "menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                        <div class = "bar"></div>
+                        <div class = "bar"></div>
+                        <div class = "bar"></div>
+                </label>
+
             <ul class = "left_menu">
                 <li class = "dropdown">
                     <a href = "index.html" class="dropdown-btn"><i class="fa-solid fa-home"></i><p>ACASĂ</p></a>
@@ -49,10 +57,12 @@
                         <li><a href = "#">PRS</a></li>
                         <li><a href = "#">Squire</a></li>
                         <li><a href = "#">Ibanez</a></li>
-                    <!--in acelasi meniu stilizat sa vina separat -->                  
-                        <li><a href = "#">Electrice</a></li>                    
-                        <li><a href = "#">Acustice</a></li>                    
-                        <li><a href = "#">Clasice</a></li>                    
+                    <!--in acelasi meniu stilizat sa vina separat -->
+                                       
+                            <li><a href = "#">Electrice</a></li>                    
+                            <li><a href = "#">Acustice</a></li>                    
+                            <li><a href = "#">Clasice</a></li>                    
+                        
                     </ul>
                 </li>
                 <li class = "dropdown">
@@ -394,7 +404,7 @@
                     <a href="#" class="link_top">&#5123;</a>
                 </div>
             </footer>
-    <!-- <script src="resurse/script/script.js"></script> -->
+    <script src="resurse/script/script.js"></script>
 </body>
 
 </html>

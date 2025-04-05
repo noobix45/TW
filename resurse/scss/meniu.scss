@@ -2,12 +2,12 @@
     $padding-medium: 10.254vw;
     $padding-small: 7.5vw;
 
-    $inaltime-meniu-large: 65px;
+    $inaltime-meniu: 65px;
     $inaltime-titlu: 25px;
 
-    $inaltime-meniu-medium: 55px;
 
-    // $latime-buton: 8vw;
+    $latime-buton: 9vw;
+    $font: 1.5rem;
 
     $gap-large: 30px; 
     $gap-medium: 20px;
@@ -57,7 +57,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $galben-deschis;
+    background-color: $rosu-inchis;
     // border-bottom: solid 5px $rosu;
 
     .main_title{
@@ -66,34 +66,66 @@ header{
         align-items: center;
         justify-content: center;
         font-size: 2.5rem;
-        color: $text-color;
-        // border-bottom: solid 3px $rosu;
-        width: 100%;
+        color: $text-deschis;
+        border-bottom: solid 5px $rosu;
+        width: 100% !important;
         height: $inaltime-titlu;
         padding-top: 25px;
         padding-bottom: 25px;
     }
 }
 
-nav.meniu{
+
+
+.meniu{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: $inaltime-meniu-large;
+    flex-direction: row;
+
+    height: $inaltime-meniu;
     width: calc(100% - 2 * #{$padding-large});
     margin: 0 auto;
     padding-left: $padding-large;
     padding-right: $padding-large;
-    background-color: $albastru;
-    // border-bottom: $rosu solid 5px;
+    background-color: $albastru-inchis;
+    border-bottom: $rosu solid 5px;
     position: sticky;
     top:0;
 
+    i{
+        display: none;
+    }
+    
+    .hamburger{
+        display: none;
+        div{
+                width: 35px;
+                height: 3px;
+                background-color: white;
+            }
+    }
+    #menu-toggle{
+        display: none;
+    }
     .dropdown_menu{
         display: none;
-        width: 100%;
+        position: absolute;
+        font-size: $font;
     }
 
+    @keyframes showDropdown {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .both_menu{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     .left_menu{
         display: flex;
         list-style: none;
@@ -101,10 +133,11 @@ nav.meniu{
         padding: 0;
         margin: 0;
         gap: $gap-small;
-        height: $inaltime-meniu-large;
+        height: $inaltime-meniu;
         a{
             text-decoration: none;
             color: $text-deschis;
+            width: $latime-buton;
         }
         .dropdown {
             position: relative;
@@ -113,23 +146,37 @@ nav.meniu{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                height: $inaltime-meniu-large;
-                font-size: 1.5rem;
+                height: $inaltime-meniu;
+                font-size: $font;
                 padding: 0px 20px;
             }
             &:hover{
                 .dropdown_menu{
+                    width: 100%;
+                    animation: showDropdown 1s ease-in-out forwards;
+                    display: block;
                     position: absolute;
-                    display: block; 
+                    flex-direction: column; 
                     list-style: none;
                     padding: 0;
-                    top: 107%;
-                    left: 0;
                     li{
-                        height: 4vh;
-                        background-color: $albastru-deschis;
+                        background-color: $albastru-inchis;
+                        border-collapse: collapse;
+                        border: 1px solid $albastru;
+                        &:hover{
+                            background-color: $albastru;
+                        }
+                        a{
+                        width: 100%;
+                        height: 60px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         text-align: center;
+                        font-size: $font;
+                        }
                     }
+                    
                 }
             }
             
@@ -140,16 +187,15 @@ nav.meniu{
                 left: 0;
                 width: 100%;
                 height: 3px;
-                background: linear-gradient(to right, $mov-inchis, $mov-deschis, $mov-inchis);
+                background: linear-gradient(to right, $rosu-inchis, $rosu-deschis, $rosu-inchis);
                 opacity: 0;
                 transition: transform 1s ease, opacity 0.3s ease;
             }
         
             .dropdown-btn:hover::after {
-                transform: translateY(calc($inaltime-meniu-large - 3px)); // bara orizontala
+                transform: translateY(calc($inaltime-meniu - 3px)); // bara orizontala
                 opacity: 1;
             }
-
             
         }
     }
@@ -157,20 +203,23 @@ nav.meniu{
         display: flex;
         list-style: none;
         align-items: center;
+        justify-self: flex-end;
         padding: 0;
         margin: 0;
         gap: $gap-small;
-        height: $inaltime-meniu-large;
+        height: $inaltime-meniu;
+        
+        
         a{
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: $inaltime-meniu-large;
-            font-size: 1.5rem;
+            height: $inaltime-meniu;
+            font-size: $font;
             padding: 0px 20px;
             position: relative;
-            color: $text-deschis;
+            color: $text-deschis;   
 
             &::after {
                 content: "";
@@ -179,27 +228,40 @@ nav.meniu{
                 left: 0;
                 width: 100%;
                 height: 3px; /* Grosimea barei */
-                background: linear-gradient(to right, $mov-inchis, $mov-deschis, $mov-inchis); /* Gradientul cu 3 culori */
+                background: linear-gradient(to right, $rosu-inchis, $rosu-deschis, $rosu-inchis); //gradient in 3culori
                 opacity: 0; /* Bara este complet transparentă inițial */
                 transition: transform 1s ease, opacity 0.3s ease;
             }
         
             &:hover::after {
-                transform: translateY(calc($inaltime-meniu-large - 3px)); /* Bara se mișcă de la sus la jos */
+                transform: translateY(calc($inaltime-meniu - 3px)); /* Bara se mișcă de sus in jos */
                 opacity: 1; /* Bara devine opacă */
             }
         }
     }
 }
+}
 
 @media screen and (max-width: 1024px) {
-    nav{
-        justify-content: none;
-        width: calc(100% - 2 * #{$padding-medium});
+    $latime-buton: 7vw;
+    $font: 1rem;
+    .meniu{
+        .hamburger{
+            display: none;
+        }
+        #menu-toggle{
+            display: none;
+        }
+        align-items: center;
+        width: calc(100 - 2 * #{$padding-medium});
         .left_menu{
             :first-child{
                 p{
                     display: none;
+                }
+                i{
+                    display: block;
+                    color: $text-deschis;   
                 }
             }
         }
@@ -207,13 +269,152 @@ nav.meniu{
             p{
                 display: none;
             }
-        }
+            i{
+                display: block;
+                color: $text-deschis;
+            }
     }
     }
+}
+
 
 @media screen and (max-width: 700px) {
-    nav{
-        width: calc(100% - 2 * #{$padding-small});
+    // $inaltime-meniu: 50px;
+    $font: 0.7rem;
+    $latime-buton: 5vw;
+    
+    .meniu{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .both_menu{
+
+            position: absolute;
+            top:100%;
+
+            display: flex;
+            flex-direction: column;
+
+            background-color: $albastru-inchis;
+
+            animation: revealMenu 0.7s ease-in-out forwards !important;
+
+            .left_menu, .right_menu {
+                display: flex;
+                flex-direction: column;
+
+                width: 100%;
+                height: auto;
+            }
+            .left_menu{
+                border-top: 3px $rosu solid;
+                .dropdown{
+                    width: 100%;
+                    .dropdown-btn{
+                        width: 100%;
+                        padding: 0;
+                        &::after{
+                            content:none;
+                        }
+                        &:hover{
+                            background-color: $albastru;
+                            transition: all 0.5s ease !important;
+                        }
+                    }
+                    &:hover{
+                        .dropdown_menu{
+                            position: static;
+                            li{
+                                &:hover{
+                                    background-color: $albastru-deschis;
+                                    transition: all 0.5s ease !important;
+                                }
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .right_menu{
+                a{
+                    width: 100%;
+                    padding: 0;
+                    &::after{
+                        content:none;
+                    }
+                }
+                border-bottom: 5px $rosu solid;
+            }
+        }
         
+        .both_menu{
+            display: none;
+        }
+
+        input[type="checkbox"]:checked + .both_menu {
+            display: flex;
+        }
+
+        .hamburger{
+            position: absolute;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            left: $padding-small;
+
+
+            &:hover{
+                cursor: pointer;
+            }
+
+        }
+        .hamburger .bar {
+            opacity: 0;
+            animation-name: hamburgerIn !important;
+            animation-duration: 1s !important;
+            animation-fill-mode: forwards !important;
+            animation-timing-function: ease-in-out !important;
+        }
+        
+        .hamburger .bar:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .hamburger .bar:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .hamburger .bar:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+@keyframes revealMenu {
+    0% { clip-path: circle(0% at 0 0); }
+    100% { clip-path: circle(150% at 0 0); }
+}
+
+nav.meniu {
+    transition: all 1s ease-in-out !important;
+}
+
+@keyframes hamburgerIn {
+    0% {
+        transform: translateX(-25%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-55%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
 }

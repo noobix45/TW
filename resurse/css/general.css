@@ -218,6 +218,8 @@ main{
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
+    /* box-shadow: 0px 0px 10px 10px var(--hf-background-color);
+    background-color: var(--albastru); */
 
     /* border-bottom: var(--albastru-deschis) solid 5px;
     border-collapse: collapse; */
@@ -327,9 +329,10 @@ table caption{
     grid-row:1;
     grid-column: 1/-1;
     text-align: center;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
-    padding: 20px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     width: 100%;
     color: var(--text-color);
 }
@@ -445,8 +448,8 @@ figure{
 /**************************end categorii***********************/
 
 .section_content{
-    background-color: var(--albastru-deschis); 
-    color: var(--text-color);
+    background-color: var(--hf-background-color); 
+    color: var(--text-deschis);
     /* border: solid 3px var(--galben); */
     /* border-radius: 5px; */
     padding: var(--text-padding-large); /* design rudimentar d */
@@ -462,18 +465,24 @@ figure{
 
 /*********************sectiune extra*************************/
 
-.formula{
-    background: linear-gradient(90deg, var(--galben), var(--albastru), var(--mov));
+ .formula{
+    width: 100%;
+    text-align: center;
+}
+
+math{
+    background: linear-gradient(90deg, var(--galben-deschis), var(--galben), var(--galben-deschis));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .container-iframe{
     max-width: 100%;
     width: 45vw;
+    margin: 0 auto;
 }
 
 .ifr-video
@@ -496,7 +505,7 @@ figure{
 .taburi-iframe a {
     max-width: 10vw;
     text-decoration: none;
-    border: solid 5px var(--text-background);
+    border: solid 5px var(--hf-background-color);
     border-top: solid 5px var(--rosu-inchis);
     background: radial-gradient(ellipse at center, var(--rosu) 30%, var(--rosu-inchis) 100%);
     color: var(--galben-deschis);
@@ -526,7 +535,7 @@ figure img{ /* rudimentar e*/
 footer{
     grid-column: 1 / -1;
     grid-row:3;
-    background-color: var(--hf-background-color);
+    background-color: var(--albastru-inchis);
     color: whitesmoke;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -622,6 +631,10 @@ footer small p{
     opacity: 1;
 }
 
+#banner{
+    display: none;
+}
+
 /*************************end footer*************************/
 
 /* diferite variabile in functie de media query */
@@ -690,7 +703,7 @@ footer small p{
         min-width: 80%;
     }
     main h2{
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* redefinire header*/
     }
     main h3{
         font-size: 1.5rem;
@@ -704,10 +717,20 @@ footer small p{
     .taburi-iframe a{
         font-size: 1.5vw;
     }
-    
+    .link_top_div{
+        right: 15px;
+        bottom: 20px;
+    }
+    math{
+        font-size: 1.5rem;
+    }
+    .reclama_titlu h2{
+        font-size: 2.5rem;
+    }
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 700px) {
     /* body{ culoare de test
         background-color: red;
     } */
@@ -770,10 +793,10 @@ footer small p{
     table{
         min-width: 500px;
     }
-    *{
+    /* *{
         animation: none !important;
         transition: none !important;
-    }
+    } */
     .fa-pulse{
         animation: none !important;
     }
@@ -782,6 +805,12 @@ footer small p{
     }
     .taburi-iframe a{
         font-size: 1.7vw;
+    }
+    .container-iframe{
+        width: 100%;
+    }
+    math{
+        font-size: 1rem;
     }
 }
 
