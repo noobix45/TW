@@ -1,0 +1,184 @@
+#watermark,#absolut{
+    display:none;
+}
+#grid-pag {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 15px;
+    column-gap: 5px;
+    padding:10px;
+}
+.celula {
+    background-color: lightblue;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+@media print {
+/*formatare extra*/
+    .zona2,.zona8{
+        border: none;
+        /* box-sizing: border-box; */
+        width: 100%;
+    }
+    
+    .zona5,.zona6,.zona7,.zona8,.zona2,.zona3,.zona4{
+        width: 100vw;
+    }
+    
+    #despre,#extra{
+        break-before: always;
+    }
+    
+
+/* 1banner*/
+#banner{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50vw;
+    border: double 3px black; /* Border dublu cu lățime de 3px */
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* 2 media ascuns*/
+.zona1,.link_top,.container-iframe,#hof_p1,.image_map,.pdf-preview,.locatie{
+    display: none;
+}
+
+
+/*3 grid block*/
+main{
+    display: block;
+}
+
+/*4 linkuri text nromal*/
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 5 meniu prima pag*/
+header h1.main_title {
+    margin-top: 50%;
+    text-align: center;
+    margin-left: 1cm;
+}
+
+nav.meniu {
+    page-break-after: always; /* page break dupa meniu*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+nav.meniu .both_menu{
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+nav.meniu .both_menu .left_menu, .right_menu{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+footer{
+    page-break-before: always; /*page break inainte de footer*/
+    /* display: block; */
+    padding: 0;
+}
+
+footer section{
+    margin: 0;
+}
+
+
+#absolut{
+    position: absolute;
+    display: inline-block;
+    top:100%;
+    width:20px;
+    height:20px;
+    right:0;
+    overflow: visible;
+}
+#absolut::after{
+    content:"Element poziționat absolut pe a doua pagină.Pentru a vedea stilul de printare apăsați Ctrl+P.";
+    position: absolute;
+    font-size:10px;
+    right:0;
+    border:5px double black;
+    width:200px;
+    height:35px;
+    display: inline-block;
+}
+
+
+#watermark
+{
+    display: block;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;/*apare pe toate paginile*/
+    color:rgba(0,0,0,0.3); /* opacitate de 0.4 pe culoare*/
+    width: 60vw; /* 60% din latime*/
+    height: 10vh; /* 10% din inaltime*/
+    z-index: 9999;
+    }
+#watermark::after{
+    content: "Ionita\A Catalin";
+    white-space: pre-wrap;
+    font-size: 10rem;
+    line-height: 1.5;
+    opacity: 0.5;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+#end{
+    page-break-before: always;
+}
+
+}
+
+@page {
+    size: A4 portrait;
+    margin-bottom:2cm;
+    margin-top:2cm;
+    counter-increment: page;
+        
+}
+@page:left{
+
+    margin-left:2cm;
+    margin-right:1cm;
+    border-radius: 20cm;
+}
+@page:right{
+
+    margin-right:2cm;
+    margin-left:1cm;
+}
+
+
+
