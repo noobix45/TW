@@ -14,6 +14,12 @@
 //     });
 // });
 
+window.addEventListener("resize", function () {
+    if (window.innerWidth <= 700) {
+        document.getElementById("menu-toggle").checked = false;
+    }
+});
+
 // document.addEventListener("DOMContentLoaded", function () {
 //     let slides = document.querySelectorAll(".slide");
 //     let currentIndex = 0;

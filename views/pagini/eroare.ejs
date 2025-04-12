@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <meta name="description" content="Magazin de chitare, amplificatoare si accesorii">
+        <meta name="keywords" content="chitara, amplificator, accesorii chitara, GuitarHeaven, chitara electrica, chitara acustica, chitara clasica">
+        <title>GuitarHeaven - eroare</title>
+        <%- include("../fragmente/head.ejs");  %> 
+        <link rel="stylesheet" type="text/css" href="/resurse/css/eroare.css">
+    </head>
+    <body>
+        
+    <%- include("../fragmente/header.ejs");  %> 
+
+    <main>
+        <div id="err-coloane">
+			<div id="err-imag">
+				<img src="<%- locals.imagine %>" />
+			</div>
+			<section>
+				<h2><%- locals.titlu %></h2>
+				<p><%- locals.text %></p>
+			</section>
+		</div>
+    </main>
+    
+    <%- include("../fragmente/footer.ejs");  %> 
+
+
+    </body>
+</html>

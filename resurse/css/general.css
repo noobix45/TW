@@ -103,83 +103,6 @@ nav{
     font-family: 'hh';
 }
 
-/***************************header*****************************/
-/*
-header{
-    grid-column: 1 / -1;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100vw;
-    align-items: center;
-    height: auto;
-    color: whitesmoke;
-    border-bottom: solid black 1px;
-    background-color: #1F5673;
-}
-
-.main_title{
-    text-align: center;
-    transition: opacity 0.3s ease;
-    margin:10px 0;
-}
-
-.meniu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    padding-right: var(--padding-large);
-    padding-left: var(--padding-large);
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    transition: all 0.3s ease;
-    z-index: 10;
-    background-color: #05a9c4;
-    border-top: solid black 1px;
-    color: #FAFAFA;
-}
-
-.meniu.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 100vw;
-    height: auto;
-    background-color: #1F5673;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.meniu ul{
-    list-style: none;
-}
-
-.meniu ul li a{
-    text-decoration: none;
-    color: black;
-}
-
-.left_menu, .right_menu
-{
-    display: flex;
-    gap: 15px;
-    padding: 0;
-}
-
-.dropdown_menu{
-    display: none;
-    position: absolute;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown_menu{
-    display: block;
-}
-    */
-/************************end header***************************/
 
 /*******************************main*************************/
 
@@ -208,100 +131,43 @@ main{
     border-collapse: collapse;
 }
 
-/* .zona5, .zona6, .zona7{
-    border-bottom: var(--albastru-deschis) 5px solid;
-    border-collapse: collapse;
-} */
-
 .zona1{
     grid-area: z1;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    /* box-shadow: 0px 0px 10px 10px var(--hf-background-color);
-    background-color: var(--albastru); */
-
-    /* border-bottom: var(--albastru-deschis) solid 5px;
-    border-collapse: collapse; */
 }
 
 
 .zona8{
     grid-area: z8;
-    /* display: none; */
 }
 
 .zona5{
     grid-area: z5;
-    /* display: none; */
 }
 
 .zona6{
     grid-area: z6;
-    /* display: none; */
 }
 
 .zona7{
     grid-area: z7;
-    /* display: none; */
 }
 
 .zona3{
     grid-area: z3;
-    /* display: none; */
 }
 
 .zona4{
     grid-area: z4;
-    /* display: none; */
 }
 
 .zona2{
     grid-area: z2;   
 }
 
-/*************************tabel*************************/
 
-table{
-    caption-side: bottom;
-    border-collapse: collapse;
-    width: 100%;
-    border: inset 5px var(--albastru);
-    text-align: center;
-    background-color: var(--text-background);
-    color: var(--text-color);
-}
-
-table tr:nth-child(even) td {
-    border-bottom: 2px solid var(--background-color);
-}
-
-table tr:nth-child(odd) td {
-    border-bottom: 2px solid var(--albastru-inchis);
-}
-
-table td, table th {
-    border: 1px solid var(--mov-inchis);
-    padding: 8px;
-}
-
-table tr {
-    transition: outline 0.5s ease;
-}
-
-table tr:hover {
-    /* outline: 5px solid var(--rosu); */
-    outline: 5px solid color-mix(in srgb, var(--rosu) 70%, transparent);
-}
-
-table caption{
-    background-color: var(--albastru);
-    padding: 5px 10px;
-    color: var(--text-background);
-    
-}
-
-/*******************************************************/
 
 /***************sectiune reclama produse****************/
 
@@ -463,72 +329,6 @@ figure{
     color: var(--albastru)
 }
 
-/*********************sectiune extra*************************/
-
- .formula{
-    width: 100%;
-    text-align: center;
-}
-
-math{
-    background: linear-gradient(90deg, var(--galben-deschis), var(--galben), var(--galben-deschis));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-.container-iframe{
-    max-width: 100%;
-    width: 45vw;
-    margin: 0 auto;
-}
-
-.ifr-video
-{
-    border: solid 5px var(--rosu-inchis);
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    min-width: 50%;
-    aspect-ratio: 16/9;
-    margin: 0;
-    display: block;
-}
-/********** stilizare taburi****************/
-.taburi-iframe{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.taburi-iframe a {
-    max-width: 10vw;
-    text-decoration: none;
-    border: solid 5px var(--hf-background-color);
-    border-top: solid 5px var(--rosu-inchis);
-    background: radial-gradient(ellipse at center, var(--rosu) 30%, var(--rosu-inchis) 100%);
-    color: var(--galben-deschis);
-    border-radius: 0px 0px 10px 10px;
-    padding: 8px 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-size: 1rem;
-}
-
-.taburi-iframe a:hover {
-    background: radial-gradient(ellipse at center, var(--rosu-deschis) 30%, var(--rosu) 100%);
-    color: white;
-}
-
-
-
-figure img{ /* rudimentar e*/
-    max-width: 100%;
-    height: auto;
-}
-
 /***************************end main*******************************/
 
 /**************************footer********************************/
@@ -542,6 +342,7 @@ footer{
     grid-template-rows: auto auto;
     padding-left: var(--padding-large);
     padding-right: var(--padding-large);
+    border-top: 3px solid var(--rosu);
 }
 
 footer section{
@@ -585,7 +386,6 @@ footer small p{
     font-size: 1rem;
     color: black;
 }
-
 
 .link_top_div{
     position: fixed;
@@ -636,6 +436,57 @@ footer small p{
 }
 
 /*************************end footer*************************/
+
+/************************linkuri etpata 4 *******************/
+
+/* etapa4 linkuri*/
+.simple_link{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--text-background);
+    text-align: center;
+
+    position: relative;
+    display: inline-block;
+    z-index: 0;
+}
+
+.simple_link::after {
+    content: "";
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--mov-deschis) 0%, var(--mov-deschis) 40%, transparent 80%);
+    border-radius: 50%;
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+}
+
+.simple_link:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.simple_link:visited{
+    color: var(--text-deshchis);
+}
+
+a.external::before{
+    content: "⮳";
+    font-size: 150%; /*cu 50% mai mare decat link*/
+}
+
+a.external:hover{
+    color: var(--galben-deschis);
+}
+
+/***********************************************************/
+
+
 
 /* diferite variabile in functie de media query */
 @media screen and (max-width: 1024px) {
@@ -722,7 +573,7 @@ footer small p{
         bottom: 20px;
     }
     math{
-        font-size: 1.5rem;
+        font-size: 1.5rem;  
     }
     .reclama_titlu h2{
         font-size: 2.5rem;
@@ -793,10 +644,10 @@ footer small p{
     table{
         min-width: 500px;
     }
-    /* *{
+    *{
         animation: none !important;
         transition: none !important;
-    } */
+    }
     .fa-pulse{
         animation: none !important;
     }
@@ -813,6 +664,3 @@ footer small p{
         font-size: 1rem;
     }
 }
-
-
-

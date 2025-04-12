@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ro"> <!--1.1-->
+
+<head>
+<!--1.2-->
+    <title>GuitarHeaven</title>
+    <%- include("../fragmente/head.ejs")%>
+</head>
+
+<!-- <body style="background-image: url('./resurse/imagini/background/back_white.png'); background-size: 100% 100%; background-repeat: no-repeat; background-attachment: fixed;"> -->
+<body> <!-- header main si footer 1.4-->
+    <p id="watermark"></p>
+    <%- include("../fragmente/header.ejs") %>
+
+    <button type="button" class="btn btn-primary btn-lg">Stil-1-mare</button>
+
+    <section id = "galerie-statica">
+        <h2>Galerie</h2>
+        <div id = "grid-galerie">
+             <%
+                vect_luni=["ianuarie","februarie","martie","aprilie","mai","iunie","iulie"]
+                d=new Date()
+                luna_curenta=vect_luni[d.getMonth()]
+
+                for(let imag of locals.imagini){ %>
+                    <% if(imag.luni && imag.luni.includes(luna_curenta)) { %>
+                <picture>
+                        <source srcset = "<%- imag.fisier_mediu %>" media = "screen and (max-width: 1000px)" />
+                        <img src = "<%- imag.fisier %>" alt = "briose">
+            </picture>
+        <% } %>
+            <% } %> 
+        </div>
+    </section> 
+
+        <main>
+           
+
+            <div class = "zona1">
+                <div class = "reclama_titlu"><h2>TOP MODELS</h2></div>
+                <div class = "reclama_scroll">
+                    <div class = "container_reclama" id = "reclama">
+                        <img src = "./resurse/imagini/front_ad/standard_strat.jpg" alt = "Fender strat ad">
+                        <img src = "./resurse/imagini/front_ad/gibson_es_335_satin_cherry.jpg" alt = "Gibson ad">
+                        <img src = "./resurse/imagini/front_ad/prs_se_ce_24_standard_satin_ch.jpg" alt = "PRS ad">
+                    </div>
+                </div>
+
+            <div class = "categorii">
+                <h2 class = "titlu_categorii">Categorii de produse</h2>
+                <a href = "#"><img class = "guitar_pict" src = "resurse/imagini/pictograms/guitar-instrument.png" alt = "Chitare"></a>
+                <a href = "#"><img class = "amp_pict" src = "resurse/imagini/pictograms/guitar-amplifier.png" alt = "Amplificatoare"></a>
+                <a href = "#"><img class = "acc_pict" src = "resurse/imagini/pictograms/guitar-pick.png" alt = "Accesorii"></a>
+                <ul>
+                    <li><a href = "#">Chitare</a></li>
+                    <li><a href = "#">Amplificatoare</a></li>
+                    <li><a href = "#">Accesorii</a></li>
+                </ul>
+            </div>
+            </div>
+
+            <div class = "zona5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas ad quidem perferendis consequuntur rem quae a illo temporibus ipsam, similique autem saepe ipsa dolorem ullam hic? Reiciendis, fuga esse.
+            </div>
+
+            <div class = "zona6">
+                <p>Your IP address is: <%= ip %></p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam tempore quaerat, asperiores delectus qui eligendi eum ratione dicta ipsa nemo rem voluptas at tempora, rerum consequuntur quos dolores! Esse, quidem?
+            </div>
+
+            <div class = "zona7">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid asperiores corporis veritatis eaque quibusdam nobis. Nemo, quidem itaque obcaecati adipisci totam, corporis repellendus provident illum, officiis perferendis culpa reiciendis eos!
+            </div>
+
+            <div class = "zona3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro quidem dignissimos omnis sapiente ipsum iusto, mollitia tempore, quo ullam temporibus tempora corrupti assumenda odit, magni labore animi facere esse. Necessitatibus.
+            </div>
+
+            <div class = "zona4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea porro minima rerum aliquam iste, nulla sunt quia. Doloremque, id itaque laborum et dolore quod eligendi rerum aliquid iusto illum consectetur.
+            </div>
+
+            <div class = "zona2">
+                <table>
+                    
+                    <thead>
+                        <tr>
+                            <th>Gen</th>
+                            <th>Specific</th>
+                            <th>Model recomandat</th>
+                            <th>Recomandat începătorilor?</th>
+                            <th>Pret</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Blues</td>
+                            <td>Single Coil Pickup</td>
+                            <td>Stratocaster</td>
+                            <td>Da</td>
+                            <td>700↗</td>
+                        </tr>
+                        <tr>
+                            <td>Rock</td>
+                            <td>Humbucker Pickup</td>
+                            <td>Ibanez</td>
+                            <td>Da</td>
+                            <td>1500 - 3000</td>
+                        </tr>
+                        <tr>
+                            <td>Jazz</td>
+                            <td>Hollowbody</td>
+                            <td>Gibson ES-335</td>
+                            <td>Nu</td>
+                            <td>3000↗</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">Nu stiu</td>
+                            <td> Chitara Electrica </td>
+                            <td>Stratocaster</td>
+                            <td>Da</td>
+                            <td>600↗</td>
+                        </tr>
+                        <tr>
+                            <td> - </td>
+                            <td>Acustica</td>
+                            <td>Da</td>
+                            <td>500↗</td>
+                        </tr>
+                        <tr>
+                            <td> - </td>
+                            <td>Clasica</td>
+                            <td>Da</td>
+                            <td>400↗</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" style="text-align:center;">
+                                * Acestea sunt doar sugestii. Orice gen poate fi cantat la fel de bine pe orice chitara.
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <caption>Produse recomandate in functie de genul muzical</caption>
+                </table>
+            </div>
+
+            <div class = "zona8">
+            <section id = "acasa">
+                <h2 class = "title">Acasă</h2>
+                <div class = "section_content">
+                    <p><b>GuitarHeaven</b> este locul ideal pentru toți pasionații de <b>chitară</b>, fie că ești la început de drum sau un muzician experimentat. Magazinul nostru, atât online, cât și fizic, îți oferă o gamă variată de <b>chitare electrice</b>, <b>acustice</b> și <b>clasice</b>, alături de <b>amplificatoare</b> și <b>accesorii esențiale.</b></p>
+                    <p>
+                        Fie că îți dorești un instrument nou, cauți un sunet autentic sau ai nevoie de echipamente profesionale pentru scenă și studio, la <b>GuitarHeaven</b> vei găsi produse atent selecționate de la branduri de renume. În plus, oferim consultanță specializată pentru a te ajuta să faci cea mai bună alegere.
+                    </p>
+                    <p>
+                        Comandă online și beneficiază de livrare rapidă la domiciliu sau alege opțiunea de ridicare din magazin, unde poți testa produsele înainte de achiziție. Intră în lumea <b>GuitarHeaven</b> și găsește instrumentul perfect pentru tine!
+                    </p>
+                </div>
+            </section>
+
+
+                <section id = "despre"> <% /* 1.7 minim 2 taguri p ul */ %>
+                    <h2 class = "title">Despre noi</h2>
+                    <div class = "section_content">
+                        <p>Guitar Heaven este locul ideal pentru iubitorii de chitare. Fie că ești începător sau profesionist, avem ceva pentru tine!</p>
+                        
+                        <div>
+                            <details>
+                                <summary>
+                                    <strong>Ce oferim?</strong>
+                                </summary>
+                                <ul>
+                                <li>Chitare electrice și acustice</li>
+                                <li>Accesorii pentru chitare</li>
+                                <li>Recenzii și recomandări</li>
+                                </ul>
+                            </details>
+                        </div>
+
+                        <section>
+                            <h3>Intrebari fecvente</h3>
+                            <details> <% /* 1.12 details si summary */ %>
+                                <summary>
+                                    <strong>Pot sa retrunez?</strong>
+                                </summary>
+                                <p>In maxim <b>30 de zile</b>!</p>
+                            </details>
+
+                            <details>
+                                <summary><strong>Ce tipuri de chitare comercializați?</strong></summary>
+                                <p>Avem chitare electrice, acustice și clasice de la branduri renumite.</p>
+                            </details>
+                            
+                            <details>
+                                <summary><strong>Vindeți și chitare second-hand?</strong></summary>
+                                <p>Momentan nu, dar lucrăm la o secțiune dedicată chitarelor second-hand.</p>
+                            </details>
+                            
+                            <details>
+                                <summary><strong>Pot testa chitara înainte de a o cumpăra?</strong></summary>
+                                <p>Da, în magazinul nostru fizic poți testa orice instrument înainte de achiziție.</p>
+                            </details>
+                        </section>
+                    </div>
+                </section>
+
+                <section id = "inainte_sa_cumperi"> <!--1.5 section in section headere descrescatoare-->
+                    <h2 class = "title">Inainte sa cumperi</h2>
+                    <div class = "section_content"> <!--1.10 bold-->
+                            Magazinul <b>GuitarHeaven</b> oferă un sistem de navigare intuitiv și eficient pentru găsirea rapidă a produselor dorite.
+                        <section>
+                            <h3>Meniul derulant</h3>
+                            În partea de sus a paginii, există un meniu derulant cu două categorii principale:
+                            
+                            <ul>
+                                <li>
+                                <strong>Chitare</strong> <!--1.10 strong-->
+                                <ul>
+                                    <li>Branduri (<em>Fender, PRS, etc</em>)</li>
+                                    <li>Tipuri de chitare (<em>Electrice, acustice, clasice</em>)</li>
+                                </ul>
+                                </li>
+                                <li>
+                                <strong>Amplificatoare</strong>
+                                <ul>
+                                    <li>Branduri (<em>Marshall, Fender, etc</em>)</li> <!--1.10 emphasis-->
+                                    <li>Tipuri de amplificatoare (<em>Combo, Head, Cabinet</em>)</li>
+                                </ul>
+                                </li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h3>Pagina unica de produse + Filtre</h3>
+                            <ul>
+                                <li>Există o singură pagină de produse pentru fiecare categorie (ex: chitare).</li>
+                                <li>Dacă dai click pe Chitare, vei vedea toate modelele disponibile, fără filtre activate.</li>
+                                <li>Dacă selectezi un brand sau un tip de chitară, vei fi redirecționat pe aceeași pagină, dar cu filtrul respectiv aplicat automat.</li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h3>Sistem de cumparaturi</h3>
+                            <ul>
+                                <li><strong>Adăugare în coș </strong>→ Buton disponibil pe fiecare produs pentru cumpărare rapidă.</li>
+                                <li><strong>Adăugare la favorite</strong> → Posibilitatea de a salva produse pentru mai târziu.</li>
+                            </ul>
+                        </section>
+                    </div>
+                </section>
+
+                </div>  
+
+        </main>
+
+
+        <%- include("../fragmente/footer.ejs") %>
+    <script src="resurse/script/script.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+        if (new URL(link.href).host !== location.host) {
+            link.classList.add('external');
+        }
+        });
+    });
+</script>
+    <p id="absolut"></p>
+</body>
+
+</html>

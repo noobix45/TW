@@ -1,0 +1,84 @@
+<section id = "extra">
+    <h2 class = "title">Extra</h2>
+    <div class = "section_content">
+
+        <div class = "formula">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                <mi>Sound</mi>
+                <mi>Quality</mi>
+                <mi>&equals;</mi>
+                <mi>Guitar</mi>
+                <mi>Quality</mi>
+                <mo>&#215;</mo>
+                <mi>Player</mi>
+                <mi>Skill</mi>
+                </mrow>
+            </math>
+        </div>
+        <br>
+
+        Vrei să înveți să cânți la chitară, dar nu știi de unde să începi? Iată o resursă gratuită, perfectă pentru începători, care te va ghida pas cu pas!<br>
+        <a class="simple_link" href = "https://www.justinguitar.com/" target="_blank">JustinGuitar</a> <!--1.11 link extern-->
+
+        <div class="container-iframe"> <!--1.11 minim 2 linkuri intr-un iframe-->
+            
+            <iframe name = "video" class="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/OMItRvqE0_c" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="taburi-iframe">
+                <a href="https://www.youtube.com/embed/OMItRvqE0_c" target="video"><i>Set-up your guitar!</i></a>
+                <a href="https://www.youtube.com/embed/bVbFc7I_ACc" target="video"><i>How to choose your guitar</i></a>
+            </div>
+        </div>
+
+        <section>
+            <h3 class = "hof_title">Hall of Fame</h3> <!-- va fi un slideshow cu mai multi chitaristi-->
+            <figure id="hof_p1"> <!-- 1.8 figure si figcaption-->
+                <picture>
+                    <source srcset="./resurse/imagini/background/jm_small.jpg" media="(max-width: 600px)">
+                    <source srcset="./resurse/imagini/background/jm_medium.jpg" media="(max-width: 1024px)">
+                    <img src="./resurse/imagini/background/jm_big.jpg" alt="John Mayer playing guitar" usemap = "#image_map">
+                </picture>
+                <figcaption>John Mayer - Legendă a chitarei</figcaption>
+            </figure>
+
+            <!-- bonus map si area -->
+            <map name="image_map"> <!-- link catre acasa deocamdata va fi link catre produsul din poza-->
+                <area alt="JM's guitar" title="John Mayer Signature Strat" href="#acasa" coords="298,596,218,548,200,478,320,364,502,301,894,134,932,166,555,385,553,457,437,513" shape="poly">
+            </map>
+
+        </section>
+
+        <br>
+        <h3>Acorduri si notatii pentru incepatori</h3>
+    
+        <div class = "pdf-preview">
+            <embed src = "./resurse/book.pdf#toolbar=0&navpanes=0" type = "application/pdf" class = "pdf-embed"> <!-- bonus pdf embed-->
+        </div>
+        <a  class="simple_link" href = "./resurse/book.pdf" download>Download Guitar Guide (PDF)</a> <!--1.11 link de download-->
+
+        <div class="video-container" id="video-vtt">
+            <video controls preload="metadata" poster="/resurse/video/poster.png" width="100%">
+              <source src="/resurse/video/v.mp4" type="video/mp4">
+              <source src="./resurse/video.webm" type="video/webm">
+          
+              <track src="/resurse/video/subtitrari-ro.vtt" kind="subtitles" srclang="ro" label="Română" default>
+              <track src="/resurse/video/subtitrari-en.vtt" kind="subtitles" srclang="en" label="English">
+          
+              Browserul tău nu suportă videoclipuri HTML5.
+            </video>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+        if (new URL(link.href).host !== location.host) {
+            link.classList.add('external');
+        }
+        });
+    });
+</script>
