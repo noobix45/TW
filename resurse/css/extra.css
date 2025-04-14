@@ -97,3 +97,38 @@ figure img{ /* rudimentar e*/
     text-align: center;
     font-style: normal;
   }
+
+  @media screen and (max-width: 1024px){
+    .video-container{
+        width: 100%;
+    }
+    .pdf-preview{
+        max-width: 90%;
+        max-height: 60vh;
+        min-width: 80%;
+    }
+    .taburi-iframe a{
+        font-size: 1.5vw;
+    }
+    math{
+        font-size: 1.5rem;  
+    }
+  }
+
+  @media screen and (max-width: 1024px){
+    .taburi-iframe a{
+        font-size: 1.7vw;
+        font-size: 0.7rem;
+    }
+    .container-iframe{
+        width: 100%;
+    }
+    math{
+        font-size: 1rem;
+    }
+    .pdf-preview{
+        max-width: 100%;
+        max-height: 60vh;
+        min-width: 80%;
+    }
+  }

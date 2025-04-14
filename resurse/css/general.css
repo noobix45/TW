@@ -548,11 +548,7 @@ a.external:hover{
     table{
         min-width: 600px;
     }
-    .pdf-preview{
-        max-width: 90%;
-        max-height: 60vh;
-        min-width: 80%;
-    }
+    
     main h2{
         font-size: 1.5rem; /* redefinire header*/
     }
@@ -565,16 +561,12 @@ a.external:hover{
     .zona1 .categorii ul a{
         font-size: 1.3rem;
     }
-    .taburi-iframe a{
-        font-size: 1.5vw;
-    }
+    
     .link_top_div{
         right: 15px;
         bottom: 20px;
     }
-    math{
-        font-size: 1.5rem;  
-    }
+    
     .reclama_titlu h2{
         font-size: 2.5rem;
     }
@@ -654,13 +646,5 @@ a.external:hover{
     .link_top::after{
         content: none;
     }
-    .taburi-iframe a{
-        font-size: 1.7vw;
-    }
-    .container-iframe{
-        width: 100%;
-    }
-    math{
-        font-size: 1rem;
-    }
+    
 }
