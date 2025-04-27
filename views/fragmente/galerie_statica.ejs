@@ -1,0 +1,63 @@
+<%
+    // vect_timp=["dimineata","zi","noapte"]
+    d=new Date()
+    ora=d.getHours()
+    timp_curent = ""
+
+    if( ora>=5 && ora <12)
+    {
+        timp_curent = "dimineata";
+    }
+    else if (ora>= 12 && ora<20){
+        timp_curent = "zi";
+    }
+    else
+    {
+        timp_curent="noapte";
+    }
+
+    let imaginiFiltrate = [];
+    for (let imag of locals.imagini) {
+        if(!imag.hof){
+            let timp_img = Array.isArray(imag.timp) ? imag.timp : [imag.timp]; // verific daca am vector sau nu, daca nu am il fac intr-un vector de un sg elem
+            if (timp_img.includes(timp_curent)) { // verific daca am match intre atributul pozei si timpul calculat mai sus
+                imaginiFiltrate.push(imag);
+            }
+        }
+    }
+
+    function shuffle(array) { // aleg poze in ordine aleatoare  Fisher-Yates poate genera toate permutarile
+    for (let i = array.length - 1; i > 0; i--) {
+        //obtii un numar random intre 0 si i
+        let j = Math.floor(Math.random() * (i + 1)); // inmulteste un numar subunitar pozitiv cu lungimea de la 0 la i si apoi rotunjeste
+        [array[i], array[j]] = [array[j], array[i]]; //swap
+    }
+    }
+    shuffle(imaginiFiltrate);
+
+    let maxDeAfisat = imaginiFiltrate.length - (imaginiFiltrate.length % 3);
+    imaginiFiltrate = imaginiFiltrate.slice(0, maxDeAfisat); // iau doar primele n divizibil cu 3 poze
+        %>
+
+<section id = "galerie-statica">
+    <div id = "titlu-galerie">
+        <div id="text">Galerie
+            <div id="text-reflectat">Galerie</div>
+        </div>
+    </div>
+    
+    <div id = "grid-galerie">
+
+        <% for(let imag of imaginiFiltrate) {
+        %>
+        <figure class="poza">
+                <picture>
+                    <source srcset="<%- imag.fisier_mediu %>" media="screen and (max-width: 1000px)" />
+                    <img src="<%- imag.cale_relativa %>" alt="<%- imag.nume %>" title="<%- imag.descriere %>">
+                </picture>
+                <figcaption><%- imag.nume %></figcaption>
+            </figure>
+        <% } %>
+             
+    </div>
+</section>

@@ -1,0 +1,323 @@
+@charset "UTF-8";
+/* grid gap pentru main - grid-ul principal */
+/* design rudimentar d*/
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #461626;
+}
+header .main_title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: whitesmoke;
+  border-bottom: solid 5px #82202D;
+  width: 100%;
+  height: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.meniu {
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  height: 65px;
+  margin: 0 auto;
+  padding-left: 10.938vw;
+  padding-right: 10.938vw;
+  background-color: #25385B;
+  border-bottom: #82202D solid 5px;
+  position: sticky;
+  top: 0;
+}
+.meniu i {
+  display: none;
+}
+.meniu .hamburger {
+  display: none;
+}
+.meniu .hamburger div {
+  width: 35px;
+  height: 3px;
+  background-color: white;
+}
+.meniu #menu-toggle {
+  display: none;
+}
+.meniu .dropdown_menu {
+  display: none;
+  position: absolute;
+  font-size: 1.5rem;
+}
+@keyframes showDropdown {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.meniu .both_menu {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.meniu .both_menu .left_menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  height: 65px;
+}
+.meniu .both_menu .left_menu a {
+  text-decoration: none;
+  color: whitesmoke;
+  width: 9vw;
+}
+.meniu .both_menu .left_menu .dropdown {
+  position: relative;
+}
+.meniu .both_menu .left_menu .dropdown .dropdown-btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+  font-size: 1.5rem;
+  padding: 0px 20px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.meniu .both_menu .left_menu .dropdown:hover .dropdown_menu {
+  width: 100%;
+  animation: showDropdown 1s ease-in-out forwards;
+  display: block;
+  position: absolute;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+.meniu .both_menu .left_menu .dropdown:hover .dropdown_menu li {
+  background-color: #25385B;
+  border-collapse: collapse;
+  border: 1px solid #3C728F;
+}
+.meniu .both_menu .left_menu .dropdown:hover .dropdown_menu li:hover {
+  background-color: #3C728F;
+}
+.meniu .both_menu .left_menu .dropdown:hover .dropdown_menu li a {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.meniu .both_menu .left_menu .dropdown .dropdown-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #461626, #972F34, #461626);
+  opacity: 0;
+  transition: transform 1s ease, opacity 0.3s ease;
+}
+.meniu .both_menu .left_menu .dropdown .dropdown-btn:hover::after {
+  transform: translateY(62px);
+  opacity: 1;
+}
+.meniu .both_menu .right_menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-self: flex-end;
+  padding: 0;
+  margin: 0;
+  gap: 2rem;
+  height: 65px;
+}
+.meniu .both_menu .right_menu a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+  font-size: 1.5rem;
+  padding: 0px 20px;
+  position: relative;
+  color: whitesmoke;
+}
+.meniu .both_menu .right_menu a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Grosimea barei */
+  background: linear-gradient(to right, #461626, #972F34, #461626);
+  opacity: 0; /* Bara este complet transparentă inițial */
+  transition: transform 1s ease, opacity 0.3s ease;
+}
+.meniu .both_menu .right_menu a:hover::after {
+  transform: translateY(62px); /* Bara se mișcă de sus in jos */
+  opacity: 1; /* Bara devine opacă */
+}
+
+@media screen and (max-width: 1024px) {
+  .meniu {
+    align-items: center;
+  }
+  .meniu .hamburger {
+    display: none;
+  }
+  .meniu #menu-toggle {
+    display: none;
+  }
+  .meniu .both_menu {
+    justify-content: center;
+    align-items: center;
+  }
+  .meniu .both_menu .left_menu {
+    gap: 0px;
+  }
+  .meniu .both_menu .left_menu :first-child p {
+    display: none;
+  }
+  .meniu .both_menu .left_menu :first-child i {
+    display: block;
+    color: whitesmoke;
+  }
+  .meniu .both_menu .right_menu p {
+    display: none;
+  }
+  .meniu .both_menu .right_menu i {
+    display: block;
+    color: whitesmoke;
+  }
+}
+@media screen and (max-width: 700px) {
+  .meniu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .meniu .both_menu {
+    position: absolute;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #25385B;
+    animation: revealMenu 0.7s ease-in-out forwards !important;
+  }
+  .meniu .both_menu .left_menu, .meniu .both_menu .right_menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .meniu .both_menu .left_menu {
+    border-top: 3px #82202D solid;
+  }
+  .meniu .both_menu .left_menu .dropdown {
+    width: 100%;
+  }
+  .meniu .both_menu .left_menu .dropdown .dropdown-btn {
+    width: 100%;
+    padding: 0;
+  }
+  .meniu .both_menu .left_menu .dropdown .dropdown-btn::after {
+    content: none;
+  }
+  .meniu .both_menu .left_menu .dropdown .dropdown-btn:hover {
+    background-color: #3C728F;
+    transition: all 0.5s ease !important;
+  }
+  .meniu .both_menu .left_menu .dropdown:hover .dropdown_menu {
+    position: static;
+  }
+  .meniu .both_menu .left_menu .dropdown:hover .dropdown_menu li {
+    border: none;
+  }
+  .meniu .both_menu .left_menu .dropdown:hover .dropdown_menu li:hover {
+    background-color: #60959F;
+    transition: all 0.5s ease !important;
+  }
+  .meniu .both_menu .right_menu {
+    border-bottom: 5px #82202D solid;
+  }
+  .meniu .both_menu .right_menu a {
+    width: 100%;
+    padding: 0;
+  }
+  .meniu .both_menu .right_menu a::after {
+    content: none;
+  }
+  .meniu .both_menu {
+    display: none;
+  }
+  .meniu input[type=checkbox]:checked + .both_menu {
+    display: flex;
+  }
+  .meniu .hamburger {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    left: 7.5vw;
+  }
+  .meniu .hamburger:hover {
+    cursor: pointer;
+  }
+  .meniu .hamburger .bar {
+    opacity: 0;
+    animation-name: hamburgerIn !important;
+    animation-duration: 1s !important;
+    animation-fill-mode: forwards !important;
+    animation-timing-function: ease-in-out !important;
+  }
+  .meniu .hamburger .bar:nth-child(1) {
+    animation-delay: 0s !important;
+  }
+  .meniu .hamburger .bar:nth-child(2) {
+    animation-delay: 0.2s !important;
+  }
+  .meniu .hamburger .bar:nth-child(3) {
+    animation-delay: 0.4s !important;
+  }
+}
+@keyframes revealMenu {
+  0% {
+    clip-path: circle(0% at 0 0);
+  }
+  100% {
+    clip-path: circle(150% at 0 0);
+  }
+}
+nav.meniu {
+  transition: all 1s ease-in-out !important;
+}
+
+@keyframes hamburgerIn {
+  0% {
+    transform: translateX(-25%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-55%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

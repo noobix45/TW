@@ -11,7 +11,7 @@
 
     $gap-large: 30px; 
     $gap-medium: 20px;
-    $gap-small: 10px;
+    $gap-small: 2rem;
 
     $sus-large: 60px;
     $sus-medium: 40px;
@@ -68,7 +68,7 @@ header{
         font-size: 2.5rem;
         color: $text-deschis;
         border-bottom: solid 5px $rosu;
-        width: 100% !important;
+        width: 100%;
         height: $inaltime-titlu;
         padding-top: 25px;
         padding-bottom: 25px;
@@ -83,7 +83,7 @@ header{
     flex-direction: row;
 
     height: $inaltime-meniu;
-    width: calc(100% - 2 * #{$padding-large});
+    // width: calc(100% - 2 * #{$padding-large});
     margin: 0 auto;
     padding-left: $padding-large;
     padding-right: $padding-large;
@@ -133,7 +133,6 @@ header{
         align-items: center;
         padding: 0;
         margin: 0;
-        gap: $gap-small;
         height: $inaltime-meniu;
         a{
             text-decoration: none;
@@ -150,6 +149,9 @@ header{
                 height: $inaltime-meniu;
                 font-size: $font;
                 padding: 0px 20px;
+                
+            margin-left: $gap-small;
+            margin-right: $gap-small;
             }
             &:hover{
                 .dropdown_menu{
@@ -254,27 +256,32 @@ header{
             display: none;
         }
         align-items: center;
-        width: calc(100 - 2 * #{$padding-medium});
-        .left_menu{
-            :first-child{
+        // width: calc(100% - 2 * #{$padding-medium});
+        .both_menu{
+            justify-content: center;
+            align-items: center;
+            .left_menu{
+                gap: 0px;
+                :first-child{
+                    p{
+                        display: none;
+                    }
+                    i{
+                        display: block;
+                        color: $text-deschis;   
+                    }
+                }
+            }
+            .right_menu{
                 p{
                     display: none;
                 }
                 i{
                     display: block;
-                    color: $text-deschis;   
+                    color: $text-deschis;
                 }
             }
         }
-        .right_menu{
-            p{
-                display: none;
-            }
-            i{
-                display: block;
-                color: $text-deschis;
-            }
-    }
     }
 }
 

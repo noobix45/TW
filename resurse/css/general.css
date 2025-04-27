@@ -33,6 +33,7 @@
     --text-color: #262626;
     --text-deschis: whitesmoke;
     --hf-background-color: #1F5673;
+    --negru: black;
 
     --mov-inchis: #321B2C;
     --mov: #53294B;
@@ -233,6 +234,24 @@ main{
     grid-column:3;
     justify-self:start;
 }
+
+.zona1 hr{
+    width: 100% !important;
+    background-image: 
+    linear-gradient(to right, var(--rosu-inchis) 50%, var(--rosu-inchis) 60%, transparent 60%),
+    linear-gradient(to right, var(--rosu-deschis) 50%, var(--rosu-deschis) 60%,transparent 60%),
+    linear-gradient(to right, var(--rosu-inchis) 50%, var(--rosu-inchis) 60%, transparent 60%) !important;
+    background-repeat: repeat-x !important;
+    
+    height: 18px !important;
+    background-size: 50px 6px !important;
+    background-position:
+    0 0,
+    6px 6px,
+    0 12px !important;
+    border: none !important;
+}
+
 /***********************end reclama************************/
 
 figure{
@@ -267,6 +286,7 @@ figure{
     grid-row: 1;
     grid-column: 1/-1;
     text-align: center;
+    color: var(--negru);
 }
 
 .categorii img{
@@ -327,6 +347,68 @@ figure{
     margin: 0;
     padding: 10px;
     color: var(--albastru)
+}
+
+#despre{
+    display: flex;
+    flex-direction: column;
+}
+#despre #rand{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--hf-background-color);
+    padding: var(--text-padding-large);
+}
+
+/* #despre img{
+    max-width: 75%;
+    padding: var(--text-padding-large);
+} */
+#section_content_despre{
+    padding: 0;
+}
+
+#duotone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position:relative;
+	background-image:url("/resurse/imagini/front_ad/showroom.jpg");
+	background-size:cover;
+    min-width: 50%;
+    min-height: 30rem;
+	filter:brightness(125%) grayscale(0) ;
+	transition:all 2s linear;
+
+    overflow: hidden;
+}
+
+#duotone:after, #duotone:before{
+	content:" ";
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	transition:all 2s linear;
+}
+
+#duotone:after{
+	background-color:rgb(0,0,255);
+	mix-blend-mode:lighten;
+    left:0;
+    transform: translateX(-100%);
+}
+
+#duotone:before{
+	background-color:rgb(205,0,255);
+	mix-blend-mode:darken;
+    right: 0;
+    transform: translateX(+100%);
+}
+#duotone:hover:before, #duotone:hover:after{
+    transform: translateX(0);
 }
 
 /***************************end main*******************************/
@@ -569,6 +651,13 @@ a.external:hover{
     
     .reclama_titlu h2{
         font-size: 2.5rem;
+        color: var(--negru);
+    }
+    #despre #rand{
+        flex-direction: column;
+    }
+    #section_content_despre{
+        padding-bottom: 1rem;
     }
 }
 

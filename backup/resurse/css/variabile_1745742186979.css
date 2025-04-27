@@ -1,0 +1,39 @@
+:root {
+  --padding-large: 210px;
+  --padding-medium: 105px;
+  --padding-small: 52.5px;
+  --gap-large: 30px;
+  --gap-medium: 20px;
+  --gap-small: 10px;
+  --sus-large: 60px;
+  --sus-medium: 40px;
+  --sus-small: 20px;
+  --sus-font-large: 2.5rem;
+  --sus-font-medium: 2rem;
+  --sus-font-small: 1rem;
+  /* grid gap pentru main - grid-ul principal */
+  --gap-large-main:20px;
+  --gap-medium-main:15px;
+  --gap-small-main:10px;
+  --text-padding-large: 20px; /* design rudimentar d*/
+  --text-padding-medium: 18px;
+  --text-padding-small: 16px;
+  --background-color: #0E5088;
+  --text-background: #EDE0C8;
+  --text-color: #262626;
+  --text-deschis: whitesmoke;
+  --hf-background-color: #1F5673;
+  --negru: black;
+  --mov-inchis: #321B2C;
+  --mov: #53294B;
+  --mov-deschis: #5D3A6D;
+  --rosu-inchis: #461626;
+  --rosu: #82202D;
+  --rosu-deschis: #972F34;
+  --galben-inchis: #71281A;
+  --galben: #A44F0E;
+  --galben-deschis: #D3842F;
+  --albastru-inchis: #25385B;
+  --albastru: #3C728F;
+  --albastru-deschis: #60959F;
+}

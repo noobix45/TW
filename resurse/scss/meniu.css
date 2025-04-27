@@ -175,7 +175,7 @@ header .main_title {
 @media screen and (max-width: 1024px) {
   .meniu {
     align-items: center;
-    width: calc(100 - 2 * 10.254vw);
+    width: calc(100% - 2 * 10.254vw);
   }
   .meniu .hamburger {
     display: none;

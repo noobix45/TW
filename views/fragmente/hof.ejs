@@ -1,0 +1,125 @@
+<%
+    let imaginiHof = [];
+    
+    for (let imag of imagini) {
+        if(imag.hof){
+            imaginiHof.push(imag); // iau din ob global imagini doar pozele care sunt pentru hof
+        }
+    }
+
+    let total = imaginiHof.length;
+    let offset = Math.floor(Math.random() * (total-3));
+    // console.log("offset"+offset);
+
+    imaginiHof = imaginiHof.slice(offset); //pastrez doar pozele de la offset pana la final
+    let maxim = Math.min(imaginiHof.length,15);
+    imaginiHof = imaginiHof.slice(0,maxim - (maxim%3)); // pastrez doar pozele de la inceput pana la final dar in multiplu de 3
+    // console.log("imagini final:"+imaginiHof);
+%>
+
+<div id = "hof-container">
+    <div id = "hof-titlu">
+        <h2>Hall of Fame</h2>
+    </div>
+
+    <div id = "hof">
+    
+    <% for(let imag of imaginiHof) { 
+    %>
+
+        <figure class="container-poza">
+            <img src="<%- imag.cale_relativa %>" alt = "<%- imag.nume %>">
+            <figcaption><%-imag.nume%></figcaption>
+        </figure>
+
+    <% } %>
+    </div>
+</div>
+
+<script>
+    const imagini = document.querySelectorAll('.container-poza');
+    const hof = document.getElementById('hof');
+    let index = 0;
+    let timeoutId = null;
+    let animating = false;
+
+    function showNextImage() {
+        if (animating) return; //sa nu am mai multe animatii o data
+        animating = true;
+
+        const current = imagini[index]; //poza curenta
+        const nextIndex = (index + 1) % imagini.length; //indexul urmator
+        const next = imagini[nextIndex]; //poza urmatoare
+
+        const nextImg = next.querySelector('img');
+
+        //pregateste tranzitia
+        next.classList.add('behind');
+        next.style.zIndex = 2;
+        current.style.zIndex = 1;
+
+        next.classList.add('visible'); // poza urmatoare de deasupra devine vizibila
+        nextImg.style.animation = 'none'; //opreste orice animatie anterioara
+        nextImg.style.clipPath = 'inset(0 50% 0 50%)'; //pune animatia noua
+
+         //ma asigur ca animatia se intampla in urmatorul frame, evita glitchuri
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                nextImg.style.animation = 'clipExpand 1.5s ease-in-out forwards';
+            });
+        });
+
+     // Wait for the animation to finish before hiding the current image
+     nextImg.addEventListener('animationend', () => {
+        current.classList.remove('visible'); // Hide current image after next image is visible
+        current.style.zIndex = 0; // Ensure it's behind
+        next.classList.remove('behind'); // Bring the next image to the front
+        animating = false; // Animation is complete
+        index = nextIndex; // Update the index
+
+        if (!hof.matches(':hover')) {
+            timeoutId = setTimeout(showNextImage, 3000);
+        }
+    });
+    }
+
+    //setup initial
+    imagini[0].classList.add('visible');
+
+    const firstImg = imagini[0].querySelector('img');
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            firstImg.style.animation = 'clipExpand 1.5s ease-in-out forwards';
+        });
+    });
+    timeoutId = setTimeout(showNextImage, 3000);
+
+    // Pause animation on hover
+imagini.forEach(img => {
+    const nextImg = img.querySelector('img');
+
+    img.addEventListener('mouseenter', () => {
+        // Pause the animation and keep behind image visible
+        nextImg.style.animationPlayState = 'paused';
+        img.classList.add('hover'); // Add hover class to manage opacity and z-index
+    });
+
+    img.addEventListener('mouseleave', () => {
+        // Resume the animation from where it was paused
+        nextImg.style.animationPlayState = 'running';
+        img.classList.remove('hover'); // Remove hover class to restore opacity and z-index
+    });
+});
+
+// Ensure the background stays visible even when hovering
+imagini.forEach(img => {
+    const nextImg = img.querySelector('img');
+    
+    img.addEventListener('animationiteration', () => {
+        // Reset animation when it completes
+        nextImg.style.animation = 'none'; // Pause animation
+        nextImg.offsetHeight; // Trigger a reflow to restart the animation
+        nextImg.style.animation = 'clipExpand 1.5s ease-in-out forwards'; // Restart the animation
+    });
+});
+</script>

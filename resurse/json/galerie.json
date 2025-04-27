@@ -2,40 +2,240 @@
 	"cale_galerie":"resurse/imagini/galerie",
 	"imagini": [
 		{
-			"fisier":"tb1.jpg",
-			"descriere":"Brioșe",
-			"luni":["martie","februarie","noiembrie","aprilie", "decembrie"]
+			"cale_relativa":"zi/12picks.jpg",
+			"nume": "pachet 12 pene",
+			"descriere":"pachet 12 pene",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/dunlop-electric-variety-guitar-pick-12-pack/"
 		},
 		{
-			"fisier":"tb2.jpg",
-			"descriere":"Clătite cu dulceață",
-			"luni":["ianuarie","februarie","iunie"]
-			
+			"cale_relativa":"zi/acustica.jpg",
+			"nume": "Chitara acustica",
+			"descriere":"Chitara Acustica Fender",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/fender-de-fa-135-concert-all-mahogany-natural/"
 		},
 		{
-			"fisier":"tb3.jpg",
-			"descriere":"Gogoși glazurate",
-			"luni":["ianuarie","noiembrie","iunie","martie","aprilie"]
+			"cale_relativa":"zi/amp_mini_marshall.jpg",
+			"nume": "Amplficator Marshall mini",
+			"descriere":"Amplficator Marshall mini",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/marshall-ms2-micro-stack-amp/"
 		},
 		{
-			"fisier":"tb4.jpg",
-			"descriere":"Tort cu scorțisoară",
-			
-			"luni":["noiembrie","aprilie", "decembrie"]
+			"cale_relativa":"zi/cable_fender_blue.jpg",
+			"nume": "Cablu fender",
+			"descriere":"Cablu fender albastru 10ft",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/fender-original-series-instrument-cable-10-daphne-blue/"
 		},
 		{
-			"fisier":"tb5.jpg",
-			"descriere":"Prăjitură cu ciocolată",
-			
-			"luni":["noiembrie","aprilie", "decembrie"]
+			"cale_relativa":"zi/fstrat.jpg",
+			"nume": "Chitara Fender Stratocaster",
+			"descriere":"Chitara Fender Stratocaster aquatone blue",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/fender-player-ii-stratocaster-maple-fingerboard-aquatone-blue/"
 		},
 		{
-			"fisier":"tb6.jpg",
-			"descriere":"Tartă cu afine"
+			"cale_relativa":"zi/ibanez.jpg",
+			"nume": "Chitara Ibanez",
+			"descriere":"Chitara Ibanez metallic light blue",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/ibanez-grx40-mlb-guitar-in-metallic-light-blue/"
 		},
 		{
-			"fisier":"tb1.jpg",
-			"descriere":"Tort special"
+			"cale_relativa":"zi/prs.jpg",
+			"nume": "Chitara PRS",
+			"descriere":"Chitara PRS JM Silver Sky",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/prs-john-mayer-se-silver-sky-maple-overland-gray/"
+		},
+		{
+			"cale_relativa":"zi/strap2.jpg",
+			"nume": "Curea Chitara",
+			"descriere":"Curea Chitara Fender",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/fender-weighless-2-inch-monogrammed-strap-white-brown-yellow/"
+		},
+		{
+			"cale_relativa":"zi/tele.jpg",
+			"nume": "Chitara Fender Telecaster",
+			"descriere":"Chitara Fender Telecaster Aqua-Marine-Metallic",
+			"timp": "zi",
+			"sursa": "https://www.andertons.co.uk/fender-standard-telecaster-mn-white-pickguard--aqua-marine-metallic/"
+		},
+		{
+			"cale_relativa":"dimineata/amp_blackstar.jpg",
+			"nume": "Amplificator Blackstar",
+			"descriere":"Amplificator Blackstar Debut Practice",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/blackstar-debut-15e-practice-amp/"
+		},
+		{
+			"cale_relativa":"dimineata/amp_orange.jpg",
+			"nume": "Amplificator Orange Mini",
+			"descriere":"Amplificator Orange Crush Mini 3W",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/orange-crush-mini-3w-amp/"
+		},
+		{
+			"cale_relativa":"dimineata/cable_orange.jpg",
+			"nume": "Cablu Orange",
+			"descriere":"Cablu Orange 10ft",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/orange-crush-10ft-angled-to-straight-instrument-cable/"
+		},
+		{
+			"cale_relativa":"dimineata/clasica.jpg",
+			"nume": "Chitara Clasica",
+			"descriere":"Chitara Clasica Valencia",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/valencia-1-2-classical-guitar-w-carry-case-vc202na/"
+		},
+		{
+			"cale_relativa":"dimineata/husa.jpg",
+			"nume": "Husa Chitara Electrica",
+			"descriere":"Husa Chitara Electrica Boss Gig Bag",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/boss-cb-eg10-guitar-gig-bag/"
+		},
+		{
+			"cale_relativa":"dimineata/strap1.jpg",
+			"nume": "Curea Chitara",
+			"descriere":"Curea Chitara Ernie Ball Jacquard Black Rose",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/ernie-ball-classic-jacquard-guirtar-strap-black-rose/"
+		},
+		{
+			"cale_relativa":"noapte/amp_boss.jpg",
+			"nume": "Amplificator Boss",
+			"descriere":"Amplificator Boss Katana 50W",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/boss-katana-50-gen-3-50w-guitar-amp-combo/"
+		},
+		{
+			"cale_relativa":"noapte/amp_fender.jpg",
+			"nume": "Amplificator Fender",
+			"descriere":"Amplificator Fender Champion II 50W",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/fender-champion-ii-50-230v-uk/"
+		},
+		{
+			"cale_relativa":"noapte/amp_marshall.jpg",
+			"nume": "Amplficator Marshall",
+			"descriere":"Amplficator Marshall MG15G",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/marshall-mg15g-15w-black-and-gold-guitar-combo/"
+		},
+		{
+			"cale_relativa":"noapte/amp_orange2.jpg",
+			"nume": "Amplificator Orange",
+			"descriere":"Amplificator Orange O Tone 40W",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/orange-o-tone-40-solid-state-combo-40w-amp/"
+		},
+		{
+			"cale_relativa":"noapte/gibson.jpg",
+			"nume": "Chitara Acustica Gibson",
+			"descriere":"Chitara Acustica Gibson Vintage Sunburst Gloss",
+			"timp": ["noapte","dimineata"],
+			"sursa": "https://www.andertons.co.uk/epiphone-inspired-by-gibson-j-45-in-aged-vintage-sunburst-gloss/"
+		},
+		{
+			"cale_relativa": "hof/bb.webp",
+			"nume": "B.B. King",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/brian-may.webp",
+			"nume": "Brian May (Queen)",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/carlos-santana.webp",
+			"nume": "Carlos Santana",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/david-gilmour.webp",
+			"nume": "David Gilmour (Pink Floyd)",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/eric-clapton.webp",
+			"nume": "Eric Clapton",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/george-harrison.webp",
+			"nume": "George Harrison (Beatles)",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/evh.webp",
+			"nume": "Eddie Van Hallen",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/jeff-beck.webp",
+			"nume": "Jeff Beck",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/jerry-garcia.webp",
+			"nume": "Jerry Garcia (Grateful Dead)",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/jimi.webp",
+			"nume": "Jimi Hendrix",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/jimmy-page.webp",
+			"nume": "Jimmi Page (Led Zeppelin)",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/jm.webp",
+			"nume": "John Mayer",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/john-frusciante.webp",
+			"nume": "John Frusciante (RHCP)",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/neil-young.webp",
+			"nume": "Neil Young",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/prince.webp",
+			"nume": "Prince",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
+		},
+		{
+			"cale_relativa": "hof/srv.webp",
+			"nume": "Stevie Ray Vaughan",
+			"sursa": "https://www.rollingstone.com/music/music-lists/best-guitarists-1234814010/andy-summers-3-1234815076/",
+			"hof": true
 		}
 	]
 }

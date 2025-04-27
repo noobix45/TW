@@ -1,0 +1,13 @@
+galerie dinamica pauza la hover, titlu si figcaption
+
+pagina separata pentru galeria statica
+
+impartire in fisiere - cum trebuie
+FIECARE ELEMENT ARE FISIERUL LUI IN CARE SE INCLUD TOATE DIMENSIUNILE DE ECRANE
+
+de modificat variabilele in customizare bootstrap ca sa raman site ul colorat la fel
+de decomentat in head bootstrap
+
+formula responsive
+
+.git ignore pentru github

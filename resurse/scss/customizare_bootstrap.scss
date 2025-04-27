@@ -1,0 +1,57 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with 
+(
+    $primary: #82202D,
+    $secondary:#53294B,
+//dimensiunea literelor headingurilor
+    $h1-font-size: 2.25rem,
+    $h2-font-size: 1.875rem,
+    $h3-font-size: 1.5rem,
+    $h4-font-size: 1.25rem,
+    $h5-font-size: 1rem,
+    $h6-font-size: 0.875rem,
+//dimesniunea razelor de border
+    $border-radius: 0.75rem,
+    $border-radius-sm: 0.5rem,
+    $border-radius-lg: 1rem,
+    $border-radius-xl: 1.25rem,
+// familia de font implicita
+    $font-family-base: 'serif'
+);
+
+//variabile proprii - aceleasi de pana acum importate din css
+@import 'variabile';
+
+/* Test de variabila CSS */
+.test-padding {
+  padding: var(--padding-large);
+  background-color: var(--rosu);
+}
+
+button {
+  color: #D3842F !important;
+}
+
+hr{
+    opacity: 1;
+}
+
+h1{
+  font-size: 2rem;
+}
+
+h2{
+  color: whitesmoke;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  body {
+    background-color: red; // alt background pe ecrane medii
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background-color: green; // alt background pe ecrane mari
+  }
+}

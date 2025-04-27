@@ -24,11 +24,12 @@ main{
 }
 
 math{
+    width: 100%;
     background: linear-gradient(90deg, var(--galben-deschis), var(--galben), var(--galben-deschis));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 2.5rem;
+    font-size: 2.5vw;
     font-weight: 700;
 }
 
@@ -90,7 +91,9 @@ figure img{ /* rudimentar e*/
     height: auto;
     border: solid 2px var(--rosu-inchis);
 }
-
+video{
+    margin: 0;
+}
 ::cue{
     background-color: white;
     color: var(--text-color); /* sau alta culoare închisă din tema ta */
@@ -110,9 +113,6 @@ figure img{ /* rudimentar e*/
     .taburi-iframe a{
         font-size: 1.5vw;
     }
-    math{
-        font-size: 1.5rem;  
-    }
   }
 
   @media screen and (max-width: 1024px){
@@ -122,9 +122,6 @@ figure img{ /* rudimentar e*/
     }
     .container-iframe{
         width: 100%;
-    }
-    math{
-        font-size: 1rem;
     }
     .pdf-preview{
         max-width: 100%;
