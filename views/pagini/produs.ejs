@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <meta name="description" content="Magazin de chitare, amplificatoare si accesorii">
+        <meta name="keywords" content="chitara, amplificator, accesorii chitara, GuitarHeaven, chitara electrica, chitara acustica, chitara clasica">
+        
+        <title>GuitarHeaven - Home - home</title>
+        <%- include("../fragmente/head") %>     
+        <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+    </head>
+
+        <%- include("../fragmente/header") %>
+    <main>
+        <section>
+            <h2>Pagină produs</h2>
+                <article id="art-produs">
+                    <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
+
+                        <figure>
+                            <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" /></a>
+                        </figure>
+
+                        <div class="info-prod">
+                            <ul>
+                                <li><p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p></li>
+                                <li><p class="brand">Brand: <span class="val-brand"><%- prod.brand%></span></p></li>
+                                <li><p class="greutate">Greutate: <span class="val-greutate"><%- prod.greutate%></span></p></li>
+                                <li><p class="materiale">Materiale: <span class="val-materiale"><%- prod.materiale%></span></p></li>
+                                <li><p class="cablu">Cablu inclus: <span class="val-cablu"><%- prod.cablu_inclus ? 'Da' : 'Nu'%></span></p></li>
+                                <li><p class="rating">Rating: <span class="val-rating"><%- prod.rating%></span></p></li>
+                                <li><p class="data">Data: <span><time datetime="<%= prod.data_fromatata_ro %>"><%= prod.data_formatata_ro %></time></span></p></li>
+                            </ul>
+                        </div>
+
+                        <div class = "info2">
+                            <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
+                            <p class="descriere">Descriere:<br><span class="val-descriere"><%- prod.descriere.replace(/\n/g, "<br>")%></span></p>
+                        </div>
+
+                        <label class="selecteaza-cos">
+                            Selectează:<br/>
+                            <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">
+                        </label>   
+                </article>
+        </section>
+    </main>
+
+    <%- include("../fragmente/footer") %>
+    </body>
+</html>

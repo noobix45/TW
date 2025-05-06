@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
 
-const inputFolder = "./imagini/galerie";  // Your folder with images
-const outputFolder = "./resized";         // Output folder
+const inputFolder = "../../../../../temp";  // Your folder with images
+const outputFolder = "../../../../../rez";         // Output folder
 
 const squareSize = 386;                   // For square images
 const rectWidth = 386, rectHeight = 513;  // For rectangular images

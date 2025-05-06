@@ -69,13 +69,13 @@
             });
         });
 
-     // Wait for the animation to finish before hiding the current image
+     // astept ca niamtia sa se termine inainte sa o scot pe cea din spate
      nextImg.addEventListener('animationend', () => {
-        current.classList.remove('visible'); // Hide current image after next image is visible
-        current.style.zIndex = 0; // Ensure it's behind
-        next.classList.remove('behind'); // Bring the next image to the front
-        animating = false; // Animation is complete
-        index = nextIndex; // Update the index
+        current.classList.remove('visible'); //ascund poza din spate
+        current.style.zIndex = 0;
+        next.classList.remove('behind'); // urmatoarea poza in fata
+        animating = false;
+        index = nextIndex;
 
         if (!hof.matches(':hover')) {
             timeoutId = setTimeout(showNextImage, 3000);
@@ -99,15 +99,15 @@ imagini.forEach(img => {
     const nextImg = img.querySelector('img');
 
     img.addEventListener('mouseenter', () => {
-        // Pause the animation and keep behind image visible
+        // pauza la animtaie
         nextImg.style.animationPlayState = 'paused';
-        img.classList.add('hover'); // Add hover class to manage opacity and z-index
+        img.classList.add('hover');
     });
 
     img.addEventListener('mouseleave', () => {
-        // Resume the animation from where it was paused
+        // reia animatia
         nextImg.style.animationPlayState = 'running';
-        img.classList.remove('hover'); // Remove hover class to restore opacity and z-index
+        img.classList.remove('hover');
     });
 });
 

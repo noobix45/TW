@@ -196,6 +196,9 @@ header .main_title {
     display: block;
     color: whitesmoke;
   }
+  .meniu .both_menu .right_menu {
+    gap: 0;
+  }
   .meniu .both_menu .right_menu p {
     display: none;
   }
@@ -216,6 +219,8 @@ header .main_title {
     top: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #25385B;
     animation: revealMenu 0.7s ease-in-out forwards !important;
   }
@@ -234,6 +239,7 @@ header .main_title {
   .meniu .both_menu .left_menu .dropdown .dropdown-btn {
     width: 100%;
     padding: 0;
+    margin: 0;
   }
   .meniu .both_menu .left_menu .dropdown .dropdown-btn::after {
     content: none;

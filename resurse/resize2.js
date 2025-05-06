@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
 
-const inputFolder = "./ceva";  // Folderul cu poze deja redimensionate
-const outputFolder = "./resized2";         // Folderul pentru poze redimensionate
+const inputFolder = "../../../../../temp";  // Folderul cu poze deja redimensionate
+const outputFolder = "../../../../../rez";         // Folderul pentru poze redimensionate
 
 const targetWidth = 300;                  // Lățimea dorită pentru redimensionare
 

@@ -206,6 +206,8 @@ main{
 
 .reclama_titlu h2{
     margin: 0px;
+    font-size: 2rem;
+    color: var(--negru);
 }
 
 .container_reclama img{
@@ -425,6 +427,7 @@ footer{
     padding-left: var(--padding-large);
     padding-right: var(--padding-large);
     border-top: 3px solid var(--rosu);
+    padding-top: 3rem;
 }
 
 footer section{

@@ -7,7 +7,7 @@ const pg = require("pg");
 
 const Client=pg.Client;
 
-client=new Client({
+client=new Client({ //instanta a uni clinet de baze de date
     database:"tw",
     user:"catalin",
     password:"catalin",
@@ -16,18 +16,21 @@ client=new Client({
 })
 
 client.connect()
-client.query("select * from prajituri", function(err, rezultat ){
-    console.log(err)    
+client.query("select * from produs", function(err, rezultat ){
+    console.log(err)
+    console.log("select * from produs:")
     console.log(rezultat)
 })
-client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezultat ){
+client.query("select * from unnest(enum_range(null::categ_produs))", function(err, rezultat ){
     console.log(err)    
+    console.log("select * from unnest:")
     console.log(rezultat)
 })
 
 app = express();
 
 app.use("/resurse",express.static(path.join(__dirname,'resurse')));
+app.use("/node_modules",express.static(path.join(__dirname,"node_modules")));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -50,7 +53,6 @@ for(let folder of vect_foldere){
 
 function salveazaBackup(caleFisier){
     let timestamp = Date.now();
-    let numeFisExt = path.basename(caleFisier);
     let numeFisCssNoExt = path.basename(caleFisier, ".css");
     let numeBackup = `${numeFisCssNoExt}_${timestamp}.css`;
 
@@ -59,7 +61,7 @@ function salveazaBackup(caleFisier){
     //salvez backup
     fs.copyFileSync(caleFisier,path.join(caleBackup,numeBackup));
 
-    //verific daca sunt mai mult de 5 fisiere le sterg pe cele mai vechi
+    //verific daca sunt mai mult de 15 fisiere le sterg pe cele mai vechi
     let fisiereBackup = fs.readdirSync(caleBackup);
     if(fisiereBackup.length > 15){
         //sortez dupa data
@@ -282,23 +284,88 @@ app.get("/abc", function(req, res, next){
 app.get("/produse", function(req, res){
     console.log(req.query)
     var conditieQuery=""; // TO DO where din parametri
+    if(req.query.tip){
+        conditieQuery=`where tip_produs='${req.query.tip}'`;
+    }
 
 
-    queryOptiuni="select * from unnest(enum_range(null::categ_prajitura))"
+    queryOptiuni="select * from unnest(enum_range(null::categ_produs))"
     client.query(queryOptiuni, function(err, rezOptiuni){
         console.log(rezOptiuni)
 
-        queryProduse="select * from prajituri"
+        queryProduse="select * from produs"+conditieQuery;
         client.query(queryProduse, function(err, rez){
             if (err){
                 console.log(err);
                 afisareEroare(res, 2);
             }
             else{
+
+                const luni = [
+                    "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
+                    "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+                ];
+                const zile = [
+                    "Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"
+                ];
+                
+                for (let prod of rez.rows) {
+                    const d = new Date(prod.data_adaugare);
+                
+                    const zi = d.getDate();
+                    const luna = luni[d.getMonth()];
+                    const an = d.getFullYear();
+                    const ziSapt = zile[d.getDay()];
+                
+                    prod.data_formatata_ro = `${zi} ${luna} ${an} [${ziSapt}]`;
+                
+                    // pentru time datetime
+                    prod.data_datetime = d.toISOString().split("T")[0];
+                }
+
                 res.render("pagini/produse", {produse: rez.rows, optiuni:rezOptiuni.rows})
             }
         })
     });
+})
+
+app.get("/produs/:id", function(req, res){
+    console.log(req.params);
+    client.query(`select * from produs where id = ${req.params.id}`, function(err, rez){
+        if (err){
+            console.log(err);
+            afisareEroare(res, 2);
+        }
+        else{
+            if (rez.rowCount==0){
+                afisareEroare(res, 404);
+            }
+            else{
+
+                const luni = [
+                    "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
+                    "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+                ];
+                const zile = [
+                    "Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"
+                ];
+                
+                    const d = new Date(rez.rows[0].data_adaugare);
+                
+                    const zi = d.getDate();
+                    const luna = luni[d.getMonth()];
+                    const an = d.getFullYear();
+                    const ziSapt = zile[d.getDay()];
+                
+                    rez.rows[0].data_formatata_ro = `${zi} ${luna} ${an} [${ziSapt}]`;
+                
+                    // pentru time datetime
+                    rez.rows[0].data_datetime = d.toISOString().split("T")[0];
+
+                res.render("pagini/produs", {prod: rez.rows[0]})
+            }
+        }
+    })
 })
 
 app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function(req, res, next) {
@@ -331,37 +398,6 @@ catch(errRandare){
     }
 }
 })
-
-
-// app.use("/node_modules",express.static(path.join(__dirname,"node_modules")));
-
-
-
-
-// v = [10,27,23,44,15]
-
-// nr_imp = v.find(function(elem){return elem%2})
-// console.log(nr_imp)
-
-
-
-
-
-
-
-// app.get("/cerere",function(req,res){
-//     res.send("<p style= 'color: green;'>Hello world</p>")
-// })
-
-// app.get(["/", "/home", "/index"], function(req, res){
-//     res.render("pagini/index", { ip: req.ip });
-// });
-
-
-
-
-
-
 
 
 

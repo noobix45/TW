@@ -273,6 +273,7 @@ header{
                 }
             }
             .right_menu{
+                gap:0;
                 p{
                     display: none;
                 }
@@ -305,6 +306,8 @@ header{
 
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
             background-color: $albastru-inchis;
 
@@ -324,6 +327,7 @@ header{
                     .dropdown-btn{
                         width: 100%;
                         padding: 0;
+                        margin: 0;
                         &::after{
                             content:none;
                         }
