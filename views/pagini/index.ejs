@@ -8,7 +8,7 @@
 </head>
 
 <!-- <body style="background-image: url('./resurse/imagini/background/back_white.png'); background-size: 100% 100%; background-repeat: no-repeat; background-attachment: fixed;"> -->
-<body> <!-- header main si footer 1.4-->
+<body class = "dark"> <!-- header main si footer 1.4-->
     <p id="watermark"></p>
     <%- include("../fragmente/header.ejs") %>
 
@@ -31,13 +31,13 @@
                 
             <div class = "categorii">
                 <h2 class = "titlu_categorii">Categorii de produse</h2>
-                <a href = "#"><img class = "guitar_pict" src = "resurse/imagini/pictograms/guitar-instrument.png" alt = "Chitare"></a>
-                <a href = "#"><img class = "amp_pict" src = "resurse/imagini/pictograms/guitar-amplifier.png" alt = "Amplificatoare"></a>
-                <a href = "#"><img class = "acc_pict" src = "resurse/imagini/pictograms/guitar-pick.png" alt = "Accesorii"></a>
+                <a href = "/produse?tip=chitara"><img class = "guitar_pict" src = "resurse/imagini/pictograms/guitar-instrument.png" alt = "Chitare"></a>
+                <a href = "/produse?tip=amplificator"><img class = "amp_pict" src = "resurse/imagini/pictograms/guitar-amplifier.png" alt = "Amplificatoare"></a>
+                <a href = "/produse?tip=accesoriu"><img class = "acc_pict" src = "resurse/imagini/pictograms/guitar-pick.png" alt = "Accesorii"></a>
                 <ul>
-                    <li><a href = "#">Chitare</a></li>
-                    <li><a href = "#">Amplificatoare</a></li>
-                    <li><a href = "#">Accesorii</a></li>
+                    <li><a href = "/produse?tip=chitara">Chitare</a></li>
+                    <li><a href = "/produse?tip=amplificator">Amplificatoare</a></li>
+                    <li><a href = "/produse?tip=accesoriu">Accesorii</a></li>
                 </ul>
             </div>
             <hr id = "custom-hr">

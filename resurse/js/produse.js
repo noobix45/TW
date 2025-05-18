@@ -19,7 +19,7 @@ window.onload = function(){
 
     btn=document.getElementById("filtrare");
     btn.onclick=function(){
-        let inpNume = document.getElementById("inp-nume").value.trim().toLowerCase(); 
+        let inpNume = document.getElementById("inp-nume").value.trim().toLowerCase();
         if (/^\d+$/.test(inpNume)) {
             alert("Numele produsului nu poate contine doar cifre.");
             return;
@@ -41,7 +41,7 @@ window.onload = function(){
             }
         }
         let inpPret = document.getElementById("inp-pret").value;
-        if (isNaN(inpPret) || inpPret <= 0) {
+        if (isNaN(inpPret) || inpPret < 0) {
             alert("Prețul trebuie să fie un număr valid mai mare decât 0.");
             return;
         }
@@ -52,17 +52,27 @@ window.onload = function(){
         let categoriiSelectate = Array.from(selectMultiplu.selectedOptions).map(opt => opt.value.toLowerCase());
 
         let inpMateriale = document.getElementById("inp-materiale").value.trim().toLowerCase();
-        if(/^\d+$/.test(inpMateriale)){
-            alert("Materialele nu pot fi cifre.");
-            return;
-        }
-        let materialeSelectate = inpMateriale.split(',').map(x => x.trim());
-        let materialePermise = ["lemn", "mahogany", "walnut", "alder", "spruce", "metal", "plastic", "textil", "poliester"];
-        let valid = materialeSelectate.every(material => materialePermise.includes(material));
-
-        if (!valid) {
-            alert("Unele dintre materialele selectate nu sunt valide.");
-            return;
+        let materialeSelectate;
+        // let materialeProdus;
+        // let cond6=true;
+        if(inpMateriale!=""){
+            if(/^\d+$/.test(inpMateriale)){
+                alert("Materialele nu pot fi cifre.");
+                return;
+            }
+            materialeSelectate = inpMateriale.split(',').map(x => x.trim());
+            console.log("Materiale selectate")
+            console.log(materialeSelectate)
+            console.log("input materiale")
+            console.log(inpMateriale);
+            let materialePermise = ["lemn", "mahogany", "walnut", "alder", "spruce", "metal", "plastic", "textil", "poliester","nut"];
+            let valid = materialeSelectate.every(material => materialePermise.includes(material));
+            
+            if (!valid) {
+                alert("Unele dintre materialele selectate nu sunt valide.");
+                return;
+            }
+            
         }
 
         let inpCablu = document.getElementById("inp-cablu").checked;
@@ -78,6 +88,12 @@ window.onload = function(){
         for(let prod of produse)
         {
             prod.style.display = "none";
+            let materialeProdus = prod.getElementsByClassName("val-materiale")[0].innerHTML.trim().toLowerCase().split(',');
+            let cond6 = true;
+            if(inpMateriale!="")
+            {
+                cond6 = materialeSelectate.every(material => materialeProdus.includes(material));
+            }
 
             let nume = prod.getElementsByClassName("val-nume")[0].innerHTML.trim().toLowerCase();
             let cuvinte = nume.split(/\s+/);
@@ -100,24 +116,25 @@ window.onload = function(){
             let cabluInclus = (textCablu === "da");
             let cond5 = (!inpCablu || cabluInclus);
 
-            let materialeProdus = prod.getElementsByClassName("val-materiale")[0].innerHTML.trim().toLowerCase().split(',');
-            let cond6 = materialeSelectate.every(material => materialeProdus.includes(material));
+            
+            // console.log("materiale selectate")
+            // console.log(materialeSelectate)
+            // console.log("materiale produs");
+            // console.log(materialeProdus)
+            
+            console.log("cond6"+cond6)
 
-            // let condMateriale = true;
             let chkMateriale = document.querySelectorAll('input[name="chk-material"]:checked');
-
-            // const materialeCategorii = {
-            //     lemn: ["mahogany", "walnut", "alder", "spruce","lemn"],
-            //     textil: ["poliester","textil"],
-            //     metal: ["metal"],
-            //     plastic: ["plastic"]
-            // };
+            console.log("chkMateriale")
+            console.log(chkMateriale)
 
             let materialeAre = [];
             let materialeNuAre = [];
 
             for (let chk of chkMateriale) {
                 let material = chk.value;
+                console.log("material")
+                console.log(material)
                 let opt = materialeSelectate2[material];
 
                 if (opt === "are") {
@@ -128,51 +145,60 @@ window.onload = function(){
                     // materialeCategorii[material].forEach(mat => materialeNuAre.push(mat));
                 }
             }
+            console.log("materiale are")
+            console.log(materialeAre)
+            console.log("materiale nu are")
+            console.log(materialeNuAre)
             let condMateriale = materialeAre.every(mat => materialeProdus.includes(mat)) &&
                     materialeNuAre.every(mat => !materialeProdus.includes(mat));
-            let condFinal = cond1 && cond2 && cond3 && cond4 && cond5;
-
+            console.log("condmateriale")
+            console.log(condMateriale)
+            let condFinal = cond1 && cond2 && cond5 && cond3 && cond4;
             if (inpMateriale != "") {
                 condFinal = condFinal && cond6;
             }
             if (chkMateriale.length > 0) {
                 condFinal = condFinal && condMateriale;
             }
-            if (condFinal) {
-                prod.style.display = "grid";
+            if(condFinal)
+            {
+                prod.style.display="grid";
             }
         }
+        produseVizibile = Array.from(document.getElementsByClassName("produs")).filter(p=> p.style.display!="none")
+        if(produseVizibile.length==0)
+            document.getElementById("mesaj-filtrare").style.display="flex";
     }
     document.getElementById("resetare").onclick = function(){
         if (window.confirm("Vrei sa resetezi filtrele?")) {
-        document.getElementById("inp-nume").value="";
-        document.getElementById("i_rad4").checked=true;
-        document.getElementById("inp-cablu").checked=false;
-        let inpPret = document.getElementById("inp-pret");
-        inpPret.value=0;
-        document.getElementById("infoRange").textContent = `(0)`;
-        document.getElementById("inp-categorie").value="toate";
+            document.getElementById("inp-nume").value="";
+            document.getElementById("i_rad4").checked=true;
+            document.getElementById("inp-cablu").checked=false;
+            let inpPret = document.getElementById("inp-pret");
+            inpPret.value=0;
+            document.getElementById("infoRange").textContent = `(0)`;
+            document.getElementById("inp-categorie").value="toate";
 
-        let selectMultiplu = document.getElementById("inp-categorii-multiple");
-        for(let opt of selectMultiplu.options){
-            opt.selected = false;
+            let selectMultiplu = document.getElementById("inp-categorii-multiple");
+            for(let opt of selectMultiplu.options){
+                opt.selected = false;
+            }
+
+            document.getElementById("inp-materiale").value = "";
+
+            let chkMateriale = document.querySelectorAll('input[name = "chk-material"]');
+            for(let chk of chkMateriale){
+                chk.checked=false;
+            }
+
+            let radioMateriale = document.querySelectorAll('#filtru-materiale input[type="radio"][value="are"]');
+            for(let rad of radioMateriale){
+                rad.checked=true;
+            }
+
+            restoreOrder();
         }
-
-        document.getElementById("inp-materiale").value = "";
-
-        let chkMateriale = document.querySelectorAll('input[name = "chk-material"]');
-        for(let chk of chkMateriale){
-            chk.checked=false;
-        }
-
-        let radioMateriale = document.querySelectorAll('#filtru-materiale input[type="radio"][value="are"]');
-        for(let rad of radioMateriale){
-            rad.checked=true;
-        }
-
-        restoreOrder();
     }
-}
     document.getElementById("sortCrescNume").onclick=function(){
         sorteaza1(1);
     }
@@ -209,12 +235,10 @@ window.onload = function(){
         let vProduse = Array.from(produse);
         vProduse.sort(function(a,b){
 
-            let greutateA = parseFloat(a.getElementsByClassName("val-greutate")[0].innerHTML.trim());
-            let greutateB = parseFloat(b.getElementsByClassName("val-greutate")[0].innerHTML.trim());
             let pretA = parseFloat(a.getElementsByClassName("val-pret")[0].innerHTML.trim());
             let pretB = parseFloat(b.getElementsByClassName("val-pret")[0].innerHTML.trim());
             if(pretA !=pretB)
-                return semn*(greutateA/pretA-greutateB/pretB);
+                return semn*(pretA-pretB);
             let categA = a.getElementsByClassName("val-categorie")[0].innerHTML.trim().toLowerCase();
             let categB = b.getElementsByClassName("val-categorie")[0].innerHTML.trim().toLowerCase();
             return categA.localeCompare(categB);

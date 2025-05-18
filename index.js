@@ -5,6 +5,13 @@ const sharp = require("sharp");
 const sass = require("sass");
 const pg = require("pg");
 
+// const AccesBD=require("./module_proprii/accesbd.js")
+// AccesBD.getInstanta().select({tabel:"produs",campuri:["*"]},function(err,rez){
+//     console.log("----------------AccesBD-------------------");
+//     console.log(err);
+//     console.log(rez)
+// })
+
 const Client=pg.Client;
 
 client=new Client({ //instanta a uni clinet de baze de date
@@ -40,8 +47,17 @@ obGlobal = {
     obImagini:null,
     folderScss: path.join(__dirname,"resurse/scss"),
     folderCss: path.join(__dirname,"resurse/css"),
-    folderBackup: path.join(__dirname,"backup")
+    folderBackup: path.join(__dirname,"backup"),
+    optiuniMeniu:null
 }
+
+
+client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezultat){
+    console.log(err);
+    console.log(rezultat);
+    obGlobal.optiuniMeniu=rezultat.rows;
+});
+
 
 vect_foldere=["temp","backup","temp1"]
 for(let folder of vect_foldere){
@@ -236,6 +252,11 @@ console.log("Folderul proiectului", __dirname);
 console.log("Cale catre fisier index.js", __filename);
 console.log("Folderul de lucru",process.cwd());
 
+app.use("/*",function(req,res,next){
+    console.log("optiuniMeniu=",obGlobal.optiuniMeniu);
+    res.locals.optiuniMeniu=obGlobal.optiuniMeniu;
+    next();
+})
 
 app.get("/favicon.ico",function(req,res){
     res.sendFile(path.join(__dirname,"resurse/imagini/ico/favicon.ico"));
@@ -247,8 +268,6 @@ app.get(["/","/home","/index"],function(req,res){
         ip: req.ip
     });
 })
-
-
 
 app.get("/extra",function(req,res){ 
     res.render("pagini/extra",{
@@ -281,53 +300,77 @@ app.get("/abc", function(req, res, next){
     res.end();
 });
 
-app.get("/produse", function(req, res){
+app.get("/produse", function(req, res) {
     console.log(req.query)
-    var conditieQuery=""; // TO DO where din parametri
-    if(req.query.tip){
-        conditieQuery=`where tip_produs='${req.query.tip}'`;
+    
+    let conditii = [];
+    let valori = [];
+    let idx = 1;
+
+    if (req.query.tip) {
+        conditii.push(`tip_produs = $${idx++}`);
+        valori.push(req.query.tip);
     }
 
+    if (req.query.categ_produs) {
+        conditii.push(`categorie = $${idx++}`);
+        valori.push(req.query.categ_produs);
+    }
 
-    queryOptiuni="select * from unnest(enum_range(null::categ_produs))"
-    client.query(queryOptiuni, function(err, rezOptiuni){
-        console.log(rezOptiuni)
+    if (req.query.brand) {
+        conditii.push(`brand = $${idx++}`);
+        valori.push(req.query.brand);
+    }
 
-        queryProduse="select * from produs"+conditieQuery;
-        client.query(queryProduse, function(err, rez){
-            if (err){
+    let conditieQuery = conditii.length > 0 ? " WHERE " + conditii.join(" AND ") : "";
+
+    let queryOptiuni = "select * from unnest(enum_range(null::categ_produs))";
+    client.query(queryOptiuni, function(err, rezOptiuni) {
+        if (err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        let queryProduse = "select * from produs" + conditieQuery;
+        client.query(queryProduse, valori, function(err, rez) {
+            if (err) {
                 console.log(err);
                 afisareEroare(res, 2);
+                return;
             }
-            else{
 
-                const luni = [
-                    "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
-                    "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
-                ];
-                const zile = [
-                    "Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"
-                ];
-                
-                for (let prod of rez.rows) {
-                    const d = new Date(prod.data_adaugare);
-                
-                    const zi = d.getDate();
-                    const luna = luni[d.getMonth()];
-                    const an = d.getFullYear();
-                    const ziSapt = zile[d.getDay()];
-                
-                    prod.data_formatata_ro = `${zi} ${luna} ${an} [${ziSapt}]`;
-                
-                    // pentru time datetime
-                    prod.data_datetime = d.toISOString().split("T")[0];
+            const luni = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"];
+            const zile = ["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+
+            for (let prod of rez.rows) {
+                const d = new Date(prod.data_adaugare);
+                prod.data_formatata_ro = `${d.getDate()} ${luni[d.getMonth()]} ${d.getFullYear()} [${zile[d.getDay()]}]`;
+                prod.data_datetime = d.toISOString().split("T")[0];
+            }
+
+            let queryPret = "select min(pret) as pret_min, max(pret) as pret_max from produs";
+            client.query(queryPret, function(err, rezPret) {
+                if (err) {
+                    console.log(err);
+                    afisareEroare(res, 2);
+                    return;
                 }
 
-                res.render("pagini/produse", {produse: rez.rows, optiuni:rezOptiuni.rows})
-            }
-        })
+                let pretMin = rezPret.rows[0].pret_min;
+                let pretMax = rezPret.rows[0].pret_max;
+
+                res.render("pagini/produse", {
+                    produse: rez.rows,
+                    optiuni: rezOptiuni.rows,
+                    pretMin: pretMin,
+                    pretMax: pretMax
+                });
+            });
+        });
     });
-})
+});
+
 
 app.get("/produs/:id", function(req, res){
     console.log(req.params);

@@ -12,131 +12,179 @@
     <body>
         <%- include("../fragmente/header") %>
     <main>
-        <label> Nume: <input type="text" id="inp-nume"></label>
-        <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
-        <div> Rating:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
-            <p><label>Slab (rating &lt; 2)
-                <input id="i_rad1"  name="gr_rad" value="0:2" type="radio"/>
-            </label></p>
-            <p><label>Mediu (2 &le; rating &lt; 3.5)
-                <input id="i_rad2"  name="gr_rad" value="2:3.5" type="radio"/>
-            </label>
-            <p><label>Bun (3.5 &le; rating)
-                <input id="i_rad3" name="gr_rad" value="3.5:5" type="radio"/>
-            </label>
-            <p><label>Toate
-                <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
-            </label>
-        </div>
 
-        <div>
-            <label>Cablu inclus: <input type="checkbox" id="inp-cablu"></label>
-        </div>
+        <div id="filtre">
+            <div class="row my-4">
 
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <label for="inp-pret">Pret minim:</label>
-            <span id="min-pret">0</span>
-            <input type="range" id="inp-pret" value="0" min="0" max="6000">
-            <span id="max-pret">6000</span>
-            <span id="infoRange">(0)</span>
-        </div>
+                <div class="col-lg-6 d-flex flex-column gap-4">
 
-        
-        <label>Select simplu:
-            <select id="inp-categorie">
-                <option id="sel-toate" selected value="toate">toate</option>
-                <% for (let opt of locals.optiuni) { %>
-                    <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
-                <% } %>
-            </select>
-        </label>
+                    <div id="container-nume">
+                        <label> Nume: <input type="text" id="inp-nume"></label>
+                    </div>
+                    
 
-        <div class = "multiplu">
-            <label>Select multiplu:
-            </label>    
-            <select id="inp-categorii-multiple" multiple size="5">
-                <% for (let opt of locals.optiuni) { %>
-                    <option value="<%- opt.unnest %>"><%- opt.unnest %></option>
-                <% } %>
-            </select>
-        </div>
 
-        <div class="mats">
-            <label>Materiale (separate prin virgulă): 
-            </label>
-            <textarea id="inp-materiale" placeholder="Ex: plastic, metal"></textarea>
-        </div>
+                    <div id="container-rating">
+                        <p>Rating:</p>
+                        <div class="btn-group" role="group" aria-label="Rating buttons">
+                            <input type="radio" class="btn-check" name="gr_rad" id="i_rad1" value="0:2">
+                            <label class="btn btn-outline-primary btn-rad" for="i_rad1">Slab (rating &lt; 2)</label>
+                
+                            <input type="radio" class="btn-check" name="gr_rad" id="i_rad2" value="2:3.5">
+                            <label class="btn btn-outline-primary  btn-rad" for="i_rad2">Mediu (2 &le; rating &lt; 3.5)</label>
+                
+                            <input type="radio" class="btn-check" name="gr_rad" id="i_rad3" value="3.5:5">
+                            <label class="btn btn-outline-primary  btn-rad" for="i_rad3">Bun (3.5 &le; rating)</label>
+                
+                            <input type="radio" class="btn-check" name="gr_rad" id="i_rad4" value="toate" checked>
+                            <label class="btn btn-outline-primary  btn-rad" for="i_rad4">Toate</label>
+                        </div>
+                    </div>
 
-        <div id="filtru-materiale">
-            <div class="filtru-material">
-                <label>
-                    <input type="checkbox" name="chk-material" value="metal">
-                    Metal
-                </label>
-                <label>
-                    <input type="radio" name="metal-opt" value="are" checked>
-                    Are
-                </label>
-                <label>
-                    <input type="radio" name="metal-opt" value="nu-are">
-                    Nu are
-                </label>
+                    <div id="container-pret" style="display: flex; align-items: center; gap: 10px;">
+                        <label for="inp-pret">Pret minim:</label>
+                        <span id="min-pret"><%= pretMin %></span>
+                        <input type="range" class="form-range" id="inp-pret" value="0" min="<%= pretMin %>" max="<%= pretMax %>">
+                        <span id="max-pret"><%= pretMax %></span>
+                        <span id="infoRange">(0)</span>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 d-flex justify-content-center align-items-center">
+                <div class = "multiplu">
+                    <label>Select multiplu:
+                    </label>    
+                    <select id="inp-categorii-multiple" multiple size="5">
+                        <% for (let opt of locals.optiuni) { %>
+                            <option value="<%- opt.unnest %>"><%- opt.unnest %></option>
+                        <% } %>
+                    </select>
+                </div>
+                </div>
+
+                <div class="col-lg-3 d-flex justify-content-center align-items-center">
+                    <div id="filtru-materiale">
+                <div class="filtru-material">
+                    <label>
+                        <input type="checkbox" name="chk-material" value="metal">
+                        Metal
+                    </label>
+                    <label>
+                        <input type="radio" name="metal-opt" value="are" checked>
+                        Are
+                    </label>
+                    <label>
+                        <input type="radio" name="metal-opt" value="nu-are">
+                        Nu are
+                    </label>
+                </div>
+                <div class="filtru-material">
+                    <label>
+                        <input type="checkbox" name="chk-material" value="plastic">
+                        Plastic
+                    </label>
+                    <label>
+                        <input type="radio" name="plastic-opt" value="are" checked>
+                        Are
+                    </label>
+                    <label>
+                        <input type="radio" name="plastic-opt" value="nu-are">
+                        Nu are
+                    </label>
+                </div>
+                <div class="filtru-material">
+                    <label>
+                        <input type="checkbox" name="chk-material" value="lemn">
+                        Lemn
+                    </label>
+                    <label>
+                        <input type="radio" name="lemn-opt" value="are" checked>
+                        Are
+                    </label>
+                    <label>
+                        <input type="radio" name="lemn-opt" value="nu-are">
+                        Nu are
+                    </label>
+                </div>
+                <div class="filtru-material">
+                    <label>
+                        <input type="checkbox" name="chk-material" value="textil">
+                        Textil
+                    </label>
+                    <label>
+                        <input type="radio" name="textil-opt" value="are" checked>
+                        Are
+                    </label>
+                    <label>
+                        <input type="radio" name="textil-opt" value="nu-are">
+                        Nu are
+                    </label>
+                </div>
+                    </div>
+                </div>
             </div>
-            <div class="filtru-material">
-                <label>
-                    <input type="checkbox" name="chk-material" value="plastic">
-                    Plastic
-                </label>
-                <label>
-                    <input type="radio" name="plastic-opt" value="are" checked>
-                    Are
-                </label>
-                <label>
-                    <input type="radio" name="plastic-opt" value="nu-are">
-                    Nu are
-                </label>
-            </div>
-            <div class="filtru-material">
-                <label>
-                    <input type="checkbox" name="chk-material" value="lemn">
-                    Lemn
-                </label>
-                <label>
-                    <input type="radio" name="lemn-opt" value="are" checked>
-                    Are
-                </label>
-                <label>
-                    <input type="radio" name="lemn-opt" value="nu-are">
-                    Nu are
-                </label>
-            </div>
-            <div class="filtru-material">
-                <label>
-                    <input type="checkbox" name="chk-material" value="textil">
-                    Textil
-                </label>
-                <label>
-                    <input type="radio" name="textil-opt" value="are" checked>
-                    Are
-                </label>
-                <label>
-                    <input type="radio" name="textil-opt" value="nu-are">
-                    Nu are
-                </label>
+
+            <div class="row my-4">
+                <div class="col-lg-2">
+                    <div id="container-cablu">
+                        <label>Cablu inclus: <input type="checkbox" id="inp-cablu"></label>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div id="container-select-multiplu">
+                        <label>Select simplu:
+                            <select id="inp-categorie">
+                                <option id="sel-toate" selected value="toate">toate</option>
+                                <% for (let opt of locals.optiuni) { %>
+                                    <option value="<%- opt.unnest %>"><%- opt.unnest %> </option>
+                                <% } %>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="mats form-floating">
+                        <textarea id="inp-materiale" class="form-control" placeholder="Ex: plastic, metal"></textarea>
+                        <label>Materiale (separate prin virgulă): </label>
+
+                        <div class="invalid-feedback">
+                            Introdu minimum 3 caractere și cel puțin un material.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <p>
-        <button id="filtrare">Filtreaza</button> 
+    <div id="container-butoane">
+        <div class="but">
+            <button id="filtrare" class="btn btn-primary">
+                <i class="bi bi-funnel"></i><p>Filtreaza</p>
+            </button> 
 
-        <button id="resetare">Reseteaza</button><br/>
-        <button id="sortCrescNume">Sorteaza crescator dupa pret si nume</button>
-        <button id="sortDescrescNume">Sorteaza descrescator dupa pret si nume</button><br>
-        <button id="sortCrescCrit">Sorteaza crescator dupa greutate/pret si nume</button>
-        <button id="sortDescCrit">Sorteaza descrescator dupa greutate/pret si nume</button>
-
-        
-        </p>
+            <button id="resetare" class="btn btn-secondary">
+                <i class="bi bi-arrow-counterclockwise"></i><p>Reseteaza</p>
+            </button>
+        </div>
+        <div class="but">
+            <button id="sortCrescNume" class="btn btn-primary">
+                <i class="bi bi-sort-alpha-down"></i><p>Sorteaza crescator dupa pret si nume</p>
+            </button>
+            <button id="sortDescrescNume" class="btn btn-secondary">
+                <i class="bi bi-sort-alpha-up-alt"></i><p>Sorteaza descrescator dupa pret si nume</p>
+            </button>
+        </div>
+        <div class="but">
+            <button id="sortCrescCrit" class="btn btn-primary">
+                <i class="bi bi-sort-down"></i><p>Sorteaza crescator dupa pret si categorie</p>
+            </button>
+            <button id="sortDescCrit" class="btn btn-secondary">
+                <i class="bi bi-sort-up"></i><p>Sorteaza descrescator dupa pret si categorie</p>
+            </button>
+        </div>
+    </div>
       
         <p id="p-suma">Apăsați Alt+"c" pentru suma preturilor produselor afișate. </p>
   
@@ -177,9 +225,35 @@
                     </article>
                 <% }%>
             </div>
+            <p id="mesaj-filtrare" style="display: none;">Nu exista produse conform filtrarii</p>
         </section>
     </main>
 
     <%- include("../fragmente/footer") %>
+    <script>
+        const textarea = document.getElementById('inp-materiale');
+        const materialeValide = ["metal", "plastic", "lemn", "textil","mahogany","alder","nut","poliester"];
+
+        textarea.addEventListener('input', () => {
+            const input = textarea.value.trim().toLowerCase();
+            
+            const materiale = input
+            .split(',')
+            .map(m => m.trim())
+            .filter(m => m.length > 0);
+
+            const areMaterialeValide = materiale.some(mat => materialeValide.includes(mat));
+
+            const isValid = input.length >= 3 && areMaterialeValide;
+
+            if (isValid) {
+            textarea.classList.remove('is-invalid');
+            textarea.classList.add('is-valid');
+            } else {
+            textarea.classList.remove('is-valid');
+            textarea.classList.add('is-invalid');
+            }
+        });
+    </script>
     </body>
 </html>

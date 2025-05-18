@@ -1,3 +1,4 @@
+<script src="resurse/js/tema.js"></script>
 <header>
     <h1 class = "main_title">GuitarHeaven</h1>
         </header>
@@ -25,49 +26,64 @@
                 </li>
 
                 <li class = "dropdown">
-                    <a href="/produse" class="dropdown-btn">CHITARE</a>
+                    <a href="/produse?tip=chitara" class="dropdown-btn">CHITARE</a>
                     <ul class = "dropdown_menu">
-                        <li><a href = "/produse?tip=cofetarie">Fender</a></li>
-                        <li><a href = "/produse?tip=patiserie">Gibson</a></li>
-                        <li><a href = "/produse?tip=prs">PRS</a></li>
-                        <li><a href = "/produse">Squire</a></li>
-                        <li><a href = "/produse">Ibanez</a></li>
+                        <li><a href = "/produse?brand=fender&tip=chitara">Fender</a></li>
+                        <li><a href = "/produse?brand=gibson&tip=chitara">Gibson</a></li>
+                        <li><a href = "/produse?brand=prs&tip=chitara">PRS</a></li>
+                        <li><a href = "/produse?brand=squire&tip=chitara">Squire</a></li>
+                        <li><a href = "/produse?brand=ibanez&tip=chitara">Ibanez</a></li>
                     <!--in acelasi meniu stilizat sa vina separat -->                  
-                        <li><a href = "/produse">Electrice</a></li>                    
-                        <li><a href = "/produse">Acustice</a></li>                    
-                        <li><a href = "/produse">Clasice</a></li>                    
+                        <li><a href = "/produse?categ_produs=electrica">Electrice</a></li>                    
+                        <li><a href = "/produse?categ_produs=acustica">Acustice</a></li>                    
+                        <li><a href = "/produse?categ_produs=clasica">Clasice</a></li>                    
                     </ul>
                 </li>
                 <li class = "dropdown">
-                    <a href="/produse" class="dropdown-btn">AMPLIFICATOARE</a>
+                    <a href="/produse?tip=amplificator" class="dropdown-btn">AMPLIFICATOARE</a>
                     <ul class = "dropdown_menu">
-                        <li><a href="/index#">Fender</a></li>
-                        <li><a href="/index#">Marshall</a></li>
-                        <li><a href="/index#">Orange</a></li>
-                        <li><a href="/index#">BlackStar</a></li>
-                        <li><a href="/index#">Boss</a></li>
+                        <li><a href="/produse?brand=fender&tip=amplificator">Fender</a></li>
+                        <li><a href="/produse?brand=marshall&tip=amplificator">Marshall</a></li>
+                        <li><a href="/produse?brand=orange&tip=amplificator">Orange</a></li>
+                        <li><a href="/produse?brand=blackstar&tip=amplificator">BlackStar</a></li>
+                        <li><a href="/produse?brand=boss&tip=amplificator">Boss</a></li>
                         <!--      -->
-                        <li><a href="/index#">Head</a></li>
-                        <li><a href="/index#">Combo</a></li>
-                        <li><a href="/index#">Cabinet</a></li>
+                        <li><a href="/produse?categ_produs=head">Head</a></li>
+                        <li><a href="/produse?categ_produs=combo">Combo</a></li>
+                        <li><a href="/produse?categ_produs=cabinet">Cabinet</a></li>
                     </ul>
                 </li>
                 <li class = "dropdown">
-                    <a href="/produse" class="dropdown-btn">ACCESORII</a>
+                    <a href="/produse?tip=accesoriu" class="dropdown-btn">ACCESORII</a>
                     <ul class = "dropdown_menu">
-                        <li><a href="/index#">Pene</a></li>
-                        <li><a href="/index#">Corzi</a></li>
-                        <li><a href="/index#">Huse</a></li>
+                        <li><a href="/produse?categ_produs=pene">Pene</a></li>
+                        <li><a href="/produse?categ_produs=corzi">Corzi</a></li>
+                        <li><a href="/produse?categ_produs=huse">Huse</a></li>
+                        <li><a href="/produse?categ_produs=straps">Straps</a></li>
+                        <li><a href="/produse?categ_produs=cablu">Cabluri</a></li>
                     </ul>
                 </li>
                 <li class = "dropdown">
                     <a href="/produse" class="dropdown-btn">PRODUSE</a>
                     <ul class = "dropdown_menu">
                         <li><a href="/produse">Toate</a></li>
-                        <li><a href="/produse?tip=chitara">Chitare</a></li>
+                        <!-- <li><a href="/produse?tip=chitara">Chitare</a></li>
                         <li><a href="/produse?tip=amplificator">Amplificatoare</a></li>
-                        <li><a href="/produse?tip=accesoriu">Accesorii</a></li>
+                        <li><a href="/produse?tip=accesoriu">Accesorii</a></li> -->
+                        <% for(let opt of locals.optiuniMeniu){ %>
+                            <li><a href="/produse?tip=<%= opt.unnest %>"><%= opt.unnest %></a></li>
+                        <% } %>
                     </ul>
+                </li>
+                <li>
+                    <div class="mb-3">
+                        <label for="theme-select" class="form-label">Alege tema</label>
+                        <select class="form-select" id="theme-select">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    </div>
                 </li>
             </ul>
             <ul class = "right_menu">

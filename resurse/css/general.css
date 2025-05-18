@@ -413,6 +413,9 @@ figure{
     transform: translateX(0);
 }
 
+
+/* de pus body.dark{override culori}*/
+
 /***************************end main*******************************/
 
 /**************************footer********************************/
@@ -423,7 +426,7 @@ footer{
     color: whitesmoke;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     padding-left: var(--padding-large);
     padding-right: var(--padding-large);
     border-top: 3px solid var(--rosu);
@@ -517,7 +520,13 @@ footer small p{
 }
 
 #banner{
-    display: none;
+    grid-row: 3;
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
+    padding: 2.5rem;
 }
 
 /*************************end footer*************************/
@@ -618,8 +627,8 @@ a.external:hover{
         grid-column: 1/-1 ;
     }
     footer .link_date{
-        grid-row:3 ;
-        grid-column: 1/-1 ;
+        grid-row:3;
+        grid-column: 1/-1;
     }
     .link_top{
         width: var(--sus-medium);
