@@ -33,15 +33,53 @@
 
 $themes: (
   light: (
-    body-bg: #ffffff,
-    body-color: #000000,
-    primary: #0d6efd
-  ),
+  --background-color: #FDFDFD,
+  --text-background: #F8F1E5,
+  --text-color:#262626,
+  --text-deschis: #262626,
+  --hf-background-color: #E1D7C6,
+  --negru: #000000,
+
+  --culoare1-inchis: #735D78,
+  --culoare1: #A593C2,
+  --culoare1-deschis: #CBB4D4,
+
+  --culoare2-inchis: #7E5A5A,
+  --culoare2: #C98B8B,
+  --culoare2-deschis: #EDB9B9,
+
+  --culoare3-inchis: #918558,
+  --culoare3: #C2B280,
+  --culoare3-deschis: #F0E6C0,
+
+  --culoare4-inchis: #5C768D,
+  --culoare4: #9BB7D4,
+  --culoare4-deschis: #D6EAF8,
+),
   dark: (
-    body-bg: #1e1e1e,
-    body-color: #eeeeee,
-    primary: #4e8cff
-  ),
+  --background-color: #2b2b2b,
+  --text-background: #BFBFBF,
+  --text-color: #EAEAEA,
+  --text-deschis: #969393,
+  --hf-background-color: #333333,
+  --negru: #000000,
+
+  --culoare1-inchis: #745b5b,
+  --culoare1: #5E4B4B,
+  --culoare1-deschis: #8C7A7A,
+
+  --culoare2-inchis: #403040,
+  --culoare2: #6A4E77,
+  --culoare2-deschis: #A78BBF,
+
+  --culoare3-inchis: #4C3D29,
+  --culoare3: #A9743D,
+  --culoare3-deschis: #DFAE6A,
+
+  --culoare4-inchis: #37403F,
+  --culoare4: #313634,
+  --culoare4-deschis: #8EA49C,
+),
   blue: (
     body-bg: #A9E0F4,
     body-color: #001f33,
@@ -52,7 +90,7 @@ $themes: (
 @each $name, $vars in $themes {
   body[data-theme="#{$name}"] {
     @each $prop, $val in $vars {
-      --bs-#{$prop}: #{$val};
+      #{$prop}: #{$val};
     }
   }
 }
@@ -63,7 +101,7 @@ $themes: (
 /* Test de variabila CSS */
 .test-padding {
   padding: var(--padding-large);
-  background-color: var(--rosu);
+  background-color: var(--culoare2);
 }
 
 button {

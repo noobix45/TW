@@ -7,13 +7,13 @@ main{
 
 #art-produs{
     border-radius: 1rem;
-    box-shadow: 0px 0px 0.8rem 0.3rem var(--mov-deschis);
+    box-shadow: 0px 0px 0.8rem 0.3rem var(--culoare1-deschis);
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(3,auto);
     margin: 1rem;
-    background-color: var(--rosu);
+    background-color: var(--culoare2);
     border: 2px var(--negru) solid; 
 }
 
@@ -29,7 +29,7 @@ main{
 }
 
 .nume{
-    background-color: var(--albastru-inchis);
+    background-color: var(--culoare4-inchis);
     color: var(--text-deschis);
 }
 
@@ -38,7 +38,7 @@ main{
     text-decoration: none;
 }
 #art-produs h3 a:hover{
-    color:var(--albastru-deschis);
+    color:var(--culoare4-deschis);
 }
 
 #art-produs figure{
@@ -106,7 +106,7 @@ main{
 }
 
 .selecteaza-cos{
-    background-color: var(--albastru-inchis);
+    background-color: var(--culoare4-inchis);
     color: var(--text-deschis);
     border-radius: 0.5rem;
     text-align: center;
@@ -123,7 +123,7 @@ main{
 }
 
 .selecteaza-cos:hover{
-    background-color: var(--albastru);
+    background-color: var(--culoare4);
     
     border:1px solid  var(--negru);
 }

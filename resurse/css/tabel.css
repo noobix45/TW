@@ -4,7 +4,7 @@ table{
     caption-side: bottom;
     border-collapse: collapse;
     width: 100%;
-    border: inset 5px var(--albastru);
+    border: inset 5px var(--culoare4);
     text-align: center;
     background-color: var(--text-background);
     color: var(--text-color);
@@ -15,11 +15,11 @@ table tr:nth-child(even) td {
 }
 
 table tr:nth-child(odd) td {
-    border-bottom: 2px solid var(--albastru-inchis);
+    border-bottom: 2px solid var(--culoare4-inchis);
 }
 
 table td, table th {
-    border: 1px solid var(--mov-inchis);
+    border: 1px solid var(--culoare1-inchis);
     padding: 8px;
 }
 
@@ -28,12 +28,12 @@ table tr {
 }
 
 table tr:hover {
-    /* outline: 5px solid var(--rosu); */
-    outline: 5px solid color-mix(in srgb, var(--rosu) 70%, transparent);
+    /* outline: 5px solid var(--culoare2); */
+    outline: 5px solid color-mix(in srgb, var(--culoare2) 70%, transparent);
 }
 
 table caption{
-    background-color: var(--albastru);
+    background-color: var(--culoare4);
     padding: 5px 10px;
     color: var(--text-background);
     

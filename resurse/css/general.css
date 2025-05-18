@@ -35,21 +35,21 @@
     --hf-background-color: #1F5673;
     --negru: black;
 
-    --mov-inchis: #321B2C;
-    --mov: #53294B;
-    --mov-deschis: #5D3A6D;
+    --culoare1-inchis: #321B2C;
+    --culoare1: #53294B;
+    --culoare1-deschis: #5D3A6D;
 
-    --rosu-inchis: #461626;
-    --rosu: #82202D;
-    --rosu-deschis: #972F34;
+    --culoare2-inchis: #461626;
+    --culoare2: #82202D;
+    --culoare2-deschis: #972F34;
 
-    --galben-inchis: #71281A;
-    --galben: #A44F0E;
-    --galben-deschis: #D3842F;
+    --culoare3-inchis: #71281A;
+    --culoare3: #A44F0E;
+    --culoare3-deschis: #D3842F;
 
-    --albastru-inchis: #25385B;
-    --albastru: #3C728F;
-    --albastru-deschis: #60959F;
+    --culoare4-inchis: #25385B;
+    --culoare4: #3C728F;
+    --culoare4-deschis: #60959F;
 }
 
 @font-face {
@@ -128,8 +128,9 @@ main{
 }
 
  .zona2, .zona3, .zona4, .zona5, .zona6, .zona7, .zona8{
-    border: solid var(--mov);
+    border: solid var(--culoare1);
     border-collapse: collapse;
+    color: var(--text-deschis)
 }
 
 .zona1{
@@ -207,7 +208,7 @@ main{
 .reclama_titlu h2{
     margin: 0px;
     font-size: 2rem;
-    color: var(--negru);
+    color: var(--text-deschis);
 }
 
 .container_reclama img{
@@ -240,9 +241,9 @@ main{
 .zona1 hr{
     width: 100% !important;
     background-image: 
-    linear-gradient(to right, var(--rosu-inchis) 50%, var(--rosu-inchis) 60%, transparent 60%),
-    linear-gradient(to right, var(--rosu-deschis) 50%, var(--rosu-deschis) 60%,transparent 60%),
-    linear-gradient(to right, var(--rosu-inchis) 50%, var(--rosu-inchis) 60%, transparent 60%) !important;
+    linear-gradient(to right, var(--culoare2-inchis) 50%, var(--culoare2-inchis) 60%, transparent 60%),
+    linear-gradient(to right, var(--culoare2-deschis) 50%, var(--culoare2-deschis) 60%,transparent 60%),
+    linear-gradient(to right, var(--culoare2-inchis) 50%, var(--culoare2-inchis) 60%, transparent 60%) !important;
     background-repeat: repeat-x !important;
     
     height: 18px !important;
@@ -288,7 +289,7 @@ figure{
     grid-row: 1;
     grid-column: 1/-1;
     text-align: center;
-    color: var(--negru);
+    color: var(--text-deschis);
 }
 
 .categorii img{
@@ -331,24 +332,24 @@ figure{
 
 .categorii ul li a{
     text-decoration: none;
-    color: black;
+    color: var(--text-deschis);
 }
 /**************************end categorii***********************/
 
 .section_content{
     background-color: var(--hf-background-color); 
     color: var(--text-deschis);
-    /* border: solid 3px var(--galben); */
+    /* border: solid 3px var(--culoare3); */
     /* border-radius: 5px; */
     padding: var(--text-padding-large); /* design rudimentar d */
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .title{
-    background-color: var(--mov-inchis);
+    background-color: var(--culoare1-inchis);
     margin: 0;
     padding: 10px;
-    color: var(--albastru)
+    color: var(--culoare4)
 }
 
 #despre{
@@ -422,14 +423,14 @@ figure{
 footer{
     grid-column: 1 / -1;
     grid-row:3;
-    background-color: var(--albastru-inchis);
+    background-color: var(--culoare4-inchis);
     color: whitesmoke;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
     padding-left: var(--padding-large);
     padding-right: var(--padding-large);
-    border-top: 3px solid var(--rosu);
+    border-top: 3px solid var(--culoare2);
     padding-top: 3rem;
 }
 
@@ -484,7 +485,7 @@ footer small p{
 .link_top{
     width: var(--sus-large);
     height: var(--sus-large);
-    background-color: var(--mov-deschis);
+    background-color: var(--culoare1-deschis);
     border-radius: 50%;
     color: whitesmoke;
     box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
@@ -496,7 +497,7 @@ footer small p{
 }
 
 .link_top:hover {
-    background-color: var(--mov-inchis);
+    background-color: var(--culoare1-inchis);
     opacity: 1;
 }
 
@@ -554,7 +555,7 @@ footer small p{
     text-align: center;
     width: 0;
     height: 0;
-    background: radial-gradient(circle, var(--mov-deschis) 0%, var(--mov-deschis) 40%, transparent 80%);
+    background: radial-gradient(circle, var(--culoare1-deschis) 0%, var(--culoare1-deschis) 40%, transparent 80%);
     border-radius: 50%;
     transition: width 0.4s ease, height 0.4s ease;
     z-index: -1;
@@ -575,7 +576,7 @@ a.external::before{
 }
 
 a.external:hover{
-    color: var(--galben-deschis);
+    color: var(--culoare3-deschis);
 }
 
 /***********************************************************/

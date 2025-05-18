@@ -30,35 +30,35 @@
     $text-padding-medium: 18px;
     $text-padding-small: 16px;
 
-    $background-color: #0E5088;
-    $text-background: #EDE0C8;
-    $text-color: #262626;
-    $text-deschis: whitesmoke;
-    $hf-background-color: #1F5673;
+    // $background-color: #0E5088;
+    // $text-background: #EDE0C8;
+    // $text-color: #262626;
+    // var(--text-deschis): whitesmoke;
+    // $hf-background-color: #1F5673;
 
-    $mov-inchis: #321B2C;
-    $mov: #53294B;
-    $mov-deschis: #5D3A6D;
-    $mov-link: #551A8B;
+    // $mov-inchis: #321B2C;
+    // $mov: #53294B;
+    // $mov-deschis: #5D3A6D;
+    // $mov-link: #551A8B;
 
-    $rosu-inchis: #461626;
-    $rosu: #82202D;
-    $rosu-deschis: #972F34;
+    // var(--culoare2-inchis): #461626;
+    // var(--culoare2): #82202D;
+    // var(--culoare2)-deschis: #972F34;
 
-    $galben-inchis: #71281A;
-    $galben: #A44F0E;
-    $galben-deschis: #D3842F;
+    // $galben-inchis: #71281A;
+    // $galben: #A44F0E;
+    // $galben-deschis: #D3842F;
 
-    $albastru-inchis: #25385B;
-    $albastru: #3C728F;
-    $albastru-deschis: #60959F;
+    // var(--culoare4-inchis): #25385B;
+    // var(--culoare4): #3C728F;
+    // var(--culoare4)-deschis: #60959F;
 
 header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $rosu-inchis;
-    // border-bottom: solid 5px $rosu;
+    background-color: var(--culoare2-inchis);
+    // border-bottom: solid 5px var(--culoare2);
 
     .main_title{
         margin: 0;
@@ -66,8 +66,8 @@ header{
         align-items: center;
         justify-content: center;
         font-size: 2.5rem;
-        color: $text-deschis;
-        border-bottom: solid 5px $rosu;
+        color: var(--text-deschis);
+        border-bottom: solid 5px var(--culoare2);
         width: 100%;
         height: $inaltime-titlu;
         padding-top: 25px;
@@ -87,8 +87,8 @@ header{
     margin: 0 auto;
     padding-left: $padding-large;
     padding-right: $padding-large;
-    background-color: $albastru-inchis;
-    border-bottom: $rosu solid 5px;
+    background-color: var(--culoare4-inchis);
+    border-bottom: var(--culoare2) solid 5px;
     position: sticky;
     top:0;
 
@@ -136,7 +136,7 @@ header{
         height: $inaltime-meniu;
         a{
             text-decoration: none;
-            color: $text-deschis;
+            color: var(--text-deschis);
             width: $latime-buton;
         }
         .dropdown {
@@ -163,11 +163,11 @@ header{
                     list-style: none;
                     padding: 0;
                     li{
-                        background-color: $albastru-inchis;
+                        background-color: var(--culoare4-inchis);
                         border-collapse: collapse;
-                        border: 1px solid $albastru;
+                        border: 1px solid var(--culoare4);
                         &:hover{
-                            background-color: $albastru;
+                            background-color: var(--culoare4);
                         }
                         a{
                         width: 100%;
@@ -190,7 +190,7 @@ header{
                 left: 0;
                 width: 100%;
                 height: 3px;
-                background: linear-gradient(to right, $rosu-inchis, $rosu-deschis, $rosu-inchis);
+                background: linear-gradient(to right, var(--culoare2-inchis), var(--culoare2-deschis), var(--culoare2-inchis));
                 opacity: 0;
                 transition: transform 1s ease, opacity 0.3s ease;
             }
@@ -222,7 +222,7 @@ header{
             font-size: $font;
             padding: 0px 20px;
             position: relative;
-            color: $text-deschis;   
+            color: var(--text-deschis);   
 
             &::after {
                 content: "";
@@ -231,7 +231,7 @@ header{
                 left: 0;
                 width: 100%;
                 height: 3px; /* Grosimea barei */
-                background: linear-gradient(to right, $rosu-inchis, $rosu-deschis, $rosu-inchis); //gradient in 3culori
+                background: linear-gradient(to right, var(--culoare2-inchis), var(--culoare2)-deschis, var(--culoare2-inchis)); //gradient in 3culori
                 opacity: 0; /* Bara este complet transparentă inițial */
                 transition: transform 1s ease, opacity 0.3s ease;
             }
@@ -268,7 +268,7 @@ header{
                     }
                     i{
                         display: block;
-                        color: $text-deschis;   
+                        color: var(--text-deschis);   
                     }
                 }
             }
@@ -279,7 +279,7 @@ header{
                 }
                 i{
                     display: block;
-                    color: $text-deschis;
+                    color: var(--text-deschis);
                 }
             }
         }
@@ -309,7 +309,7 @@ header{
             justify-content: center;
             align-items: center;
 
-            background-color: $albastru-inchis;
+            background-color: var(--culoare4-inchis);
 
             animation: revealMenu 0.7s ease-in-out forwards !important;
 
@@ -321,7 +321,7 @@ header{
                 height: auto;
             }
             .left_menu{
-                border-top: 3px $rosu solid;
+                border-top: 3px var(--culoare2) solid;
                 .dropdown{
                     width: 100%;
                     .dropdown-btn{
@@ -332,7 +332,7 @@ header{
                             content:none;
                         }
                         &:hover{
-                            background-color: $albastru;
+                            background-color: var(--culoare4);
                             transition: all 0.5s ease !important;
                         }
                     }
@@ -341,7 +341,7 @@ header{
                             position: static;
                             li{
                                 &:hover{
-                                    background-color: $albastru-deschis;
+                                    background-color: var(--culoare4)-deschis;
                                     transition: all 0.5s ease !important;
                                 }
                                 border: none;
@@ -358,7 +358,7 @@ header{
                         content:none;
                     }
                 }
-                border-bottom: 5px $rosu solid;
+                border-bottom: 5px var(--culoare2) solid;
             }
         }
         

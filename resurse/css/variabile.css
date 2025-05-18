@@ -24,16 +24,16 @@
   --text-deschis: whitesmoke;
   --hf-background-color: #1F5673;
   --negru: black;
-  --mov-inchis: #321B2C;
-  --mov: #53294B;
-  --mov-deschis: #5D3A6D;
-  --rosu-inchis: #461626;
-  --rosu: #82202D;
-  --rosu-deschis: #972F34;
-  --galben-inchis: #71281A;
-  --galben: #A44F0E;
-  --galben-deschis: #D3842F;
-  --albastru-inchis: #25385B;
-  --albastru: #3C728F;
-  --albastru-deschis: #60959F;
+  --culoare1-inchis: #321B2C;
+  --culoare1: #53294B;
+  --culoare1-deschis: #5D3A6D;
+  --culoare2-inchis: #461626;
+  --culoare2: #82202D;
+  --culoare2-deschis: #972F34;
+  --culoare3-inchis: #71281A;
+  --culoare3: #A44F0E;
+  --culoare3-deschis: #D3842F;
+  --culoare4-inchis: #25385B;
+  --culoare4: #3C728F;
+  --culoare4-deschis: #60959F;
 }

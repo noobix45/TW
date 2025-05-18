@@ -8,7 +8,7 @@ main{
 
 
 .section_content{
-    border: solid 2px var(--galben);
+    border: solid 2px var(--culoare3);
     box-shadow: 5px 10px 15px black;
 }
 
@@ -25,7 +25,7 @@ main{
 
 math{
     width: 100%;
-    background: linear-gradient(90deg, var(--galben-deschis), var(--galben), var(--galben-deschis));
+    background: linear-gradient(90deg, var(--culoare2-deschis), var(--culoare2), var(--culoare2-deschis));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -41,7 +41,7 @@ math{
 
 .ifr-video
 {
-    border: solid 5px var(--rosu-inchis);
+    border: solid 5px var(--culoare2-inchis);
     max-width: 100%;
     width: 100%;
     height: auto;
@@ -60,9 +60,9 @@ math{
     max-width: 10vw;
     text-decoration: none;
     border: solid 5px var(--hf-background-color);
-    border-top: solid 5px var(--rosu-inchis);
-    background: radial-gradient(ellipse at center, var(--rosu) 30%, var(--rosu-inchis) 100%);
-    color: var(--galben-deschis);
+    border-top: solid 5px var(--culoare2-inchis);
+    background: radial-gradient(ellipse at center, var(--culoare2) 30%, var(--culoare2-inchis) 100%);
+    color: var(--culoare3-deschis);
     border-radius: 0px 0px 10px 10px;
     padding: 8px 16px;
     text-align: center;
@@ -72,7 +72,7 @@ math{
 }
 
 .taburi-iframe a:hover {
-    background: radial-gradient(ellipse at center, var(--rosu-deschis) 30%, var(--rosu) 100%);
+    background: radial-gradient(ellipse at center, var(--culoare2-deschis) 30%, var(--culoare2) 100%);
     color: white;
 }
 
@@ -89,7 +89,7 @@ figure img{ /* rudimentar e*/
     margin: 1vh auto;
     width: 75%;
     height: auto;
-    border: solid 2px var(--rosu-inchis);
+    border: solid 2px var(--culoare2-inchis);
 }
 video{
     margin: 0;

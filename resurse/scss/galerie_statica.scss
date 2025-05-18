@@ -31,7 +31,7 @@
         margin-top: 0;
         margin-bottom: 1rem;
         color: var(--text-deschis);
-        background-color: var(--mov);
+        background-color: var(--culoare1);
         width: 100%;
         display: flex;
         justify-content: center;
@@ -61,7 +61,7 @@
         position: relative;
         img{
             max-width: 100%;
-            border: var(--mov-inchis) solid 3px;
+            border: var(--culoare1-inchis) solid 3px;
             border-radius: 10px;
             color:var(--text-deschis);
         }
