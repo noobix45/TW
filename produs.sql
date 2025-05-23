@@ -58,14 +58,15 @@ insert into seturi (nume_set, descriere_set)
 values('Fender Tone Essetials', 'Combinația perfectă pentru tonul clasic Fender: chitara Fender Player II Stratocaster în nuanța Aquatone Blue și cablul Fender Original Series de 10ft pentru un sunet clar și autentic.'),
 ('Orange Practice Pack','Ideal pentru sesiuni de practică oriunde: amplificatorul portabil Orange Crush Mini de 3W și cablul Orange de 10ft – compact, puternic și gata de rock.'),
 ('Ibanez Begginer Kit', 'Un start excelent pentru chitariști începători: chitara Ibanez GIO HSS în finisaj Metallic Light Blue și un pachet de 12 pene pentru stil și confort la cântat.'),
-('Epiphone Vintage Starter Set', 'Ton vintage și vibe autentic: chitara Epiphone cu finisaj Aged Vintage Sunburst Gloss, completată de un pachet de 12 pene – perfect pentru orice stil.'),
+('Fender Acoustic Starter Set', 'Ton cald și rafinat într-un stil acustic autentic: chitara FenderConcert All-Mahogany și un pachet de 12 pene – perfectă pentru orice stil și nivel.'),
 ('PRS x Marshall Mini Rig', 'Putere și rafinament într-un pachet compact: chitara PRS SE Silver Sky by John Mayer alături de amplificatorul Marshall MS2 – sunet mare, dimensiune mică.');
 
 select * from seturi;
 select * from produs;
 
 insert into asociere_set (id_set, id_produs)
-values (1,4),(1,5),(2,11),(2,12),(3,1),(3,6),(4,1),(4,16),(5,3),(5,7);
+values (1,4),(1,5),(2,11),(2,12),(3,1),(3,6),(4,1),(4,2),(5,3),(5,7);
+
 
 insert into produs (nume,descriere,pret,tip_produs,categorie,brand,greutate, cablu_inclus,materiale,imagine,rating,pentru_stangaci)
 values 

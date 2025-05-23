@@ -1,0 +1,80 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-deschis);
+    font-size: 1rem;
+}
+
+#container-seturi{
+    display: felx;
+    flex-direction: column;
+    width: 75%;
+}
+
+.set{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 1rem;
+    box-shadow: 0px 0px 0.8rem 0.3rem var(--culoare1-deschis);
+    margin: 1rem;
+    background-color: var(--culoare2);
+    border: 2px var(--negru) solid; 
+}
+
+.nume-set{
+    background-color: var(--culoare4-inchis);
+    color: var(--text-deschis);
+    text-align: center;
+    margin-top: 0;
+    padding: 2rem;
+    border-bottom: 2px var(--negru) solid;
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.container-poze{
+    display: flex;
+    flex-direction: row;
+    gap:5rem;
+    padding: 2rem 0 2rem 0;
+}
+
+figure {
+    width: fit-content;
+    max-width: 100%;
+    text-align: center;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border:5px solid var(--negru);
+    border-radius: 2%;
+}
+
+.nume-produs {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.container-descriere{
+    text-align: justify;
+    padding: 1rem 5rem 2rem 5rem;
+    color: var(--negru);
+}
+
+.container-pret{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+
+.pret{
+    font-size: 1.5rem;
+    color: var(--negru);
+}

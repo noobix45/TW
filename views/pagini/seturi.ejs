@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <meta name="description" content="Magazin de chitare, amplificatoare si accesorii">
+        <meta name="keywords" content="chitara, amplificator, accesorii chitara, GuitarHeaven, chitara electrica, chitara acustica, chitara clasica">
+        <title>GuitarHeaven - Home</title>
+        <%- include("../fragmente/head") %>     
+        <link rel="stylesheet" href="/resurse/css/seturi.css" type="text/css" />
+    </head>
+    
+    <body>
+        <%- include("../fragmente/header") %>
+        <main>
+            <h2>Seturi de produse</h2>
+            <div id="container-seturi">
+                <% for(set of locals.seturi){ %>
+                    <div class="set">
+                            <h3 class="nume-set">Nume:<span class="val-nume"><%- set.nume_set %></span></h3>
+                            <div class="container-poze">
+                                <% for(produs of set.produse) {%>
+                                    <div class="poza-produs">
+                                        <figure>
+                                            <a href="/produs/<%-produs.id%>">
+                                                <img src="/resurse/imagini/produse/<%-produs.imagine%>" alt="[imagine <%-produs.nume%>]">
+                                            </a>
+                                            <figcaption class="nume-produs"><%-produs.nume%></figcaption>
+                                        </figure>
+                                    </div>
+                                <%}%>
+                            </div>
+                            <div class="container-descriere">
+                                <p><%- set.descriere_set%></p>
+                            </div>
+                            <div class="container-pret">
+                                <% 
+                                    let sumaPreturi = 0;
+                                    for(let p of set.produse){
+                                        sumaPreturi+= parseFloat(p.pret);
+                                    }
+                                    let n = set.produse.length;
+                                    let reducere = Math.min(5,n) * 5;
+                                    let pretFinal = sumaPreturi * (1-reducere/100)
+                                %>
+                                <p class="pret">Pret intreg: <%=sumaPreturi.toFixed(2)%></p>
+                                <p class="pret">Pret redus: <%=pretFinal.toFixed(2)%></p>
+                            </div>  
+                    </div>
+                <%} %>
+            </div>
+        </main>
+        <%- include("../fragmente/footer") %>
+    </body>
+</html>

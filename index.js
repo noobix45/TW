@@ -43,7 +43,8 @@ obGlobal = {
     optiuniMeniu:null,
     categorii:null,
     produse:null,
-    oferte:null
+    oferte:null,
+    seturi:null
 }
 
 client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezultat){
@@ -57,7 +58,31 @@ client.query("select * from produs", function(err, rezultat ){
     console.log("select * from produs:")
     console.log(rezultat)
     obGlobal.produse = rezultat.rows;
-})
+});
+
+queryseturi = client.query(`SELECT 
+    s.id, 
+    s.nume_set, 
+    s.descriere_set, 
+    json_agg(json_build_object(
+      'id', p.id,
+      'nume', p.nume,
+      'imagine', p.imagine,
+      'pret',p.pret
+    )) AS produse
+  FROM seturi s
+  JOIN asociere_set a ON s.id = a.id_set
+  JOIN produs p ON a.id_produs = p.id
+  GROUP BY s.id`, function(err,rezultat){
+    if(err){
+        console.error("Eroare la query seturi: ",err);
+    }
+    else{
+        obGlobal.seturi = rezultat.rows;
+        console.log("global seturi: ",obGlobal.seturi);
+    }
+  });
+
 client.query("select * from unnest(enum_range(null::categ_produs))", function(err, rezultat ){
     console.log(err)    
     console.log("select * from unnest:")
@@ -553,11 +578,20 @@ app.get("/produs/:id", function(req, res){
                     // pentru time datetime
                     rez.rows[0].data_datetime = d.toISOString().split("T")[0];
 
-                res.render("pagini/produs", {prod: rez.rows[0]})
+                    let idProdus = parseInt(req.params.id);
+                    let seturiCuProdus = obGlobal.seturi.filter(set=>
+                        set.produse.some(p=>p.id == idProdus)
+                    )
+                    console.log("seturicuProdus",seturiCuProdus);
+                res.render("pagini/produs", {prod: rez.rows[0], seturi_cu_produs: seturiCuProdus});
             }
         }
     })
 })
+
+app.get("/seturi",function(req,res){
+    res.render("pagini/seturi",{seturi:obGlobal.seturi});
+});
 
 app.get(/^\/resurse\/[a-zA-Z0-9_\/]*$/, function(req, res, next) {
     afisareEroare(res,403);

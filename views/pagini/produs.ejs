@@ -42,6 +42,26 @@
                             <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">
                         </label>   
                 </article>
+
+                    <div class="seturi">
+                        <h3>Seturi care conțin acest produs:</h3>
+                        <% if (seturi_cu_produs.length === 0) { %>
+                            <p>Acest produs nu face parte din niciun set.</p>
+                        <% } else { %>
+                            <ul>
+                                <% seturi_cu_produs.forEach(function(set) { %>
+                                    <li>
+                                        <strong><%= set.nume %></strong><br>
+                                        <span>Produse: 
+                                            <% set.produse.forEach(function(produs, index) { %>
+                                                <%= produs.nume %><%= index < set.produse.length - 1 ? ', ' : '' %>
+                                            <% }) %>
+                                        </span>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        <% } %>
+                    </div>
         </section>
     </main>
 

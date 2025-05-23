@@ -1,22 +1,16 @@
 {
   "oferte": [
     {
-      "categorie": "clasica",
-      "reducere": 25,
-      "data-incepere": "2025-05-22T20:15:44.631Z",
-      "data-finalizare": "2025-05-22T20:17:44.631Z"
+      "categorie": "pene",
+      "reducere": 30,
+      "data-incepere": "2025-05-23T19:43:34.749Z",
+      "data-finalizare": "2025-05-23T19:45:34.749Z"
     },
     {
-      "categorie": "straps",
-      "reducere": 35,
-      "data-incepere": "2025-05-22T20:15:12.336Z",
-      "data-finalizare": "2025-05-22T20:17:12.336Z"
-    },
-    {
-      "categorie": "cablu",
-      "reducere": 50,
-      "data-incepere": "2025-05-22T20:14:12.328Z",
-      "data-finalizare": "2025-05-22T20:16:12.328Z"
+      "categorie": "cabinet",
+      "reducere": 10,
+      "data-incepere": "2025-05-23T19:42:34.729Z",
+      "data-finalizare": "2025-05-23T19:44:34.729Z"
     }
   ]
 }
