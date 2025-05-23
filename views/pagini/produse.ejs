@@ -9,6 +9,7 @@
         <script type="text/javascript" src=/resurse/js/produse.js></script>
         <script type="text/javascript" src=/resurse/js/produse-cos.js></script>
     </head>
+    
     <body>
         <%- include("../fragmente/header") %>
     <main>
@@ -192,38 +193,56 @@
 
             <h2>Produse</h2>
             <div class="grid-produse" id="grid-produse">
-                <% for( let prod of locals.produse) { %>
-                    <article class="produs" >
-                        <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
+                <% for(let prod of locals.produse) { 
+            const oferteProd = locals.oferte.filter(o => o.categorie.toLowerCase() === prod.categorie.toLowerCase());
+            console.log(locals.oferte)
+            const reducereTotala = oferteProd.reduce((total, o) => total + o.reducere, 0);
+            const reducereAplicata = Math.min(reducereTotala, 100);
+            const pretNou = prod.pret * (1 - reducereAplicata / 100);
+        %>
 
-                        <figure>
-                            <a href="/produs/<%-prod.id %>" ><img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]" /></a>
-                        </figure>
+        <article class="produs <%= oferteProd.length > 0 ? 'produs-reducere' : '' %>">
+            <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
 
-                        <div class="info-prod">
-                            <ul>
-                                <li><p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p></li>
-                                <li><p class="brand">Brand: <span class="val-brand"><%- prod.brand%></span></p></li>
-                                <li><p class="greutate">Greutate: <span class="val-greutate"><%- prod.greutate%></span></p></li>
-                                <li><p class="materiale">Materiale: <span class="val-materiale"><%- prod.materiale%></span></p></li>
-                                <li><p class="cablu">Cablu inclus: <span class="val-cablu"><%- prod.cablu_inclus ? 'Da' : 'Nu'%></span></p></li>
-                                <li><p class="rating">Rating: <span class="val-rating"><%- prod.rating%></span></p></li>
-                                <li><p class="data">Data: <span><time datetime="<%= prod.data_fromatata_ro %>"><%= prod.data_formatata_ro %></time></span></p></li>
-                            </ul>
-                        </div>
+            <figure>
+                <a href="/produs/<%- prod.id %>">
+                    <img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="[imagine <%- prod.nume %>]"/>
+                </a>
+            </figure>
 
-                        <div class = "info2">
-                            <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
-                            <p class="descriere">Descriere:<br><span class="val-descriere"><%- prod.descriere.replace(/\n/g, "<br>")%></span></p>
-                        </div>
+            <div class="info-prod">
+                <ul>
+                    <li><p class="pret">
+                        Pret: 
+                        <% if (oferteProd.length > 0) { %>
+                            <span class="pret-vechi"><%= prod.pret.toFixed(2) %> lei</span>
+                            <span class="val-pret pret-nou"><%= pretNou.toFixed(2) %> lei</span>
+                        <% } else { %>
+                            <span class="val-pret"><%= prod.pret.toFixed(2) %> lei</span>
+                        <% } %>
+                    </p></li>
 
-                        <label class="selecteaza-cos">
-                            Selectează:<br/>
-                            <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">
-                        </label>
+                    <li><p class="brand">Brand: <span class="val-brand"><%- prod.brand %></span></p></li>
+                    <li><p class="greutate">Greutate: <span class="val-greutate"><%- prod.greutate %></span></p></li>
+                    <li><p class="materiale">Materiale: <span class="val-materiale"><%- prod.materiale %></span></p></li>
+                    <li><p class="cablu">Cablu inclus: <span class="val-cablu"><%- prod.cablu_inclus ? 'Da' : 'Nu' %></span></p></li>
+                    <li><p class="rating">Rating: <span class="val-rating"><%- prod.rating %></span></p></li>
+                    <li><p class="data">Data: <span><time datetime="<%= prod.data_formatata_ro %>"><%= prod.data_formatata_ro %></time></span></p></li>
+                </ul>
+            </div>
 
-                    </article>
-                <% }%>
+            <div class="info2">
+                <p class="categorie">Categorie: <span class="val-categorie"><%- prod.categorie %></span></p>
+                <p class="descriere">Descriere:<br><span class="val-descriere"><%- prod.descriere.replace(/\n/g, "<br>") %></span></p>
+            </div>
+
+            <label class="selecteaza-cos">
+                Selectează:<br/>
+                <input type="checkbox" class="select-cos" value="<%- prod.id %>" autocomplete="off">
+            </label>
+        </article>
+
+        <% } %>
             </div>
             <p id="mesaj-filtrare" style="display: none;">Nu exista produse conform filtrarii</p>
         </section>
@@ -255,5 +274,8 @@
             }
         });
     </script>
+
+
+
     </body>
 </html>

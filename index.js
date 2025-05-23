@@ -4,6 +4,7 @@ const fs = require("fs");
 const sharp = require("sharp");
 const sass = require("sass");
 const pg = require("pg");
+const { generateKey } = require("crypto");
 
 // const AccesBD=require("./module_proprii/accesbd.js")
 // AccesBD.getInstanta().select({tabel:"produs",campuri:["*"]},function(err,rez){
@@ -23,16 +24,7 @@ client=new Client({ //instanta a uni clinet de baze de date
 })
 
 client.connect()
-client.query("select * from produs", function(err, rezultat ){
-    console.log(err)
-    console.log("select * from produs:")
-    console.log(rezultat)
-})
-client.query("select * from unnest(enum_range(null::categ_produs))", function(err, rezultat ){
-    console.log(err)    
-    console.log("select * from unnest:")
-    console.log(rezultat)
-})
+
 
 app = express();
 
@@ -48,15 +40,116 @@ obGlobal = {
     folderScss: path.join(__dirname,"resurse/scss"),
     folderCss: path.join(__dirname,"resurse/css"),
     folderBackup: path.join(__dirname,"backup"),
-    optiuniMeniu:null
+    optiuniMeniu:null,
+    categorii:null,
+    produse:null,
+    oferte:null
 }
-
 
 client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezultat){
     console.log(err);
     console.log(rezultat);
     obGlobal.optiuniMeniu=rezultat.rows;
 });
+
+client.query("select * from produs", function(err, rezultat ){
+    console.log(err)
+    console.log("select * from produs:")
+    console.log(rezultat)
+    obGlobal.produse = rezultat.rows;
+})
+client.query("select * from unnest(enum_range(null::categ_produs))", function(err, rezultat ){
+    console.log(err)    
+    console.log("select * from unnest:")
+    console.log(rezultat)
+    obGlobal.categorii = rezultat.rows;
+
+    genereazaOferta();
+    setInterval(genereazaOferta, T * 60000);
+
+    console.log("Oferte",obGlobal.oferte);
+})
+
+const caleFisierOferte = path.join(__dirname, "resurse/json/oferte.json");
+const T=1;
+const T2=2;
+
+function incarcaOferteInitiale(){
+    try{
+        let oferteJson = JSON.parse(fs.readFileSync(caleFisierOferte));
+        let acum = new Date();
+
+        oferteJson.oferte = oferteJson.oferte.filter(off=>{
+            return (acum-new Date(off["data-finalizare"])) < T2 *60000;
+        });
+        oferteJson.oferte = oferteJson.oferte.map(off => ({
+            ...off,
+            "data-incepere": new Date(off["data-incepere"]),
+            "data-finalizare": new Date(off["data-finalizare"])
+        }));
+        fs.writeFileSync(caleFisierOferte,JSON.stringify(oferteJson,null,2));
+    }catch(e){
+        console.warn("Fisierul oferte.json nu exista, se va crea unul");
+        obGlobal.oferte = [];
+        fs.writeFileSync(caleFisierOferte, JSON.stringify({ oferte: [] }, null, 2));
+    }
+}
+incarcaOferteInitiale();
+
+
+function genereazaOferta(){
+    console.log("obGlobal categorii", obGlobal.categorii)
+    const categorii = obGlobal.categorii?.map(c => c.unnest); //incarca categorii
+    console.log("categorii",categorii);
+    if(!categorii || categorii.length ==0)
+    {
+        console.warn("Nu exista categorii in obGlobal.");
+        return;
+    }
+
+    let oferteJson; // citeste fisierul curent de oferte
+    try{
+        oferteJson = JSON.parse(fs.readFileSync(caleFisierOferte));
+    }catch(e){
+        console.warn("Fisierul oferte.json nu exista. Se va crea unul nou");
+        oferteJson = {oferte: []};
+    }
+
+    let ultimaCategorie = oferteJson.oferte.length > 0 ? oferteJson.oferte[0].categorie : null;
+    let categoriiDisponibile = categorii.filter(c => c != ultimaCategorie);
+
+    if(categoriiDisponibile.length == 0) //toate categoriile disponibile diferite de ultima)
+    {
+        console.warn("Nu exista cateogrii diferite de ultima oferta");
+        return;
+    }
+    let categorieAleasa = categoriiDisponibile[Math.floor(Math.random() * categoriiDisponibile.length)];
+
+    const reduceri = [5,10,15,20,25,30,35,40,45,50];
+    const reducere = reduceri[Math.floor(Math.random() * reduceri.length)]; //reducerea
+
+    const dataIncepere = new Date();
+    const dataFinalizare = new Date(dataIncepere.getTime() + T2 * 60000);
+
+    const ofertaNoua = {
+        categorie: categorieAleasa,
+        reducere: reducere,
+        "data-incepere": dataIncepere,
+        "data-finalizare": dataFinalizare
+    }; //oferta noua
+
+    oferteJson.oferte.unshift(ofertaNoua); //adauga oferta
+
+    const acum = new Date();
+    oferteJson.oferte = oferteJson.oferte.filter(off => {
+        return new Date(off["data-finalizare"]) > acum;
+    }); //elimina oferte vechi
+
+
+    fs.writeFileSync(caleFisierOferte,JSON.stringify(oferteJson,null,2));
+    obGlobal.oferte = oferteJson.oferte;
+    console.log("Oferta generata: ", ofertaNoua);
+}
 
 
 vect_foldere=["temp","backup","temp1"]
@@ -246,11 +339,12 @@ function afisareEroare(res, identificator, titlu, text, imagine){
 
 }
 
-
-
 console.log("Folderul proiectului", __dirname);
 console.log("Cale catre fisier index.js", __filename);
 console.log("Folderul de lucru",process.cwd());
+
+console.log("categorii=",obGlobal.categorii);
+console.log("produse global=",obGlobal.produse);
 
 app.use("/*",function(req,res,next){
     console.log("optiuniMeniu=",obGlobal.optiuniMeniu);
@@ -263,11 +357,38 @@ app.get("/favicon.ico",function(req,res){
 })
 
 app.get(["/","/home","/index"],function(req,res){
+    let ofertaCurenta = null;
+
+    if (obGlobal.oferte && obGlobal.oferte.length > 0) {
+        ofertaCurenta = obGlobal.oferte[0];
+    }
+
     res.render("pagini/index",{
         imagini: obGlobal.obImagini.imagini,
-        ip: req.ip
+        ip: req.ip,
+        oferta: ofertaCurenta
     });
 })
+
+app.get("/api/oferta", function(req, res) {
+    const caleOferte = path.join(__dirname, "resurse/json/oferte.json");
+
+    let ofertaCurenta = null;
+    try {
+        const oferteJson = JSON.parse(fs.readFileSync(caleOferte));
+        const acum = new Date();
+
+        ofertaCurenta = oferteJson.oferte.find(oferta => {
+            const inceput = new Date(oferta["data-incepere"]);
+            const final = new Date(oferta["data-finalizare"]);
+            return inceput <= acum && acum <= final;
+        }) || null;
+    } catch (e) {
+        console.warn("Eroare la citirea ofertelor:", e);
+    }
+
+    res.json({ oferta: ofertaCurenta });
+});
 
 app.get("/extra",function(req,res){ 
     res.render("pagini/extra",{
@@ -302,6 +423,8 @@ app.get("/abc", function(req, res, next){
 
 app.get("/produse", function(req, res) {
     console.log(req.query)
+    console.log("Ruta /produse apelată la:", new Date().toISOString());
+    console.log("oferte din global in produse",obGlobal.oferte);
     
     let conditii = [];
     let valori = [];
@@ -344,11 +467,11 @@ app.get("/produse", function(req, res) {
             const zile = ["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
 
             for (let prod of rez.rows) {
+                prod.pret = Number(prod.pret);
                 const d = new Date(prod.data_adaugare);
                 prod.data_formatata_ro = `${d.getDate()} ${luni[d.getMonth()]} ${d.getFullYear()} [${zile[d.getDay()]}]`;
                 prod.data_datetime = d.toISOString().split("T")[0];
             }
-
             let queryPret = "select min(pret) as pret_min, max(pret) as pret_max from produs";
             client.query(queryPret, function(err, rezPret) {
                 if (err) {
@@ -360,11 +483,36 @@ app.get("/produse", function(req, res) {
                 let pretMin = rezPret.rows[0].pret_min;
                 let pretMax = rezPret.rows[0].pret_max;
 
+                const toateOfertele = obGlobal.oferte || [];
+                console.log("toate ofertele", toateOfertele);
+                const now = new Date();
+
+                // 1. Filtrăm ofertele active
+                const oferteActive = toateOfertele.filter(o => {
+                return new Date(o['data-incepere']) <= now && new Date(o['data-finalizare']) >= now;
+                });
+
+                // 2. Păstrăm doar câte o ofertă pe categorie (prima întâlnită)
+                const oferteUnice = [];
+                const categoriiVazute = new Set();
+
+                for (const oferta of oferteActive) {
+                const categorie = oferta.categorie;  // presupun că există un câmp 'categorie'
+                if (!categoriiVazute.has(categorie)) {
+                    categoriiVazute.add(categorie);
+                    oferteUnice.push(oferta);
+                }
+                }
+
+                console.log("uni");
+                console.log(oferteUnice);
+                
                 res.render("pagini/produse", {
                     produse: rez.rows,
                     optiuni: rezOptiuni.rows,
                     pretMin: pretMin,
-                    pretMax: pretMax
+                    pretMax: pretMax,
+                    oferte: oferteUnice
                 });
             });
         });

@@ -1,0 +1,22 @@
+{
+  "oferte": [
+    {
+      "categorie": "clasica",
+      "reducere": 25,
+      "data-incepere": "2025-05-22T20:15:44.631Z",
+      "data-finalizare": "2025-05-22T20:17:44.631Z"
+    },
+    {
+      "categorie": "straps",
+      "reducere": 35,
+      "data-incepere": "2025-05-22T20:15:12.336Z",
+      "data-finalizare": "2025-05-22T20:17:12.336Z"
+    },
+    {
+      "categorie": "cablu",
+      "reducere": 50,
+      "data-incepere": "2025-05-22T20:14:12.328Z",
+      "data-finalizare": "2025-05-22T20:16:12.328Z"
+    }
+  ]
+}

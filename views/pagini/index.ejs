@@ -11,14 +11,11 @@
 <body class = "dark"> <!-- header main si footer 1.4-->
     <p id="watermark"></p>
     <%- include("../fragmente/header.ejs") %>
-
+<!-- 
     <button class="btn btn-primary">Buton rosu</button>
-    <button class="btn btn-secondary">Buton mov</button>
+    <button class="btn btn-secondary">Buton mov</button> -->
     
     <main>
-            
-           
-
             <div class = "zona1">
                 <div class = "reclama_titlu"><h2>TOP MODELS</h2></div>
                 <div class = "reclama_scroll">
@@ -40,11 +37,96 @@
                     <li><a href = "/produse?tip=accesoriu">Accesorii</a></li>
                 </ul>
             </div>
+
+<div class="container-oferta">
+    <% if (oferta) { %>
+
+    <script>
+        const oferta = JSON.parse(`<%- JSON.stringify(oferta).replace(/</g, '\\u003c') %>`);
+        let finalizare = new Date(oferta["data-finalizare"]);
+        let timerEl = null;
+        let interval = null;
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = Math.max(0, finalizare - now);
+
+            const sec = Math.floor((diff / 1000) % 60);
+            const min = Math.floor((diff / 1000 / 60) % 60);
+            const hrs = Math.floor((diff / (1000 * 60 * 60)));
+
+            if (timerEl) {
+                timerEl.classList.remove("warning");
+                timerEl.textContent = `⏳ Expiră în: ${hrs}h ${min}m ${sec}s`;
+
+                if (diff <= 10000) {
+                    timerEl.classList.add("warning");
+                    // optional: new Audio("/sunet/alerta.mp3").play();
+                }
+            }
+
+            if (diff <= 0) {
+                clearInterval(interval);
+                incarcaOfertaNoua();
+            }
+        }
+
+        function incarcaOfertaNoua() {
+            fetch("/api/oferta")
+                .then(r => r.json())
+                .then(data => {
+                    if (!data.oferta) {
+                        document.getElementById("oferta").innerHTML = "<p>Momentan nu există oferte active.</p>";
+                        return;
+                    }
+                    const o = data.oferta;
+                    finalizare = new Date(o["data-finalizare"]);
+                    document.getElementById("oferta").innerHTML = `
+                        <div class="oferta-header">
+                            <span class="emoji">🔥</span>
+                            <h2>Ofertă specială!</h2>
+                        </div>
+                        <p><strong>Categoria:</strong> ${o.categorie}</p>
+                        <p><strong>Reducere:</strong> ${o.reducere}%</p>
+                        <p><strong>Valabilă de la:</strong> ${new Date(o["data-incepere"]).toLocaleString("ro-RO")}</p>
+                        <p><strong>Până la:</strong> ${new Date(o["data-finalizare"]).toLocaleString("ro-RO")}</p>
+                        <p id="timer" class="timer"></p>
+                    `;
+                    timerEl = document.getElementById("timer");
+                    clearInterval(interval);
+                    interval = setInterval(updateTimer, 1000);
+                });
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            timerEl = document.getElementById("timer");
+            interval = setInterval(updateTimer, 1000);
+        });
+    </script>
+
+    <div id="oferta" class="oferta">
+        <div class="oferta-header">
+            <span class="emoji">🔥</span>
+            <h2>Ofertă specială!</h2>
+        </div>
+        <p><strong>Categoria:</strong> <%= oferta.categorie %></p>
+        <p><strong>Reducere:</strong> <%= oferta.reducere %>%</p>
+        <p><strong>Valabilă de la:</strong> <%= new Date(oferta["data-incepere"]).toLocaleString("ro-RO") %></p>
+        <p><strong>Până la:</strong> <%= new Date(oferta["data-finalizare"]).toLocaleString("ro-RO") %></p>
+        <p id="timer" class="timer"></p>
+    </div>
+
+    <% } else { %>
+        <p>Momentan nu există oferte active.</p>
+    <% } %>
+</div>
+
+
             <hr id = "custom-hr">
             </div>
 
             <div class = "zona5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, voluptas ad quidem perferendis consequuntur rem quae a illo temporibus ipsam, similique autem saepe ipsa dolorem ullam hic? Reiciendis, fuga esse.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis quisquam vel molestias eveniet molestiae non mollitia saepe autem reprehenderit, ipsam dolorem libero repellendus, possimus distinctio? Quibusdam eius inventore sapiente mollitia.
             </div>
 
             <div class = "zona6">
@@ -255,6 +337,7 @@
         });
     });
 </script>
+
     <p id="absolut"></p>
 </body>
 
