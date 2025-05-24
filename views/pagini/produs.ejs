@@ -51,12 +51,14 @@
                             <ul>
                                 <% seturi_cu_produs.forEach(function(set) { %>
                                     <li>
-                                        <strong><%= set.nume %></strong><br>
+                                        <a href="/seturi">
+                                        <p><strong><%= set.nume_set %></strong></p><br>
                                         <span>Produse: 
                                             <% set.produse.forEach(function(produs, index) { %>
                                                 <%= produs.nume %><%= index < set.produse.length - 1 ? ', ' : '' %>
                                             <% }) %>
                                         </span>
+                                        </a>
                                     </li>
                                 <% }) %>
                             </ul>

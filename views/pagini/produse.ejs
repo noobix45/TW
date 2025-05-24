@@ -202,7 +202,9 @@
         %>
 
         <article class="produs <%= oferteProd.length > 0 ? 'produs-reducere' : '' %>">
-            <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
+            <h3 class="nume">Nume: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %><% if (locals.produseIeftine.has(prod.id)) { %>
+                <span style="color:red; font-weight:bold;">(Cel mai ieftin din categorie)</span>
+            <% } %></span></a></h3>
 
             <figure>
                 <a href="/produs/<%- prod.id %>">

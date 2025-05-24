@@ -44,7 +44,8 @@ obGlobal = {
     categorii:null,
     produse:null,
     oferte:null,
-    seturi:null
+    seturi:null,
+    produseIeftine:null
 }
 
 client.query("select * from unnest(enum_range(null::tipuri_produse))", function(err, rezultat){
@@ -82,6 +83,20 @@ queryseturi = client.query(`SELECT
         console.log("global seturi: ",obGlobal.seturi);
     }
   });
+
+  client.query(`
+    SELECT DISTINCT ON (categorie) * 
+    FROM produs 
+    ORDER BY categorie, pret ASC
+`, function(err, rezultat) {
+    if (err) {
+        console.error("Eroare la query produse ieftine: ", err);
+    } else {
+        obGlobal.produseIeftine = rezultat.rows;
+        console.log("Produse ieftine pe categorii:", obGlobal.produseIeftine);
+    }
+});
+
 
 client.query("select * from unnest(enum_range(null::categ_produs))", function(err, rezultat ){
     console.log(err)    
@@ -508,36 +523,43 @@ app.get("/produse", function(req, res) {
                 let pretMin = rezPret.rows[0].pret_min;
                 let pretMax = rezPret.rows[0].pret_max;
 
+                
+
                 const toateOfertele = obGlobal.oferte || [];
                 console.log("toate ofertele", toateOfertele);
                 const now = new Date();
 
-                // 1. Filtrăm ofertele active
-                const oferteActive = toateOfertele.filter(o => {
+                const oferteActive = toateOfertele.filter(o => { //oferte active
                 return new Date(o['data-incepere']) <= now && new Date(o['data-finalizare']) >= now;
                 });
 
-                // 2. Păstrăm doar câte o ofertă pe categorie (prima întâlnită)
                 const oferteUnice = [];
                 const categoriiVazute = new Set();
 
                 for (const oferta of oferteActive) {
-                const categorie = oferta.categorie;  // presupun că există un câmp 'categorie'
+                const categorie = oferta.categorie;
                 if (!categoriiVazute.has(categorie)) {
                     categoriiVazute.add(categorie);
                     oferteUnice.push(oferta);
                 }
                 }
 
+
                 console.log("uni");
-                console.log(oferteUnice);
+                console.log(oferteUnice); //toate ofertele o singura data
+
+                const produseIeftineSet = new Set();
+                for (let p of obGlobal.produseIeftine) {
+                    produseIeftineSet.add(p.id);
+                }
                 
                 res.render("pagini/produse", {
                     produse: rez.rows,
                     optiuni: rezOptiuni.rows,
                     pretMin: pretMin,
                     pretMax: pretMax,
-                    oferte: oferteUnice
+                    oferte: oferteUnice,
+                    produseIeftine: produseIeftineSet
                 });
             });
         });

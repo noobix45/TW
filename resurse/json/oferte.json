@@ -1,16 +1,16 @@
 {
   "oferte": [
     {
-      "categorie": "pene",
-      "reducere": 30,
-      "data-incepere": "2025-05-23T19:43:34.749Z",
-      "data-finalizare": "2025-05-23T19:45:34.749Z"
+      "categorie": "corzi",
+      "reducere": 40,
+      "data-incepere": "2025-05-24T10:50:57.097Z",
+      "data-finalizare": "2025-05-24T10:52:57.097Z"
     },
     {
-      "categorie": "cabinet",
-      "reducere": 10,
-      "data-incepere": "2025-05-23T19:42:34.729Z",
-      "data-finalizare": "2025-05-23T19:44:34.729Z"
+      "categorie": "huse",
+      "reducere": 15,
+      "data-incepere": "2025-05-24T10:49:57.090Z",
+      "data-finalizare": "2025-05-24T10:51:57.090Z"
     }
   ]
 }

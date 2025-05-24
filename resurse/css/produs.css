@@ -190,3 +190,12 @@ main{
     display: block;
     color: var(--text-deschis);
 }
+
+.seturi a {
+    color: var(--negru);
+    text-decoration: none;
+}
+/* 
+.seturi a:hover {
+    color: red;
+} */

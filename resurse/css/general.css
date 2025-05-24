@@ -336,21 +336,63 @@ figure{
 }
 
 .container-oferta{
-    background-color: var(--hf-background-color);
-    max-width: 50%;
     grid-row: 4;
     grid-column: 1/-1;
+    justify-self: center;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+
+    max-width: 50%;
+    width: 40%;
     padding: 1rem;
+}
+
+.oferta p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.oferta-header {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-small);
+    margin-bottom: var(--gap-small);
+    border-bottom: 2px solid var(--culoare1-inchis);
+    padding-bottom: var(--gap-small);
+}
+
+.oferta-header h2 {
+    margin: 0;
+    font-size: var(--sus-font-medium);
+}
+
+.oferta-header .emoji {
+    font-size: 1.8rem;
+}
+
+.oferta {
+    background-color: var(--culoare1-deschis);
+    border: 2px solid var(--culoare1-inchis);
+    border-radius: 1rem;
+    padding: var(--gap-medium);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    color: var(--text-deschis);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .timer {
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 0.5rem;
-  color: #333;
+  color: var(--text-deschis);
   transition: color 0.3s ease;
 }
 
